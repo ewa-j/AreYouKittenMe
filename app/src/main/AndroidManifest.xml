@@ -28,6 +28,12 @@
 <!--            android:configChanges="orientation|keyboardHidden|screenSize"-->
 <!--            android:theme="@style/Theme.AreYouKittenMe.Fullscreen">-->
         </activity>
+        <activity
+            android:screenOrientation="sensorLandscape"
+            android:name=".EndActivity">
+            <!--            android:configChanges="orientation|keyboardHidden|screenSize"-->
+            <!--            android:theme="@style/Theme.AreYouKittenMe.Fullscreen">-->
+        </activity>
     </application>
 
 </manifest>
