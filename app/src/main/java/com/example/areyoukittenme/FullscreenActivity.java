@@ -5,6 +5,7 @@ import android.annotation.SuppressLint;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -101,6 +102,21 @@ public class FullscreenActivity extends AppCompatActivity {
             return false;
         }
     };
+    private final View.OnTouchListener changeScreenListener = new View.OnTouchListener() {
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            switch (motionEvent.getAction()) {
+
+                case MotionEvent.ACTION_UP:
+                    Intent startShapes = new Intent(FullscreenActivity.this, FirstActivity.class);
+                    startActivity(startShapes);
+                default:
+                    break;
+            }
+            return false;
+        }
+    };
+
     private ActivityFullscreenBinding binding;
 
     @Override
@@ -126,6 +142,8 @@ public class FullscreenActivity extends AppCompatActivity {
         // operations to prevent the jarring behavior of controls going away
         // while interacting with the UI.
         binding.dummyButton.setOnTouchListener(mDelayHideTouchListener);
+        binding.changeScreenBtn.setOnTouchListener(changeScreenListener);
+
     }
 
     @Override

@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AreYouKittenMe">
         <activity
+            android:screenOrientation="sensorLandscape"
             android:name=".FullscreenActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:exported="true"
@@ -20,6 +21,12 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:screenOrientation="sensorLandscape"
+            android:name=".FirstActivity">
+<!--            android:configChanges="orientation|keyboardHidden|screenSize"-->
+<!--            android:theme="@style/Theme.AreYouKittenMe.Fullscreen">-->
         </activity>
     </application>
 
