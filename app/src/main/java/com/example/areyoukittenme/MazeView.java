@@ -45,10 +45,18 @@ public class MazeView extends View {
         int width = getWidth();
         int height = getHeight();
 
-        if(width / height < COLS / ROWS)
-                cellSize = width/(COLS+1);
-        else
-                cellSize = height/(ROWS+1);
+//        if(width / height < COLS / ROWS) {
+//            cellSize = width / (COLS + 1);
+//        } else {
+//            cellSize = height / (ROWS + 1);
+//        }
+
+        if (width / COLS > height / ROWS){
+            cellSize = height / (ROWS + 1);
+        }
+        else {
+            cellSize = width / (COLS + 1);
+        }
 
         hMargin = (width-COLS*cellSize)/2;
         vMargin = (height-ROWS*cellSize)/2;
@@ -92,7 +100,7 @@ public class MazeView extends View {
         }
     }
 
-    private class Cell {
+    private class Cell{
         boolean
             topWall = true,
             leftWall = true,
