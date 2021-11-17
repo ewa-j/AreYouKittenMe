@@ -3,12 +3,12 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../layout/custom_preview.xml" value="0.21666666666666667" />
-        <entry key="app/src/main/res/layout/activity_end.xml" value="0.5911458333333334" />
-        <entry key="app/src/main/res/layout/activity_first.xml" value="0.35572916666666665" />
-        <entry key="app/src/main/res/layout/activity_fullscreen.xml" value="0.5" />
-        <entry key="app/src/main/res/layout/activity_maze.xml" value="0.17493472584856398" />
-        <entry key="app/src/main/res/layout/splash_activity.xml" value="0.35572916666666665" />
+        <entry key="../../../../../layout/custom_preview.xml" value="0.17447916666666666" />
+        <entry key="app/src/main/res/layout/activity_fullscreen.xml" value="0.10173467459973493" />
+        <entry key="app/src/main/res/layout/activity_gameover.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21422101449275363" />
+        <entry key="app/src/main/res/layout/activity_maze.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_win.xml" value="0.33" />
       </map>
     </option>
   </component>

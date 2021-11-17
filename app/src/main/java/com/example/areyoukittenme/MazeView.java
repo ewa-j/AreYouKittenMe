@@ -22,6 +22,8 @@ public class MazeView extends View {
     wallPaint = new Paint();
     wallPaint.setColor(Color.BLACK);
     wallPaint.setStrokeWidth(WALL_THICKNESS);
+
+    createMaze();
     }
 
 
@@ -37,7 +39,57 @@ public class MazeView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.BLUE);
+
+        canvas.drawColor(Color.LTGRAY);
+
+        int width = getWidth();
+        int height = getHeight();
+
+        if(width / height < COLS / ROWS)
+                cellSize = width/(COLS+1);
+        else
+                cellSize = height/(ROWS+1);
+
+        hMargin = (width-COLS*cellSize)/2;
+        vMargin = (height-ROWS*cellSize)/2;
+
+        canvas.translate(hMargin, vMargin);
+
+        for(int x=0; x<COLS; x++) {
+            for(int y=0; x<ROWS; y++) {
+                if(cells[x][y].topWall)
+                    canvas.drawLine(
+                            x*cellSize,
+                            y*cellSize,
+                            (x+1)* cellSize,
+                            y* cellSize,
+                            wallPaint);
+
+                if(cells[x][y].leftWall)
+                    canvas.drawLine(
+                            x*cellSize,
+                            y*cellSize,
+                            x* cellSize,
+                            (y+1)* cellSize,
+                            wallPaint);
+
+                if(cells[x][y].bottomWall)
+                    canvas.drawLine(
+                            x*cellSize,
+                            (y+1)*cellSize,
+                            (x+1)* cellSize,
+                            (y+1)* cellSize,
+                            wallPaint);
+
+                if(cells[x][y].rightWall)
+                    canvas.drawLine(
+                            (x+1)*cellSize,
+                            y*cellSize,
+                            (x+1)* cellSize,
+                            (y+1)* cellSize,
+                            wallPaint);
+            }
+        }
     }
 
     private class Cell {
