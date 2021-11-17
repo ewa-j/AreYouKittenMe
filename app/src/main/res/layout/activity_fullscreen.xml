@@ -16,11 +16,12 @@
 
         <Button
             android:id="@+id/startBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="352dp"
+            android:layout_width="100dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="360dp"
             android:layout_marginTop="264dp"
             android:text="Start"
+            android:textSize="40sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
