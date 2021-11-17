@@ -9,13 +9,26 @@
     android:theme="@style/ThemeOverlay.AreYouKittenMe.FullscreenContainer">
 
     <Button
-        android:id="@+id/exit"
+        android:id="@+id/win"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginStart="668dp"
+        android:layout_marginStart="680dp"
         android:layout_marginTop="316dp"
-        android:text="Exit"
+        android:text="Win"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/lose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="316dp"
+        android:text="Lose"
         android:textColor="#000000"
         android:textSize="30sp"
         app:layout_constraintStart_toStartOf="parent"

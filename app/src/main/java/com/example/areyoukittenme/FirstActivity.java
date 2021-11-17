@@ -45,10 +45,17 @@ public class FirstActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_first);
 
-        findViewById(R.id.exit).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.win).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(FirstActivity.this, EndActivity.class));
+                startActivity(new Intent(FirstActivity.this, WinActivity.class));
+            }
+        });
+
+        findViewById(R.id.lose).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FirstActivity.this, GameOverActivity.class));
             }
         });
     }
