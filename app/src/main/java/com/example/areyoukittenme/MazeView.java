@@ -2,6 +2,7 @@ package com.example.areyoukittenme;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -18,7 +19,7 @@ public class MazeView extends View {
 
     private Cell[][] cells;
     private static final int COLS = 10, ROWS = 5;
-    private static final float WALL_THICKNESS = 24;
+    private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
     private Paint wallPaint;
     private BitmapShader wallTexture;
@@ -31,14 +32,12 @@ public class MazeView extends View {
     wallPaint.setColor(Color.BLACK);
     wallPaint.setStrokeWidth(WALL_THICKNESS);
 
-//    Bitmap hedge = Bitmap.createBitmap(hedge);
-        //example of creating bitmap
-//    Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
-//    wallTexture = new BitmapShader(hedge,
-//            Shader.TileMode.REPEAT,
-//            Shader.TileMode.REPEAT);
-//
-//    wallPaint.setShader(wallTexture);
+    Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+    wallTexture = new BitmapShader(hedge,
+            Shader.TileMode.REPEAT,
+            Shader.TileMode.REPEAT);
+
+    wallPaint.setShader(wallTexture);
 
 
     createMaze();
@@ -59,8 +58,113 @@ public class MazeView extends View {
                 cells[x][y] = new Cell(x, y);
             }
         }
+
+        // removing walls
+        // first row in landscape
+        cells[0][0].bottomWall = false;
         cells[0][0].rightWall = false;
         cells[1][0].leftWall = false;
+        cells[1][0].rightWall = false;
+        cells[2][0].bottomWall = false;
+        cells[2][0].leftWall = false;
+        cells[3][0].bottomWall = false;
+        cells[3][0].rightWall = false;
+        cells[4][0].leftWall = false;
+        cells[4][0].rightWall = false;
+        cells[5][0].leftWall = false;
+        cells[5][0].bottomWall = false;
+        cells[6][0].rightWall = false;
+        cells[6][0].bottomWall = false;
+        cells[7][0].leftWall = false;
+        cells[7][0].rightWall = false;
+        cells[8][0].leftWall = false;
+        cells[8][0].rightWall = false;
+        cells[9][0].leftWall = false;
+        cells[9][0].bottomWall = false;
+        // second row in landscape
+        cells[0][1].bottomWall = false;
+        cells[0][1].topWall = false;
+        cells[1][1].rightWall = false;
+        cells[2][1].topWall = false;
+        cells[2][1].leftWall = false;
+        cells[3][1].topWall = false;
+        cells[3][1].rightWall = false;
+        cells[4][1].leftWall = false;
+        cells[4][1].bottomWall = false;
+        cells[5][1].rightWall = false;
+        cells[5][1].topWall = false;
+        cells[6][1].leftWall = false;
+        cells[6][1].bottomWall = false;
+        cells[6][1].topWall = false;
+        cells[7][1].rightWall = false;
+        cells[7][1].bottomWall = false;
+        cells[8][1].bottomWall = false;
+        cells[8][1].rightWall = false;
+        cells[9][1].leftWall = false;
+        cells[9][1].topWall = false;
+        // 3rd row in landscape
+        cells[0][2].topWall = false;
+        cells[0][2].rightWall = false;
+        cells[1][2].leftWall = false;
+        cells[1][2].bottomWall = false;
+        cells[2][2].bottomWall = false;
+        cells[2][2].rightWall = false;
+        cells[3][2].leftWall = false;
+        cells[4][2].rightWall = false;
+        cells[4][2].topWall = false;
+        cells[4][2].bottomWall = false;
+        cells[5][2].leftWall = false;
+        cells[5][2].bottomWall = false;
+        cells[6][2].rightWall = false;
+        cells[6][2].topWall = false;
+        cells[7][2].leftWall = false;
+        cells[7][2].topWall = false;
+        cells[8][2].topWall = false;
+        cells[8][2].bottomWall = false;
+        cells[9][2].bottomWall = false;
+        // 4th row in landscape
+        cells[0][3].bottomWall = false;
+        cells[0][3].rightWall = false;
+        cells[1][3].leftWall = false;
+        cells[1][3].rightWall = false;
+        cells[1][3].topWall = false;
+        cells[2][3].leftWall = false;
+        cells[2][3].topWall = false;
+        cells[3][3].rightWall = false;
+        cells[3][3].bottomWall = false;
+        cells[4][3].topWall = false;
+        cells[4][3].leftWall = false;
+        cells[4][3].bottomWall = false;
+        cells[5][3].topWall = false;
+        cells[5][3].rightWall = false;
+        cells[6][3].leftWall = false;
+        cells[7][3].bottomWall = false;
+        cells[7][3].rightWall = false;
+        cells[8][3].leftWall = false;
+        cells[8][3].topWall = false;
+        cells[8][3].rightWall = false;
+        cells[9][3].leftWall = false;
+        cells[9][3].topWall = false;
+        // 5th row in landscape
+        cells[0][4].topWall = false;
+        cells[0][4].rightWall = false;
+        cells[1][4].leftWall = false;
+        cells[1][4].rightWall = false;
+        cells[2][4].rightWall = false;
+        cells[2][4].leftWall = false;
+        cells[3][4].topWall = false;
+        cells[3][4].leftWall = false;
+        cells[4][4].rightWall = false;
+        cells[4][4].topWall = false;
+        cells[5][4].leftWall = false;
+        cells[6][4].rightWall = false;
+        cells[7][4].leftWall = false;
+        cells[7][4].rightWall = false;
+        cells[7][4].topWall = false;
+        cells[8][4].leftWall = false;
+        cells[8][4].rightWall = false;
+        cells[9][4].leftWall = false;
+        cells[9][4].bottomWall = false;
     }
 
     @Override
