@@ -8,6 +8,8 @@ import android.util.AttributeSet;
 import android.view.View;
 import androidx.annotation.Nullable;
 
+import java.util.Stack;
+
 
 public class MazeView extends View {
 
@@ -28,7 +30,10 @@ public class MazeView extends View {
     }
 
     private void createMaze() {
-        cells = new Cell[COLS][ROWS];
+//        Stack<Cell> stack = new Stack<>();
+//        Cell current, next;
+//
+//        cells = new Cell[COLS][ROWS];
 
 //        landscape view- rows became columns?
 //        for(int x=0; x<COLS; x++) {
