@@ -20,10 +20,11 @@ import java.util.Stack;
 public class MazeView extends View {
 
     private Cell[][] cells;
+    private Cell player, exit;
     private static final int COLS = 10, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
-    private Paint wallPaint;
+    private Paint wallPaint, playerPaint, exitPaint;
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
@@ -34,6 +35,12 @@ public class MazeView extends View {
     wallPaint = new Paint();
     wallPaint.setColor(Color.BLACK);
     wallPaint.setStrokeWidth(WALL_THICKNESS);
+
+    playerPaint = new Paint();
+    playerPaint.setColor(Color.BLUE);
+
+    exitPaint = new Paint();
+    exitPaint.setColor(Color.CYAN);
 
     Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
     wallTexture = new BitmapShader(hedge,
@@ -127,6 +134,9 @@ public class MazeView extends View {
                 cells[x][y] = new Cell(x, y);
             }
         }
+
+        player = cells[0][0];
+        exit = cells[COLS-1][ROWS-1];
 
         current = cells[0][0];
         current.visited = true;
@@ -314,6 +324,20 @@ public class MazeView extends View {
                 }
             }
         }
+
+        canvas.drawRect(
+            player.col*cellSize,
+            player.row*cellSize,
+            (player.col+1)*cellSize,
+            (player.row+1)*cellSize,
+            playerPaint);
+
+        canvas.drawRect(
+                exit.col*cellSize,
+                exit.row*cellSize,
+                (exit.col+1)*cellSize,
+                (exit.row+1)*cellSize,
+                exitPaint);
     }
 
     private class Cell{
