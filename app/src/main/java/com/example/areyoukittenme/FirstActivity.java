@@ -58,6 +58,13 @@ public class FirstActivity extends AppCompatActivity {
                 startActivity(new Intent(FirstActivity.this, GameOverActivity.class));
             }
         });
+
+        findViewById(R.id.startLevel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FirstActivity.this, MazeActivity.class));
+            }
+        });
     }
 
 //    private final Runnable mShowPart2Runnable = new Runnable() {
