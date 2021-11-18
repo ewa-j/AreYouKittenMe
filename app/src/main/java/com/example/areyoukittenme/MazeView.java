@@ -1,9 +1,12 @@
 package com.example.areyoukittenme;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 import androidx.annotation.Nullable;
@@ -14,10 +17,12 @@ import java.util.Stack;
 public class MazeView extends View {
 
     private Cell[][] cells;
-    private static final int COLS = 20, ROWS = 10;
-    private static final float WALL_THICKNESS = 4;
+    private static final int COLS = 10, ROWS = 5;
+    private static final float WALL_THICKNESS = 24;
     private float cellSize, hMargin, vMargin;
     private Paint wallPaint;
+    private BitmapShader wallTexture;
+    private Bitmap hedge;
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -26,6 +31,16 @@ public class MazeView extends View {
     wallPaint.setColor(Color.BLACK);
     wallPaint.setStrokeWidth(WALL_THICKNESS);
 
+//    Bitmap hedge = Bitmap.createBitmap(hedge);
+        //example of creating bitmap
+//    Bitmap src = BitmapFactory.decodeResource(getResources(), R.drawable.ic_launcher);
+//    wallTexture = new BitmapShader(hedge,
+//            Shader.TileMode.REPEAT,
+//            Shader.TileMode.REPEAT);
+//
+//    wallPaint.setShader(wallTexture);
+
+
     createMaze();
     }
 
@@ -33,7 +48,7 @@ public class MazeView extends View {
 //        Stack<Cell> stack = new Stack<>();
 //        Cell current, next;
 //
-//        cells = new Cell[COLS][ROWS];
+        cells = new Cell[COLS][ROWS];
 
 //        landscape view- rows became columns?
 //        for(int x=0; x<COLS; x++) {
@@ -44,6 +59,8 @@ public class MazeView extends View {
                 cells[x][y] = new Cell(x, y);
             }
         }
+        cells[0][0].rightWall = false;
+        cells[1][0].leftWall = false;
     }
 
     @Override
@@ -55,9 +72,9 @@ public class MazeView extends View {
         int height = getHeight();
 
         if (width / height < COLS / ROWS) {
-            cellSize = width / (COLS + 1);
+            cellSize = (width / (COLS + 1)+1);
         } else {
-            cellSize = height / (ROWS + 1);
+            cellSize = (height / (ROWS + 1)+1);
         }
 
 ////        if (width / COLS > height / ROWS){
