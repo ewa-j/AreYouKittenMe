@@ -25,38 +25,42 @@ public class MazeView extends View {
     }
 
     private Cell[][] cells;
-    private Cell player, exit;
+    private Cell player, exit, enemy;
     private static final int COLS = 10, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
-    private Paint wallPaint, playerPaint, exitPaint;
+    private Paint wallPaint, playerPaint, exitPaint, enemyPaint;
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
+    private int speed = 10;
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
-    wallPaint = new Paint();
-    wallPaint.setColor(Color.BLACK);
-    wallPaint.setStrokeWidth(WALL_THICKNESS);
+        wallPaint = new Paint();
+        wallPaint.setColor(Color.BLACK);
+        wallPaint.setStrokeWidth(WALL_THICKNESS);
 
-    playerPaint = new Paint();
-    playerPaint.setColor(Color.BLUE);
+        playerPaint = new Paint();
+        playerPaint.setColor(Color.BLUE);
 
-    exitPaint = new Paint();
-    exitPaint.setColor(Color.CYAN);
+        exitPaint = new Paint();
+        exitPaint.setColor(Color.CYAN);
 
-    Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
-    wallTexture = new BitmapShader(hedge,
-            Shader.TileMode.REPEAT,
-            Shader.TileMode.REPEAT);
+        enemyPaint = new Paint();
+        enemyPaint.setColor(Color.RED);
 
-    wallPaint.setShader(wallTexture);
+        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+        wallTexture = new BitmapShader(hedge,
+                Shader.TileMode.REPEAT,
+                Shader.TileMode.REPEAT);
 
-    random = new Random();
+        wallPaint.setShader(wallTexture);
 
-    createMaze();
+        random = new Random();
+
+        createMaze();
     }
 
     private Cell getNeighbour(Cell cell) {
@@ -142,6 +146,7 @@ public class MazeView extends View {
 
         player = cells[0][0];
         exit = cells[COLS-1][ROWS-1];
+        enemy = cells[(COLS-1)/2][(ROWS-1)/2];
 
         current = cells[0][0];
         current.visited = true;
@@ -345,7 +350,16 @@ public class MazeView extends View {
                 (exit.col+1)*cellSize-margin,
                 (exit.row+1)*cellSize-margin,
                 exitPaint);
+
+        canvas.drawRect(
+                enemy.col*cellSize+margin,
+                enemy.row*cellSize+margin,
+                (enemy.col+1)*cellSize-margin,
+                (enemy.row+1)*cellSize-margin,
+                enemyPaint);
     }
+
+
 
     private void movePlayer(Direction direction) {
         switch (direction) {
@@ -369,6 +383,36 @@ public class MazeView extends View {
 
         invalidate();
     }
+
+    private void moveEnemy(Direction direction) {
+
+        random = new Random();
+        int randomDirection = random.nextInt(Direction.values().length);
+        direction = Direction.values()[randomDirection];
+
+        switch (direction) {
+            case UP:
+                if(!enemy.topWall)
+                    enemy = cells[enemy.col][enemy.row-1];
+                break;
+            case DOWN:
+                if(!enemy.bottomWall)
+                    enemy = cells[enemy.col][enemy.row+1];
+                break;
+            case LEFT:
+                if(!enemy.leftWall)
+                    enemy = cells[enemy.col-1][enemy.row];
+                break;
+            case RIGHT:
+                if(!enemy.rightWall)
+                    enemy = cells[enemy.col+1][enemy.row];
+                break;
+        }
+
+        invalidate();
+
+    }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
