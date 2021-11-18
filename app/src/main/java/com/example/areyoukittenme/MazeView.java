@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Shader;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 import androidx.annotation.Nullable;
 
@@ -18,6 +19,10 @@ import java.util.Stack;
 
 
 public class MazeView extends View {
+
+    private enum Direction{
+        UP, DOWN, LEFT, RIGHT
+    }
 
     private Cell[][] cells;
     private Cell player, exit;
@@ -325,19 +330,88 @@ public class MazeView extends View {
             }
         }
 
+        float margin = cellSize/8;
+
         canvas.drawRect(
-            player.col*cellSize,
-            player.row*cellSize,
-            (player.col+1)*cellSize,
-            (player.row+1)*cellSize,
+            player.col*cellSize+margin,
+            player.row*cellSize+margin,
+            (player.col+1)*cellSize-margin,
+            (player.row+1)*cellSize-margin,
             playerPaint);
 
         canvas.drawRect(
-                exit.col*cellSize,
-                exit.row*cellSize,
-                (exit.col+1)*cellSize,
-                (exit.row+1)*cellSize,
+                exit.col*cellSize+margin,
+                exit.row*cellSize+margin,
+                (exit.col+1)*cellSize-margin,
+                (exit.row+1)*cellSize-margin,
                 exitPaint);
+    }
+
+    private void movePlayer(Direction direction) {
+        switch (direction) {
+            case UP:
+                if(!player.topWall)
+                    player = cells[player.col][player.row-1];
+                break;
+            case DOWN:
+                if(!player.bottomWall)
+                    player = cells[player.col][player.row+1];
+                break;
+            case LEFT:
+                if(!player.leftWall)
+                    player = cells[player.col-1][player.row];
+                break;
+            case RIGHT:
+                if(!player.rightWall)
+                    player = cells[player.col+1][player.row];
+                break;
+        }
+
+        invalidate();
+    }
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        if(event.getAction() == MotionEvent.ACTION_DOWN)
+            return true;
+
+        if(event.getAction() == MotionEvent.ACTION_MOVE) {
+            float x = event.getX();
+            float y = event.getY();
+
+            float playerCenterX = hMargin + (player.col + 0.5f)*cellSize;
+            float playerCenterY = vMargin + (player.row + 0.5f)*cellSize;
+
+            float dx = x - playerCenterX;
+            float dy = y - playerCenterY;
+
+            float absDx = Math.abs(dx);
+            float absDy =  Math.abs(dy);
+
+            if(absDx > cellSize || absDy > cellSize) {
+                if(absDx > absDy) {
+                    //move to x direction
+                    if(dx > 0) {
+                        //right
+                        movePlayer(Direction.RIGHT);
+                    } else {
+                        //left
+                        movePlayer(Direction.LEFT);
+                    }
+                } else {
+                    //move to y direction
+                    if(dy > 0) {
+                        //down
+                        movePlayer(Direction.DOWN);
+                    } else {
+                        //up
+                        movePlayer(Direction.UP);
+                    }
+                }
+            }
+            return true;
+        }
+        return super.onTouchEvent(event);
     }
 
     private class Cell{
