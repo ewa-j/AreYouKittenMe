@@ -68,9 +68,10 @@
 
         <ImageView
             android:id="@+id/handView"
-            android:layout_width="83dp"
+            android:layout_width="match_parent"
             android:layout_height="83dp"
             android:background="@color/light_blue_900" />
+
     </LinearLayout>
 
     <ImageView
@@ -208,5 +209,23 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView" />
+
+    <TextView
+        android:id="@+id/timeWaitView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="-1dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="1dp"
+        android:fontFamily="sans-serif"
+        android:text="3"
+        android:textAlignment="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        android:textSize="34sp"
+        android:textStyle="bold|italic"
+        android:visibility="invisible" />
 
 </RelativeLayout>
