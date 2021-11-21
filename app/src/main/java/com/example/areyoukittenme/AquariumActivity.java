@@ -12,6 +12,7 @@ import android.widget.RelativeLayout;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.areyoukittenme.databinding.ActivityAquariumBinding;
+import com.example.areyoukittenme.lib.Axolotl;
 
 public class AquariumActivity extends AppCompatActivity {
 
@@ -20,7 +21,7 @@ public class AquariumActivity extends AppCompatActivity {
     ImageView attached = null;
     int caught = 0;
     ImageView[] fishes;
-    ImageView[] axolotls;
+    Axolotl[] axolotls;
     Long startTime;
     Long touchAxolotlTime = null;
     private ActivityAquariumBinding binding;
@@ -33,7 +34,7 @@ public class AquariumActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         binding.handView.setOnTouchListener(armListener);
         fishes = new ImageView[]{binding.imageView1 , binding.imageView2,binding.imageView3,binding.imageView4,binding.imageView5,binding.imageView6,binding.imageView7,binding.imageView8,binding.imageView9,binding.imageView10};
-        axolotls = new ImageView[]{binding.axolotl1,binding.axolotl2,binding.axolotl3};
+        axolotls = new Axolotl[]{new Axolotl(binding.axolotl1),new Axolotl(binding.axolotl2),new Axolotl(binding.axolotl3)};
         startTime = System.currentTimeMillis();
         timerHandler.postDelayed(timerRunnable, 0);
     }
@@ -101,8 +102,12 @@ public class AquariumActivity extends AppCompatActivity {
             int minutes = seconds / 60;
             seconds = seconds % 60;
 
-            for (ImageView axolotl : axolotls) {
-                if (detectCollision(axolotl) && touchAxolotlTime == null) {
+            for (Axolotl axolotl : axolotls) {
+//                if(axolotl.newPosition == null){
+//                    axolotl.createNewPosition(binding.fishContainer);
+//                }
+                axolotl.move(binding.fishContainer);
+                if (detectCollision(axolotl.axolotl) && touchAxolotlTime == null) {
                     touchAxolotlTime = System.currentTimeMillis();
                     binding.armContainer.setY(binding.armContainer.getTop());
                     attached = null;
