@@ -4,48 +4,49 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MazeActivity">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <com.example.areyoukittenme.MazeView
+        android:id="@+id/mazeView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:contentDescription="@string/cats_background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/background"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <Button
-        android:id="@+id/play"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="176dp"
-        android:layout_marginTop="248dp"
-        android:text="@string/play"
-        android:textColor="#000000"
-        android:textSize="48sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/scoreTxt"
+    <Button
+        android:id="@+id/win"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="28dp"
-        android:layout_marginBottom="344dp"
-        android:text="@string/score"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="680dp"
+        android:layout_marginTop="316dp"
+        android:text="@string/win"
         android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/lose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="316dp"
+        android:text="@string/lose"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+<!--    <item>-->
+<!--        <bitmap-->
+<!--        android:src="@drawable/hedge"-->
+<!--        tools:ignore="MissingConstraints" />-->
+<!--    </item>-->
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,33 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<!--        <activity-->
-<!--            android:name=".MainActivity"-->
-<!--            android:exported="true"-->
-<!--            android:theme="@style/AppTheme.NoActionBar"-->
-<!--            android:screenOrientation="landscape">-->
-<!--          <intent-filter>-->
-<!--              <action android:name="android.intent.action.MAIN" />-->
 
-<!--               <category android:name="android.intent.category.LAUNCHER" />-->
-<!--           </intent-filter>-->
-<!--        </activity>-->
         <activity
-            android:screenOrientation="sensorLandscape"
-            android:name=".FirstActivity">
-<!--            android:configChanges="orientation|keyboardHidden|screenSize"-->
-<!--            android:theme="@style/Theme.AreYouKittenMe.Fullscreen">-->
-        </activity>
-        <activity
-            android:screenOrientation="sensorLandscape"
-            android:name=".EndActivity">
-            <!--            android:configChanges="orientation|keyboardHidden|screenSize"-->
-            <!--            android:theme="@style/Theme.AreYouKittenMe.Fullscreen">-->
-        </activity>
-        <activity
-            android:screenOrientation="sensorLandscape"
-            android:name="AquariumActivity"
+            android:name=".MainActivity"
             android:exported="true"
+            android:screenOrientation="landscape"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,5 +21,45 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".FirstActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".EndActivity"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".GameOverActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+
+        <activity
+            android:name=".WinActivity"
+            android:exported="false"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+
+        <activity
+            android:name=".MazeActivity"
+            android:exported="true"
+            android:screenOrientation="landscape"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
     </application>
+
 </manifest>

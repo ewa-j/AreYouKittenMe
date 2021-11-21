@@ -40,6 +40,32 @@ public class FirstActivity extends AppCompatActivity {
         }
     };
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_first);
+
+        findViewById(R.id.win).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FirstActivity.this, WinActivity.class));
+            }
+        });
+
+        findViewById(R.id.lose).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FirstActivity.this, GameOverActivity.class));
+            }
+        });
+
+        findViewById(R.id.startLevel).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(FirstActivity.this, MazeActivity.class));
+            }
+        });
+    }
 
 //    private final Runnable mShowPart2Runnable = new Runnable() {
 //        @Override
@@ -53,34 +79,36 @@ public class FirstActivity extends AppCompatActivity {
 //        }
 //    };
 
-    private final View.OnTouchListener endBtnListener = new View.OnTouchListener() {
-        @Override
-        public boolean onTouch(View view, MotionEvent motionEvent) {
-            switch (motionEvent.getAction()) {
+//    private final View.OnTouchListener endBtnListener = new View.OnTouchListener() {
+//        @Override
+//        public boolean onTouch(View view, MotionEvent motionEvent) {
+//            switch (motionEvent.getAction()) {
+//
+//                case MotionEvent.ACTION_UP:
+//                    Intent startShapes = new Intent(FirstActivity.this, EndActivity.class);
+//                    startActivity(startShapes);
+//                default:
+//                    break;
+//            }
+//            return false;
+//        }
+//    };
 
-                case MotionEvent.ACTION_UP:
-                    Intent startShapes = new Intent(FirstActivity.this, EndActivity.class);
-                    startActivity(startShapes);
-                default:
-                    break;
-            }
-            return false;
-        }
-    };
 
-
-    private ActivityFirstBinding binding;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_first);
-        binding = ActivityFirstBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        binding.endBtn.setOnTouchListener(endBtnListener);
+//    private ActivityFirstBinding binding;
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_first);
+//        ActionBar actionBar = getSupportActionBar();
+//        actionBar.hide();
+//        binding = ActivityFirstBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//        binding.endBtn.setOnTouchListener(endBtnListener);
 //        binding = ActivityFullscreenBinding.inflate(getLayoutInflater());
 //        setContentView(binding.getRoot());
 //
 //        mControlsView = binding.fullscreenContentControls;
 //        mContentView = binding.fullscreenContent;
-    }
+//    }
 }

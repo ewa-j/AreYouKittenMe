@@ -8,15 +8,71 @@
     android:background="?attr/fullscreenBackgroundColor"
     android:theme="@style/ThemeOverlay.AreYouKittenMe.FullscreenContainer">
 
-    <Button
-        android:id="@+id/endBtn"
-        android:layout_width="40dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="4dp"
-        android:background="@android:drawable/btn_star"
-        app:iconPadding="0px"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/cats_background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/background_blank"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/scoreTxt"
+        android:layout_width="572dp"
+        android:layout_height="167dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="100dp"
+        android:layout_marginBottom="144dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/maze_instructions"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/win"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="680dp"
+        android:layout_marginTop="316dp"
+        android:text="@string/win"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/lose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="316dp"
+        android:text="@string/lose"
+        android:textColor="#000000"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/startLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="280dp"
+        android:layout_marginTop="268dp"
+        android:text="@string/im_ready"
+        android:textColor="#000000"
+        android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
