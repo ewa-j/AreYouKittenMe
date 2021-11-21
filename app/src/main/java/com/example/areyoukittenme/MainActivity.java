@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.play).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MainActivity.this, FirstActivity.class));
+                startActivity(new Intent(MainActivity.this, AquariumActivity.class));
             }
         });
     }

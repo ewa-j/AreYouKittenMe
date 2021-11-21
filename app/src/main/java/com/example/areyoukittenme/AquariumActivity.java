@@ -30,7 +30,6 @@ public class AquariumActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_end);
         binding = ActivityAquariumBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.handView.setOnTouchListener(armListener);
@@ -68,7 +67,7 @@ public class AquariumActivity extends AppCompatActivity {
                             //new game if all caught
                             caught++;
                             if (caught == 10) {
-                                startActivity(new Intent(AquariumActivity.this, EndActivity.class));
+                                startActivity(new Intent(AquariumActivity.this, FirstActivity.class));
                             }
 
                         } else if (attached == fish) { //else move current fish
