@@ -13,14 +13,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.areyoukittenme.databinding.ActivityAquariumBinding;
 import com.example.areyoukittenme.lib.Axolotl;
+import com.example.areyoukittenme.lib.Fish;
 
 public class AquariumActivity extends AppCompatActivity {
 
     float dX;
     float dY;
-    ImageView attached = null;
+    Fish attached = null;
     int caught = 0;
-    ImageView[] fishes;
+    Fish[] fishes;
     Axolotl[] axolotls;
     Long startTime;
     Long touchAxolotlTime = null;
@@ -33,7 +34,8 @@ public class AquariumActivity extends AppCompatActivity {
         binding = ActivityAquariumBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.handView.setOnTouchListener(armListener);
-        fishes = new ImageView[]{binding.imageView1 , binding.imageView2,binding.imageView3,binding.imageView4,binding.imageView5,binding.imageView6,binding.imageView7,binding.imageView8,binding.imageView9,binding.imageView10};
+
+        fishes = new Fish[]{new Fish(binding.fish1) , new Fish(binding.fish2), new Fish(binding.fish3), new Fish(binding.fish4), new Fish(binding.fish5), new Fish(binding.fish6), new Fish(binding.fish7), new Fish(binding.fish8), new Fish(binding.fish9), new Fish(binding.fish10)};
         axolotls = new Axolotl[]{new Axolotl(binding.axolotl1),new Axolotl(binding.axolotl2),new Axolotl(binding.axolotl3)};
         startTime = System.currentTimeMillis();
         timerHandler.postDelayed(timerRunnable, 0);
@@ -58,10 +60,10 @@ public class AquariumActivity extends AppCompatActivity {
                     if (event.getRawY() + dY + binding.armView.getHeight() > 0 && event.getRawY() + dY + binding.armContainer.getHeight() < binding.getRoot().getBottom())
                         binding.armContainer.setY(event.getRawY() + dY);
 
-                    for (ImageView fish : fishes) {
+                    for (Fish fish : fishes) {
                         //if fish is caught and is moved to the top, remove it
                         if (attached == fish && binding.armContainer.getHeight() + binding.armContainer.getY() < binding.topBackgroundView.getBottom()) {
-                            fish.setVisibility(View.GONE);
+                            fish.fish.setVisibility(View.GONE);
                             attached = null;
                             //new game if all caught
                             caught++;
@@ -70,11 +72,11 @@ public class AquariumActivity extends AppCompatActivity {
                             }
 
                         } else if (attached == fish) { //else move current fish
-                            fish.setX((binding.armContainer.getX() + (binding.armContainer.getWidth() >> 1)) - (fish.getWidth() >> 1));
-                            fish.setY(binding.armContainer.getY() + binding.armView.getHeight() + (binding.handView.getHeight() >> 1) - (fish.getHeight() >> 1));
-                        } else if (attached == null && CheckCollision(fish, binding.handView) && fish.getVisibility() != View.GONE) { //else attach new fish on collision
-                            fish.setX((binding.armContainer.getX() + (binding.armContainer.getWidth() >> 1)) - (fish.getWidth() >> 1));
-                            fish.setY(binding.armContainer.getY() + binding.armView.getHeight() + (binding.handView.getHeight() >> 1) - (fish.getHeight() >> 1));
+                            fish.fish.setX((binding.armContainer.getX() + (binding.armContainer.getWidth() >> 1)) - (fish.fish.getWidth() >> 1));
+                            fish.fish.setY(binding.armContainer.getY() + binding.armView.getHeight() + (binding.handView.getHeight() >> 1) - (fish.fish.getHeight() >> 1));
+                        } else if (attached == null && CheckCollision(fish.fish, binding.handView) && fish.fish.getVisibility() != View.GONE) { //else attach new fish on collision
+                            fish.fish.setX((binding.armContainer.getX() + (binding.armContainer.getWidth() >> 1)) - (fish.fish.getWidth() >> 1));
+                            fish.fish.setY(binding.armContainer.getY() + binding.armView.getHeight() + (binding.handView.getHeight() >> 1) - (fish.fish.getHeight() >> 1));
                             attached = fish;
                         }
                     }
@@ -103,15 +105,20 @@ public class AquariumActivity extends AppCompatActivity {
             seconds = seconds % 60;
 
             for (Axolotl axolotl : axolotls) {
-//                if(axolotl.newPosition == null){
-//                    axolotl.createNewPosition(binding.fishContainer);
-//                }
                 axolotl.move(binding.fishContainer);
                 if (detectCollision(axolotl.axolotl) && touchAxolotlTime == null) {
                     touchAxolotlTime = System.currentTimeMillis();
                     binding.armContainer.setY(binding.armContainer.getTop());
+                    if(attached != null) {
+                        attached.newPosition = null;
+                    }
                     attached = null;
                     binding.timeWaitView.setVisibility(View.VISIBLE);
+                }
+            }
+            for(Fish fish: fishes){
+                if(attached != fish) {
+                    fish.move(binding.fishContainer);
                 }
             }
             if(touchAxolotlTime != null){
@@ -124,8 +131,6 @@ public class AquariumActivity extends AppCompatActivity {
                     dY = 0; dX = 0;
                 }
             }
-
-
             binding.textView2.setText(String.format("%d:%02d", minutes, seconds));
             timerHandler.postDelayed(this, 20);
         }
