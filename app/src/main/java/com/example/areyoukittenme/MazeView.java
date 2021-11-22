@@ -114,7 +114,6 @@ public class MazeView extends View {
                     synchronized (this){
                         try{
                             moveEnemy();
-                            checkWin();
                             sleep(200);
                             invalidate();
 //                            wait(futureTime-System.currentTimeMillis());
@@ -641,15 +640,5 @@ public class MazeView extends View {
 //                enemyPaint);
 
 //    }
-
-    public void checkWin() {
-        if(player == exit) {
-            findViewById(R.id.win).performClick();
-        }
-    }
-    //checkWin??
-    //if player position same as exit
-    // findViewById(R.id.win).performClick()
-    // invalidate()
 
 }
