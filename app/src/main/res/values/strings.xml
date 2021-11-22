@@ -11,4 +11,5 @@
     <string name="lose">Lose</string>
     <string name="maze_instructions">Oh no! The only way home is through this maze. Help Kitten safely exit the maze before it\'s too sleepy to move by avoiding enemies, eating cat nip to recharge and finding the right way home! Look out for butterflies - they may give you a special reward!</string>
     <string name="win">Win</string>
+    <string name="_2_00">2:00</string>
 </resources>

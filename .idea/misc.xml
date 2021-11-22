@@ -3,12 +3,33 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="../../../../../layout/custom_preview.xml" value="0.17447916666666666" />
-        <entry key="app/src/main/res/layout/activity_fullscreen.xml" value="0.10173467459973493" />
-        <entry key="app/src/main/res/layout/activity_gameover.xml" value="0.33" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.21422101449275363" />
-        <entry key="app/src/main/res/layout/activity_maze.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_win.xml" value="0.33" />
+        <entry key="../../../../layout/custom_preview.xml" value="0.20677083333333332" />
+        <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15231481481481482" />
+        <entry key="app/src/main/res/layout-land/activity_end.xml" value="0.13227513227513227" />
+        <entry key="app/src/main/res/layout-land/activity_first.xml" value="0.13227513227513227" />
+        <entry key="app/src/main/res/layout-land/activity_fullscreen.xml" value="0.1146384479717813" />
+        <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.1146384479717813" />
+        <entry key="app/src/main/res/layout-land/activity_maze.xml" value="0.165" />
+        <entry key="app/src/main/res/layout-land/activity_maze.xml" value="0.1" />
+        <entry key="app/src/main/res/layout-land/activity_win.xml" value="0.13227513227513227" />
+        <entry key="app/src/main/res/layout-land/fragment_end.xml" value="0.13227513227513227" />
+        <entry key="app/src/main/res/layout-land/fragment_first.xml" value="0.13227513227513227" />
+        <entry key="app/src/main/res/layout-land/fragment_main.xml" value="0.15255731922398588" />
+        <entry key="app/src/main/res/layout-land/fragment_maze.xml" value="0.15255731922398588" />
+        <entry key="app/src/main/res/layout-land/fragment_maze1.xml" value="0.13227513227513227" />
+        <entry key="app/src/main/res/layout-port/activity_fullscreen.xml" value="0.15625" />
+        <entry key="app/src/main/res/layout/activity_end.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/activity_first.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/activity_fullscreen.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_game_over.xml" value="0.10787037037037037" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_main2.xml" value="0.12546296296296297" />
+        <entry key="app/src/main/res/layout/activity_maze.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_win.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/fragment_main.xml" value="0.16018518518518518" />
+        <entry key="app/src/main/res/layout/fragment_maze.xml" value="0.1388888888888889" />
+        <entry key="app/src/main/res/layout/fragment_maze1.xml" value="0.12638888888888888" />
+        <entry key="app/src/main/res/layout/fragment_maze2.xml" value="0.12638888888888888" />
       </map>
     </option>
   </component>
@@ -17,5 +38,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.13796296296296295" />
+      </ProjectState>
+    </option>
   </component>
 </project>

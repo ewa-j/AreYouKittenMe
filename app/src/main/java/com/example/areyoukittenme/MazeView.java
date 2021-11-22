@@ -37,7 +37,7 @@ public class MazeView extends View {
     private static final int COLS = 8, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
-    private Paint wallPaint, playerPaint, exitPaint;
+    private Paint wallPaint, playerPaint, exitPaint, text;
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
@@ -350,11 +350,11 @@ public class MazeView extends View {
             playerPaint);
 
         canvas.drawRect(
-                exit.col*cellSize+margin,
-                exit.row*cellSize+margin,
-                (exit.col+1)*cellSize-margin,
-                (exit.row+1)*cellSize-margin,
-                exitPaint);
+            exit.col*cellSize+margin,
+            exit.row*cellSize+margin,
+            (exit.col+1)*cellSize-margin,
+            (exit.row+1)*cellSize-margin,
+            exitPaint);
     }
 
     private void movePlayer(Direction direction) {
