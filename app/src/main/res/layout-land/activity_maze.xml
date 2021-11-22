@@ -12,23 +12,20 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/win"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:layout_marginStart="680dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginStart="624dp"
         android:text="@string/win"
         android:textColor="#000000"
         android:textSize="30sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/lose"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/lose"
@@ -36,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="336dp"
         android:text="@string/lose"
         android:textColor="#000000"
         android:textSize="30sp"
@@ -76,12 +73,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
-    <!--    <item>-->
-<!--        <bitmap-->
-<!--        android:src="@drawable/hedge"-->
-<!--        tools:ignore="MissingConstraints" />-->
-<!--    </item>-->
 
+    <!--    <item>-->
+    <!--        <bitmap-->
+    <!--        android:src="@drawable/hedge"-->
+    <!--        tools:ignore="MissingConstraints" />-->
+    <!--    </item>-->
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
