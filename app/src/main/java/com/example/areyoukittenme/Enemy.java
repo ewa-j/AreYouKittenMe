@@ -1,5 +1,6 @@
 package com.example.areyoukittenme;
 
 
-public class Enemy {
-}
+import android.graphics.Canvas;
+
+
