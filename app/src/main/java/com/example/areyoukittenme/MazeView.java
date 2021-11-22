@@ -277,7 +277,7 @@ public class MazeView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.LTGRAY);
+//        canvas.drawColor(Color.LTGRAY);
 
 
         int width = getWidth();
