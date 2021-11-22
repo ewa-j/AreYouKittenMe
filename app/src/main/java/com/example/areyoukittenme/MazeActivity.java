@@ -11,9 +11,7 @@ import android.os.StrictMode;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.TextView;
-
 import java.util.Locale;
-
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -28,12 +26,17 @@ public class MazeActivity extends AppCompatActivity {
 
     Timer timer;
 
+    int hp = 50;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze);
 
-    }
+//        int healthPoints = deriveHealthPoints();
+//        String message = "HP " + hp;
+        TextView hpTextView = (TextView) findViewById(R.id.hp);
+        hpTextView.setText("HP " + hp);
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -49,22 +52,15 @@ public class MazeActivity extends AppCompatActivity {
 
         timeLeftInMillis = COUNTDOWN_IN_MILLIS;
         startCountDown();
-
-        findViewById(R.id.win).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MazeActivity.this, WinActivity.class));
-            }
-        });
-
-        findViewById(R.id.lose).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(MazeActivity.this, GameOverActivity.class));
-            }
-        });
     }
 
+//    private int GetHPPercentage(int currentHealth, int maxHealth) {
+//        return currentHealth / maxHealth * 100;
+//
+//        int maxHealth = 50
+//        int currentHealth = 50
+//        health
+//    }
     private void startCountDown() {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
