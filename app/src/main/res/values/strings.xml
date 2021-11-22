@@ -11,4 +11,5 @@
     <string name="lose">Lose</string>
     <string name="maze_instructions">Oh no! The only way home is through this maze. Help Kitten safely exit the maze before it\'s too sleepy to move by avoiding enemies, eating cat nip to recharge and finding the right way home! Look out for butterflies - they may give you a special reward!</string>
     <string name="win">Win</string>
+    <string name="aquarium_instructions">Kitten is hungry and went to the aquarium to eat some fish! Help Kitten eat all the fish before it gets caught. Swipe on the hand to pick up fish and drop them at the top. Be careful, Don\'t touch the axolotls!</string>
 </resources>

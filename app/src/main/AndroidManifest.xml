@@ -26,14 +26,12 @@
             android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
         <activity
             android:name=".GameOverActivity"
             android:exported="false"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
         <activity
             android:name=".WinActivity"
             android:exported="false"
@@ -41,16 +39,19 @@
             android:theme="@style/AppTheme.NoActionBar">
 
         </activity>
-
         <activity
             android:name=".MazeActivity"
             android:exported="true"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-
         <activity
             android:name=".AquariumActivity"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity
+            android:name=".AquariumInstructionsActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
