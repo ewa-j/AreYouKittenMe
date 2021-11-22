@@ -6,6 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".MazeActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/maze_background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/maze_background"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <com.example.areyoukittenme.MazeView
         android:id="@+id/mazeView"
         android:layout_width="0dp"

@@ -302,8 +302,8 @@ public class MazeView extends View {
         canvas.translate(hMargin, vMargin);
 
 
-        for(int y=0; y<ROWS; y++) {
-            for(int x=0; x<COLS; x++) {
+        for(int y=1; y<ROWS; y++) {
+            for(int x=1; x<COLS; x++) {
                 if(cells[x][y].topWall) {
                     canvas.drawLine(
                             x * cellSize,
