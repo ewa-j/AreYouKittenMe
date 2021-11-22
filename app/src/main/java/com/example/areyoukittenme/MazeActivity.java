@@ -12,6 +12,9 @@ import android.widget.TextView;
 
 import java.util.Locale;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 public class MazeActivity extends AppCompatActivity {
     private static final long COUNTDOWN_IN_MILLIS = 120000;
     private ColorStateList textColourDefaultCd;
@@ -21,10 +24,21 @@ public class MazeActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private Long timeLeftInMillis;
 
+    Timer timer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze);
+
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(MazeActivity.this, GameOverActivity.class);
+                startActivity(intent);
+            }
+        }, 120000);
 
         textViewCountDown = findViewById(R.id.text_view_countdown);
         textColourDefaultCd = textViewCountDown.getTextColors();
