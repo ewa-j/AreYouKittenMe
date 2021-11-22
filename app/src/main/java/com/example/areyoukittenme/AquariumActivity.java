@@ -1,6 +1,7 @@
 package com.example.areyoukittenme;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,7 +26,9 @@ public class AquariumActivity extends AppCompatActivity {
     Axolotl[] axolotls;
     Long startTime;
     Long touchAxolotlTime = null;
-    private ActivityAquariumBinding binding;
+    ActivityAquariumBinding binding;
+    Handler timerHandler = new Handler();
+    private boolean end = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,8 +69,11 @@ public class AquariumActivity extends AppCompatActivity {
                             attached = null;
                             //new game if all caught
                             caught++;
-                            if (caught == 10) {
+                            if (caught == 10 && end == false) {
+                                end = true;
+                                timerHandler.removeCallbacks(timerRunnable);
                                 startActivity(new Intent(AquariumActivity.this, FirstActivity.class));
+                                return false;
                             }
 
                         } else if (attached == fish) { //else move current fish
@@ -87,22 +93,17 @@ public class AquariumActivity extends AppCompatActivity {
         }
     };
 
-    public boolean CheckCollision(View v1, View v2) {
+    private boolean CheckCollision(View v1, View v2) {
         RectF R1=new RectF(v1.getX(), v1.getY(), v1.getX() + v1.getWidth(), v1.getY() + v1.getHeight());
         int left = v2.getRight() - v2.getLeft();
         RectF R2=new RectF(binding.armContainer.getX(), binding.armContainer.getY() + binding.armView.getHeight(), binding.armContainer.getX() + left, binding.armContainer.getY() + binding.armContainer.getHeight());
         return RectF.intersects(R1, R2);
     }
 
-    Handler timerHandler = new Handler();
     Runnable timerRunnable = new Runnable() {
         @Override
         public void run() {
-            long millis = System.currentTimeMillis() - startTime;
-            int seconds = (int) (millis / 1000);
-            int minutes = seconds / 60;
-            seconds = seconds % 60;
-
+            updateTime();
             for (Axolotl axolotl : axolotls) {
                 axolotl.move(binding.fishContainer);
                 if (detectCollision(axolotl.axolotl) && touchAxolotlTime == null) {
@@ -130,15 +131,35 @@ public class AquariumActivity extends AppCompatActivity {
                     dY = 0; dX = 0;
                 }
             }
-            binding.textView2.setText(String.format("%d:%02d", minutes, seconds));
             timerHandler.postDelayed(this, 20);
         }
     };
 
-    boolean detectCollision(ImageView v1){
+    private boolean detectCollision(ImageView v1){
         RectF R1=new RectF(v1.getX(), v1.getY(), v1.getX() + v1.getWidth(), v1.getY() + v1.getHeight());
         int left = binding.handView.getRight() - binding.handView.getLeft();
         RectF R2=new RectF(binding.armContainer.getX(), binding.armContainer.getY() + binding.armView.getHeight(), binding.armContainer.getX() + left, binding.armContainer.getY() + binding.armContainer.getHeight());
         return RectF.intersects(R1, R2);
+    }
+
+    private void updateTime(){
+        int totalTime = 20000;//milliseconds
+        long millis = totalTime - (System.currentTimeMillis() - startTime);
+        int seconds = (int) (millis / 1000);
+        int minutes = seconds / 60;
+        seconds = seconds % 60;
+
+        if (millis <= 0 && !end){
+            end = true;
+            timerHandler.removeCallbacks(timerRunnable);
+            startActivity(new Intent(AquariumActivity.this, GameOverActivity.class));
+            return;
+        }
+        else if (millis <= 5000) {
+            binding.countDownTimer.setTextColor(Color.RED);
+        } else {
+            binding.countDownTimer.setTextColor(Color.BLACK);
+        }
+        binding.countDownTimer.setText(String.format("%d:%02d", minutes, seconds));
     }
 }

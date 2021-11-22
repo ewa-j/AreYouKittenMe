@@ -4,12 +4,14 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.37083333333333335" />
+        <entry key="app/src/main/res/layout-land/activity_maze.xml" value="0.5004409171075838" />
         <entry key="app/src/main/res/layout/activity_aquarium.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_end.xml" value="0.4734655865048547" />
         <entry key="app/src/main/res/layout/activity_first.xml" value="0.35572916666666665" />
         <entry key="app/src/main/res/layout/activity_fullscreen.xml" value="0.5" />
         <entry key="app/src/main/res/layout/activity_game_over.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.35572916666666665" />
+        <entry key="app/src/main/res/layout/activity_maze.xml" value="0.5254629629629629" />
         <entry key="app/src/main/res/layout/splash_activity.xml" value="0.35572916666666665" />
       </map>
     </option>
