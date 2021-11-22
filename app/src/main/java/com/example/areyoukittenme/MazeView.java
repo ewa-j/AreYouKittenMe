@@ -33,7 +33,7 @@ public class MazeView extends View {
     }
 
     private Cell[][] cells;
-    private Cell player, exit, enemy;
+    private Cell player, exit, enemy, enemyTwo;
     private static final int COLS = 10, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
@@ -92,7 +92,7 @@ public class MazeView extends View {
         Runnable run = new Runnable() {
             @Override
             public void run() {
-                long futureTime = System.currentTimeMillis()+10000;
+                long futureTime = System.currentTimeMillis()+120000;
 
                 while(System.currentTimeMillis() < futureTime){
                     synchronized (this){
@@ -199,6 +199,7 @@ public class MazeView extends View {
             player = cells[0][0];
             exit = cells[COLS - 1][ROWS - 1];
             enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
+//            enemyTwo = cells[(COLS - 1)][0];
 
             current = cells[0][0];
             current.visited = true;
@@ -404,6 +405,13 @@ public class MazeView extends View {
                     (enemy.col + 1) * cellSize - margin,
                     (enemy.row + 1) * cellSize - margin,
                     enemyPaint);
+
+//            canvas.drawRect(
+//                    enemyTwo.col * cellSize + margin,
+//                    enemyTwo.row * cellSize + margin,
+//                    (enemyTwo.col + 1) * cellSize - margin,
+//                    (enemyTwo.row + 1) * cellSize - margin,
+//                    enemyPaint);
 
             updateEnemyTask = new TimerTask() {
                 @Override
