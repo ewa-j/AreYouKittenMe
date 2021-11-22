@@ -3,13 +3,16 @@ package com.example.areyoukittenme;
 import static java.lang.Thread.sleep;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Rect;
 import android.graphics.Shader;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -34,14 +37,15 @@ public class MazeView extends View {
 
     private Cell[][] cells;
     private Cell player, exit, enemy, enemyTwo;
+    private Rect butterfly;
     private static final int COLS = 10, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
-    private Paint wallPaint, playerPaint, exitPaint, enemyPaint;
-    private BitmapShader wallTexture;
+    private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint;
+    private BitmapShader wallTexture, enemyTexture;
     private Bitmap hedge;
     private Random random;
-    private int enemySpeed = 2;
+    private int health = 10;
 
     private Timer timer = new Timer();
     TimerTask updateEnemyTask;
@@ -65,12 +69,24 @@ public class MazeView extends View {
         enemyPaint = new Paint();
         enemyPaint.setColor(Color.RED);
 
+        butterflyPaint = new Paint();
+        butterflyPaint.setColor(Color.YELLOW);
+
         Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
         wallTexture = new BitmapShader(hedge,
                 Shader.TileMode.REPEAT,
                 Shader.TileMode.REPEAT);
 
         wallPaint.setShader(wallTexture);
+
+//        Bitmap cucumber = BitmapFactory.decodeResource(getResources(), R.drawable.kawaiicucumber);
+//        Bitmap resizedCucumber = Bitmap.createScaledBitmap(
+//                cucumber, Math.round(cellSize-2), Math.round(cellSize-2), false);
+//        enemyTexture = new BitmapShader(resizedCucumber,
+//                Shader.TileMode.CLAMP,
+//                Shader.TileMode.CLAMP);
+//
+//        enemyPaint.setShader(enemyTexture);
 
         random = new Random();
 
@@ -98,7 +114,8 @@ public class MazeView extends View {
                     synchronized (this){
                         try{
                             moveEnemy();
-                            sleep(100);
+                            checkWin();
+                            sleep(200);
                             invalidate();
 //                            wait(futureTime-System.currentTimeMillis());
 
@@ -406,6 +423,13 @@ public class MazeView extends View {
                     (enemy.row + 1) * cellSize - margin,
                     enemyPaint);
 
+//            canvas.drawRect(butterfly, butterflyPaint);
+
+
+//            Drawable drawable = getResources().getDrawable(R.drawable.butterfly);
+//            drawable.setBounds(butterfly);
+//            drawable.draw(canvas);
+
 //            canvas.drawRect(
 //                    enemyTwo.col * cellSize + margin,
 //                    enemyTwo.row * cellSize + margin,
@@ -617,5 +641,15 @@ public class MazeView extends View {
 //                enemyPaint);
 
 //    }
+
+    public void checkWin() {
+        if(player == exit) {
+            findViewById(R.id.win).performClick();
+        }
+    }
+    //checkWin??
+    //if player position same as exit
+    // findViewById(R.id.win).performClick()
+    // invalidate()
 
 }
