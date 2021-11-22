@@ -110,8 +110,8 @@ public class MazeView extends View {
         Thread newThread = new Thread(run);
         newThread.start();
 
-//        createMaze();
-//        updateEnemy();
+        createMaze();
+        updateEnemy();
 
     }
 
@@ -198,7 +198,7 @@ public class MazeView extends View {
 
             player = cells[0][0];
             exit = cells[COLS - 1][ROWS - 1];
-//            enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
+            enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
 
             current = cells[0][0];
             current.visited = true;
@@ -397,7 +397,7 @@ public class MazeView extends View {
                     (exit.row + 1) * cellSize - margin,
                     exitPaint);
 
-            enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
+//            enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
             canvas.drawRect(
                     enemy.col * cellSize + margin,
                     enemy.row * cellSize + margin,
@@ -433,6 +433,7 @@ public class MazeView extends View {
                 e.printStackTrace();
             }
         }
+
 
         private void moveEnemy () {
 
