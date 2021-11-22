@@ -446,19 +446,19 @@ public class MazeView extends View {
                     case UP:
                         if (!enemy.topWall)
                             enemy = cells[enemy.col][enemy.row - 1];
-//                        break;
+                        break;
                     case DOWN:
                         if (!enemy.bottomWall)
                             enemy = cells[enemy.col][enemy.row + 1];
-//                        break;
+                        break;
                     case LEFT:
                         if (!enemy.leftWall)
                             enemy = cells[enemy.col - 1][enemy.row];
-//                        break;
+                        break;
                     case RIGHT:
                         if (!enemy.rightWall)
                             enemy = cells[enemy.col + 1][enemy.row];
-//                        break;
+                        break;
                 }
 
         }
