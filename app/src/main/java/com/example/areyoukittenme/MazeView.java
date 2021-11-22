@@ -641,4 +641,10 @@ public class MazeView extends View {
 
 //    }
 
+    private void checkCollisionEnemy() {
+        if (player == enemy) {
+
+        }
+    }
+
 }
