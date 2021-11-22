@@ -1,6 +1,7 @@
 package com.example.areyoukittenme;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
@@ -11,9 +12,12 @@ import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
+
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 import java.util.Stack;
 
@@ -22,6 +26,10 @@ public class MazeView extends View {
 
     private enum Direction{
         UP, DOWN, LEFT, RIGHT
+    }
+
+    private enum GameState{
+        Win
     }
 
     private Cell[][] cells;
@@ -33,6 +41,8 @@ public class MazeView extends View {
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
+    private List<MotionEvent> motionEvents;
+    private GameState state;
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -369,6 +379,7 @@ public class MazeView extends View {
 
         invalidate();
     }
+
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -408,6 +419,13 @@ public class MazeView extends View {
                         movePlayer(Direction.UP);
                     }
                 }
+            }
+
+            if (player == exit) {
+                Context context = getContext();
+                Intent intent = new Intent(context, WinActivity.class);
+                context.startActivity(intent);
+                return true;
             }
             return true;
         }
