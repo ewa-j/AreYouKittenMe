@@ -111,7 +111,7 @@ public class MazeView extends View {
         newThread.start();
 
         createMaze();
-        updateEnemy();
+//        updateEnemy();
 
     }
 
