@@ -20,20 +20,30 @@ public class MazeActivity extends AppCompatActivity {
     private ColorStateList textColourDefaultCd;
 
     private TextView textViewCountDown;
-
+    public TextView hpText;
     private CountDownTimer countDownTimer;
     private Long timeLeftInMillis;
 
     Timer timer, hpTimer;
 
 //    public static int hp = 50;
-    public int hp = MazeView.hp;
+//    public int hp = MazeView.hp;
 //    public String health = getDecreasedHp();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze);
+
+//        hpText = findViewById(R.id.hp);
+//        boolean lose = getIntent().getExtras().getBoolean("lose");
+////        Bundle hp = getIntent().getExtras();
+//        String hp = getIntent().getStringExtra("hp");
+//        if(lose) {
+//
+//        } else {
+//            hpText.setText("HP " + hp);
+//        }
 
 //        int healthPoints = deriveHealthPoints();
 //        String message = "HP " + hp;
@@ -165,11 +175,11 @@ public class MazeActivity extends AppCompatActivity {
 
 
 
-    public int getHp() {
-        Intent intent = new Intent(MazeActivity.this, MazeView.class);
-        startActivity(intent);
-        return hp;
-    }
+//    public int getHp() {
+//        Intent intent = new Intent(MazeActivity.this, MazeView.class);
+//        startActivity(intent);
+//        return hp;
+//    }
 
 //    public static void setHp(int newHp) {
 ////        Intent intent = new Intent(MazeActivity.this, MazeView.class);
