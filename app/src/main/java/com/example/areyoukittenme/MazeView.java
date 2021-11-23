@@ -38,7 +38,7 @@ public class MazeView extends View {
     }
 
     private Cell[][] cells;
-    private Cell player, exit, enemy, enemyTwo, butterfly;
+    private Cell player, exit, enemy, enemyTwo, butterfly, butterflyTwo;
     private static final int COLS = 8, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
@@ -94,6 +94,7 @@ public class MazeView extends View {
                             moveEnemy();
                             moveEnemyTwo();
                             moveButterfly();
+                            moveButterflyTwo();
                             sleep(300);
                             invalidate();
 //                            checkCollisionEnemy();
@@ -195,6 +196,7 @@ public class MazeView extends View {
         enemy = cells[(COLS - 2) / 2][(ROWS - 3) / 2];
         enemyTwo = cells[COLS - 2][ROWS - 2];
         butterfly = cells[(COLS - 1)][0];
+        butterflyTwo = cells[(COLS - 6)][ROWS - 1];
 
         current = cells[0][0];
         current.visited = true;
@@ -416,6 +418,13 @@ public class MazeView extends View {
                     (butterfly.row + 1) * cellSize - margin,
                     butterflyPaint);
 
+        canvas.drawRect(
+                butterflyTwo.col * cellSize + margin,
+                butterflyTwo.row * cellSize + margin,
+                (butterflyTwo.col + 1) * cellSize - margin,
+                (butterflyTwo.row + 1) * cellSize - margin,
+                butterflyPaint);
+
         updateEnemyTask = new TimerTask() {
             @Override
             public void run() {
@@ -501,7 +510,33 @@ public class MazeView extends View {
                     butterfly = cells[butterfly.col + 1][butterfly.row];
                 break;
         }
+    }
 
+    private void moveButterflyTwo() {
+
+        Direction direction;
+        random = new Random();
+        int randomDirection = random.nextInt(Direction.values().length);
+        direction = Direction.values()[randomDirection];
+
+        switch (direction) {
+            case UP:
+                if (!butterflyTwo.topWall)
+                    butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row - 1];
+                break;
+            case DOWN:
+                if (!butterflyTwo.bottomWall)
+                    butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row + 1];
+                break;
+            case LEFT:
+                if (!butterflyTwo.leftWall)
+                    butterflyTwo = cells[butterflyTwo.col - 1][butterflyTwo.row];
+                break;
+            case RIGHT:
+                if (!butterflyTwo.rightWall)
+                    butterflyTwo = cells[butterflyTwo.col + 1][butterflyTwo.row];
+                break;
+        }
     }
 
     private void movePlayer(Direction direction) {
