@@ -1,5 +1,6 @@
 package com.example.areyoukittenme;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -8,6 +9,7 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -41,8 +43,6 @@ public class MazeView extends View {
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
-    private List<MotionEvent> motionEvents;
-    private GameState state;
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -275,6 +275,7 @@ public class MazeView extends View {
 //        cells[9][4].bottomWall = false;
     }
 
+    @SuppressLint("DrawAllocation")
     @Override
     protected void onDraw(Canvas canvas) {
 //        canvas.drawColor(Color.LTGRAY);
@@ -302,8 +303,8 @@ public class MazeView extends View {
         canvas.translate(hMargin, vMargin);
 
 
-        for(int y=1; y<ROWS; y++) {
-            for(int x=1; x<COLS; x++) {
+        for(int y=0; y<ROWS; y++) {
+            for(int x=0; x<COLS; x++) {
                 if(cells[x][y].topWall) {
                     canvas.drawLine(
                             x * cellSize,
@@ -342,12 +343,13 @@ public class MazeView extends View {
 
         float margin = cellSize/8;
 
-        canvas.drawRect(
+        Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat_sprite);
+        canvas.drawBitmap(myBitmap, null, new RectF(
             player.col*cellSize+margin,
             player.row*cellSize+margin,
             (player.col+1)*cellSize-margin,
-            (player.row+1)*cellSize-margin,
-            playerPaint);
+            (player.row+1)*cellSize-margin),
+            null);
 
         canvas.drawRect(
             exit.col*cellSize+margin,
