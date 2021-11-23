@@ -29,10 +29,6 @@ public class MazeView extends View {
         UP, DOWN, LEFT, RIGHT
     }
 
-    private enum GameState{
-        Win
-    }
-
     private Cell[][] cells;
     private Cell player, exit;
     private static final int COLS = 8, ROWS = 5;
@@ -42,32 +38,31 @@ public class MazeView extends View {
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
-    private List<MotionEvent> motionEvents;
-    private GameState state;
+    public Context context;
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
+        wallPaint = new Paint();
+        wallPaint.setColor(Color.BLACK);
+        wallPaint.setStrokeWidth(WALL_THICKNESS);
 
-    wallPaint = new Paint();
-    wallPaint.setColor(Color.BLACK);
-    wallPaint.setStrokeWidth(WALL_THICKNESS);
+        playerPaint = new Paint();
+        playerPaint.setColor(Color.BLUE);
 
-    playerPaint = new Paint();
-    playerPaint.setColor(Color.BLUE);
+        exitPaint = new Paint();
+        exitPaint.setColor(Color.CYAN);
 
-    exitPaint = new Paint();
-    exitPaint.setColor(Color.CYAN);
+        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+        wallTexture = new BitmapShader(hedge,
+                Shader.TileMode.REPEAT,
+                Shader.TileMode.REPEAT);
 
-    Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
-    wallTexture = new BitmapShader(hedge,
-            Shader.TileMode.REPEAT,
-            Shader.TileMode.REPEAT);
+        wallPaint.setShader(wallTexture);
 
-    wallPaint.setShader(wallTexture);
+        random = new Random();
 
-    random = new Random();
-
-    createMaze();
+        createMaze();
     }
 
     private Cell getNeighbour(Cell cell) {
