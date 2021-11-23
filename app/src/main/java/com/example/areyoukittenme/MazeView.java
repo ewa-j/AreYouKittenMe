@@ -451,11 +451,10 @@ public class MazeView extends View {
             enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
 
             if (hp < 0) {
-//                Intent intent = new Intent(context, MazeActivity.class);
-//                lose = true;
-//                intent.putExtra("hp", hp);
-//                context.startActivity(intent);
+                Intent intent = new Intent(context, GameOverActivity.class);
+                context.startActivity(intent);
 //                ((Activity) context).finish();
+//                this.startActivity(new Intent(this,GameOverActivity.class));
             }
         }
         canvas.restore();
@@ -551,22 +550,22 @@ public class MazeView extends View {
 //                    (enemyTwo.row + 1) * cellSize - margin,
 //                    enemyPaint);
 
-        updateEnemyTask = new TimerTask() {
-            @Override
-            public void run() {
-                moveEnemy();
-            }
-        };
+//        updateEnemyTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                moveEnemy();
+//            }
+//        };
     }
 
-    public void updateEnemy() {
-        try {
-            Timer timer = new Timer();
-            timer.scheduleAtFixedRate(updateEnemyTask, startTime, offsetTime);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+//    public void updateEnemy() {
+//        try {
+//            Timer timer = new Timer();
+//            timer.scheduleAtFixedRate(updateEnemyTask, startTime, offsetTime);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
 
 
     private void moveEnemy() {
