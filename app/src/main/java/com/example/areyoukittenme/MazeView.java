@@ -47,7 +47,7 @@ public class MazeView extends View {
     private static final int COLS = 8, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
-    private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint, scorePaint;
+    private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint, scorePaint, hpPaint;
     private BitmapShader wallTexture, enemyTexture;
     private Bitmap hedge;
     private Random random;
@@ -88,9 +88,14 @@ public class MazeView extends View {
         butterflyPaint = new Paint();
         butterflyPaint.setColor(Color.YELLOW);
 
+        hpPaint = new Paint();
+        hpPaint.setColor(Color.BLACK);
+        hpPaint.setTextSize(70);
+        hpPaint.setStyle(Paint.Style.FILL);
+
         scorePaint = new Paint();
         scorePaint.setColor(Color.BLACK);
-        scorePaint.setTextSize(40);
+        scorePaint.setTextSize(70);
         scorePaint.setStyle(Paint.Style.FILL);
 
         TextPaint textPaint = new TextPaint();
@@ -105,14 +110,6 @@ public class MazeView extends View {
 
         wallPaint.setShader(wallTexture);
 
-//        Bitmap cucumber = BitmapFactory.decodeResource(getResources(), R.drawable.kawaiicucumber);
-//        Bitmap resizedCucumber = Bitmap.createScaledBitmap(
-//                cucumber, Math.round(cellSize-2), Math.round(cellSize-2), false);
-//        enemyTexture = new BitmapShader(resizedCucumber,
-//                Shader.TileMode.CLAMP,
-//                Shader.TileMode.CLAMP);
-//
-//        enemyPaint.setShader(enemyTexture);
 
         random = new Random();
 
@@ -433,7 +430,7 @@ public class MazeView extends View {
         canvas.drawColor(Color.LTGRAY);
         canvas.save();
 //        canvas.drawPaint(scorePaint);
-        canvas.drawText(hpText, 100, 100, scorePaint);
+        canvas.drawText(hpText, 100, 100, hpPaint);
 //        canvas.restore();
 
 //        mStaticLayout.draw(canvas);
@@ -442,11 +439,11 @@ public class MazeView extends View {
         if (player == enemy) {
             hp -= 5;
             if(hp < 20) {
-                scorePaint.setColor(Color.RED);
+                hpPaint.setColor(Color.RED);
             }
 //            mStaticLayout.draw(canvas);
             hpText = "HP " + hp;
-            canvas.drawText(hpText, 100, 100, scorePaint);
+            canvas.drawText(hpText, 100, 100, hpPaint);
             canvas.translate(0, 0);
             enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
 
