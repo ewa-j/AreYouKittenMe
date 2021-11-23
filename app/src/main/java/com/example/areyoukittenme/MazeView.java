@@ -81,15 +81,6 @@ public class MazeView extends View {
 
         wallPaint.setShader(wallTexture);
 
-//        Bitmap cucumber = BitmapFactory.decodeResource(getResources(), R.drawable.kawaiicucumber);
-//        Bitmap resizedCucumber = Bitmap.createScaledBitmap(
-//                cucumber, Math.round(cellSize-2), Math.round(cellSize-2), false);
-//        enemyTexture = new BitmapShader(resizedCucumber,
-//                Shader.TileMode.CLAMP,
-//                Shader.TileMode.CLAMP);
-//
-//        enemyPaint.setShader(enemyTexture);
-
         random = new Random();
 
         Runnable run = new Runnable() {
@@ -118,7 +109,6 @@ public class MazeView extends View {
         newThread.start();
 
         createMaze();
-//        updateEnemy();
 
     }
 
@@ -192,10 +182,6 @@ public class MazeView extends View {
         Cell current, next;
 //
         cells = new Cell[COLS][ROWS];
-
-//        landscape view- rows became columns?
-//        for(int x=0; x<COLS; x++) {
-//            for(int y=0; y<ROWS; y++) {
 
         for (int y = 0; y < ROWS; y++) {
             for (int x = 0; x < COLS; x++) {
@@ -429,16 +415,6 @@ public class MazeView extends View {
         };
     }
 
-    public void updateEnemy() {
-        try {
-            Timer timer = new Timer();
-            timer.scheduleAtFixedRate(updateEnemyTask, startTime, offsetTime);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
-
     private void moveEnemy() {
 
         Direction direction;
@@ -599,8 +575,6 @@ public class MazeView extends View {
                 hpTextView.setText("HP " + hp);
             }
         }
-
-
     }
 
 
