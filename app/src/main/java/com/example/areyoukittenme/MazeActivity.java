@@ -26,7 +26,8 @@ public class MazeActivity extends AppCompatActivity {
 
     Timer timer;
 
-    int hp = 50;
+    public static int hp = 50;
+//    public String health = getDecreasedHp();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +36,7 @@ public class MazeActivity extends AppCompatActivity {
 
 //        int healthPoints = deriveHealthPoints();
 //        String message = "HP " + hp;
+
         TextView hpTextView = (TextView) findViewById(R.id.hp);
         hpTextView.setText("HP " + hp);
 
@@ -99,4 +101,28 @@ public class MazeActivity extends AppCompatActivity {
           countDownTimer.cancel();
         }
     }
+
+    public int getHp() {
+        Intent intent = new Intent(MazeActivity.this, MazeView.class);
+        startActivity(intent);
+        return hp;
+    }
+
+    public void setHp(int newHp) {
+//        Intent intent = new Intent(MazeActivity.this, MazeView.class);
+//        startActivity(intent);
+        hp = newHp;
+    }
+
+//    public void decreseHp() {
+//        if (MazeView.enemyCollision) {
+//            setHp(getHp()-5);
+//        }
+//    }
+//    public String getDecreasedHp() {
+//        Intent intent = getIntent();
+//        String hp = intent.getStringExtra("hp");
+//        return hp;
+//    }
+
 }
