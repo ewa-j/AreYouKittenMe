@@ -38,8 +38,7 @@ public class MazeView extends View {
     }
 
     private Cell[][] cells;
-    private Cell player, exit, enemy, enemyTwo;
-    private Rect butterfly;
+    private Cell player, exit, enemy, enemyTwo, butterfly;
     private static final int COLS = 8, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
@@ -435,13 +434,6 @@ public class MazeView extends View {
                 (enemy.col + 1) * cellSize - margin,
                 (enemy.row + 1) * cellSize - margin,
                 enemyPaint);
-
-//            canvas.drawRect(butterfly, butterflyPaint);
-
-
-//            Drawable drawable = getResources().getDrawable(R.drawable.butterfly);
-//            drawable.setBounds(butterfly);
-//            drawable.draw(canvas);
 
 //            canvas.drawRect(
 //                    enemyTwo.col * cellSize + margin,
