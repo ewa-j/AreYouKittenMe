@@ -74,7 +74,7 @@ public class MazeView extends View {
         butterflyPaint = new Paint();
         butterflyPaint.setColor(Color.YELLOW);
 
-        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.floweryhedgetwo);
         wallTexture = new BitmapShader(hedge,
                 Shader.TileMode.REPEAT,
                 Shader.TileMode.REPEAT);
