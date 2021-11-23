@@ -162,4 +162,11 @@ public class AquariumActivity extends AppCompatActivity {
         }
         binding.countDownTimer.setText(String.format("%d:%02d", minutes, seconds));
     }
+
+    @Override
+    protected void onPause() {
+        timerHandler.removeCallbacks(timerRunnable);
+        end = true;
+        super.onPause();
+    }
 }
