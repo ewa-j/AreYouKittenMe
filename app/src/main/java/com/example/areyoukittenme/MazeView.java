@@ -102,8 +102,10 @@ public class MazeView extends View {
                     synchronized (this) {
                         try {
                             while(MazeActivity.hp > 0) {
-                                checkCollisionEnemy();
-                                invalidate();
+                                if (checkCollisionEnemy()) {
+                                    MazeActivity.hp -= 5;
+                                }
+
                             }
 //                            wait(futureTime-System.currentTimeMillis());
 
@@ -597,15 +599,17 @@ public class MazeView extends View {
     }
 
 
-    private void checkCollisionEnemy() {
+    private boolean checkCollisionEnemy() {
 
 //        while (MazeActivity.hp > 0) {
             if (player == enemy) {
-                MazeActivity.hp -= 5;
+//                MazeActivity.hp -= 5;
                 Context context = getContext();
                 Intent intent = new Intent(context, MazeActivity.class);
                 context.startActivity(intent);
+                return true;
             }
+            return false;
 
 //        }
 

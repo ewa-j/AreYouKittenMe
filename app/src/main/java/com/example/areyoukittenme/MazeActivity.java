@@ -114,7 +114,7 @@ public class MazeActivity extends AppCompatActivity {
         hp = newHp;
     }
 
-//    public void decreseHp() {
+//    public void decreaseHp() {
 //        if (MazeView.enemyCollision) {
 //            setHp(getHp()-5);
 //        }
