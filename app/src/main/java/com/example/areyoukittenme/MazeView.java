@@ -447,7 +447,7 @@ public class MazeView extends View {
             canvas.translate(0, 0);
             enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
 
-            if (hp < 0) {
+            if (hp == 0) {
                 Intent intent = new Intent(context, GameOverActivity.class);
                 context.startActivity(intent);
 //                ((Activity) context).finish();
