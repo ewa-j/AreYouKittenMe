@@ -30,43 +30,40 @@ public class MazeView extends View {
         UP, DOWN, LEFT, RIGHT
     }
 
-    private enum GameState{
-        Win
-    }
-
     private Cell[][] cells;
     private Cell player, exit;
     private static final int COLS = 8, ROWS = 5;
-    private static final float WALL_THICKNESS = 38;
+    private static final float WALL_THICKNESS = 40;
     private float cellSize, hMargin, vMargin;
     private Paint wallPaint, playerPaint, exitPaint, text;
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
+    public Context context;
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
+        wallPaint = new Paint();
+        wallPaint.setColor(Color.BLACK);
+        wallPaint.setStrokeWidth(WALL_THICKNESS);
 
-    wallPaint = new Paint();
-    wallPaint.setColor(Color.BLACK);
-    wallPaint.setStrokeWidth(WALL_THICKNESS);
+        playerPaint = new Paint();
+        playerPaint.setColor(Color.BLUE);
 
-    playerPaint = new Paint();
-    playerPaint.setColor(Color.BLUE);
+        exitPaint = new Paint();
+        exitPaint.setColor(Color.CYAN);
 
-    exitPaint = new Paint();
-    exitPaint.setColor(Color.CYAN);
+        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+        wallTexture = new BitmapShader(hedge,
+                Shader.TileMode.REPEAT,
+                Shader.TileMode.REPEAT);
 
-    Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
-    wallTexture = new BitmapShader(hedge,
-            Shader.TileMode.REPEAT,
-            Shader.TileMode.REPEAT);
+        wallPaint.setShader(wallTexture);
 
-    wallPaint.setShader(wallTexture);
+        random = new Random();
 
-    random = new Random();
-
-    createMaze();
+        createMaze();
     }
 
     private Cell getNeighbour(Cell cell) {
@@ -278,8 +275,6 @@ public class MazeView extends View {
     @SuppressLint("DrawAllocation")
     @Override
     protected void onDraw(Canvas canvas) {
-//        canvas.drawColor(Color.LTGRAY);
-
 
         int width = getWidth();
         int height = getHeight();
@@ -382,6 +377,7 @@ public class MazeView extends View {
         invalidate();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -434,7 +430,7 @@ public class MazeView extends View {
         return super.onTouchEvent(event);
     }
 
-    private class Cell{
+    private static class Cell{
         boolean
             topWall = true,
             leftWall = true,
