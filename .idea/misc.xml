@@ -9,9 +9,10 @@
         <entry key="app/src/main/res/layout-land/activity_end.xml" value="0.13227513227513227" />
         <entry key="app/src/main/res/layout-land/activity_first.xml" value="0.13227513227513227" />
         <entry key="app/src/main/res/layout-land/activity_fullscreen.xml" value="0.1146384479717813" />
+        <entry key="app/src/main/res/layout-land/activity_game_over.xml" value="0.115625" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.1146384479717813" />
         <entry key="app/src/main/res/layout-land/activity_maze.xml" value="0.165" />
-        <entry key="app/src/main/res/layout-land/activity_win.xml" value="0.13227513227513227" />
+        <entry key="app/src/main/res/layout-land/activity_win.xml" value="0.165" />
         <entry key="app/src/main/res/layout-land/fragment_end.xml" value="0.13227513227513227" />
         <entry key="app/src/main/res/layout-land/fragment_first.xml" value="0.13227513227513227" />
         <entry key="app/src/main/res/layout-land/fragment_main.xml" value="0.15255731922398588" />

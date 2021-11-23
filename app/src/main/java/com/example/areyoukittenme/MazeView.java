@@ -45,6 +45,7 @@ public class MazeView extends View {
     private Random random;
     int score = 0;
     Context context;
+    boolean gameState = true;
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
