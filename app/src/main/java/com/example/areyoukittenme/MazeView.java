@@ -16,6 +16,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,7 +46,7 @@ public class MazeView extends View {
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
     private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint, scorePaint, hpPaint;
-    private BitmapShader wallTexture, enemyTexture;
+    private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
     public static int hp = 50;
@@ -51,11 +54,13 @@ public class MazeView extends View {
     Context context;
     String hpText = "HP " + hp;
     String scoreText = "Score " + score;
+    TextPaint mTextPaint;
+    StaticLayout mStaticLayout;
 
-    private Timer timer = new Timer();
-    TimerTask updateEnemyTask;
-    long startTime = 0;
-    long offsetTime = 1000;
+//    private Timer timer = new Timer();
+//    TimerTask updateEnemyTask;
+//    long startTime = 0;
+//    long offsetTime = 1000;
 
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
@@ -108,9 +113,6 @@ public class MazeView extends View {
                             moveButterfly();
                             sleep(300);
                             invalidate();
-//                            checkCollisionEnemy();
-
-//                            wait(futureTime-System.currentTimeMillis());
 
                         } catch (Exception e) {
                         }
@@ -123,6 +125,56 @@ public class MazeView extends View {
 
         createMaze();
 
+    }
+
+    private void initLabelView() {
+        mTextPaint = new TextPaint();
+        mTextPaint.setAntiAlias(true);
+        mTextPaint.setTextSize(20 * getResources().getDisplayMetrics().density);
+        mTextPaint.setColor(0xFF000000);
+
+        // default to a single line of text
+        int width = (int) mTextPaint.measureText(hpText);
+        mStaticLayout = new StaticLayout(hpText, mTextPaint, (int) width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0, false);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        // Tell the parent layout how big this view would like to be
+        // but still respect any requirements (measure specs) that are passed down.
+
+        // determine the width
+        int width;
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthRequirement = MeasureSpec.getSize(widthMeasureSpec);
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthRequirement;
+        } else {
+            width = mStaticLayout.getWidth() + getPaddingLeft() + getPaddingRight();
+            if (widthMode == MeasureSpec.AT_MOST) {
+                if (width > widthRequirement) {
+                    width = widthRequirement;
+                    // too long for a single line so relayout as multiline
+                    mStaticLayout = new StaticLayout(hpText, mTextPaint, width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0, false);
+                }
+            }
+        }
+
+        // determine the height
+        int height;
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightRequirement = MeasureSpec.getSize(heightMeasureSpec);
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightRequirement;
+        } else {
+            height = mStaticLayout.getHeight() + getPaddingTop() + getPaddingBottom();
+            if (heightMode == MeasureSpec.AT_MOST) {
+                height = Math.min(height, heightRequirement);
+            }
+        }
+
+        // Required call: set width and height
+        setMeasuredDimension(width, height);
     }
 
     private Cell getNeighbour(Cell cell) {
@@ -335,8 +387,8 @@ public class MazeView extends View {
         super.onDraw(canvas);
 
         canvas.drawColor(Color.LTGRAY);
-
         canvas.save();
+//        canvas.drawPaint(scorePaint);
         canvas.drawText(hpText, 100, 100, hpPaint);
 //        canvas.restore();
 
@@ -354,10 +406,11 @@ public class MazeView extends View {
             canvas.translate(0, 0);
             enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
 
-            if (hp < 0) {
+            if (hp <= 0) {
                 Intent intent = new Intent(context, GameOverActivity.class);
                 context.startActivity(intent);
-//
+//                ((Activity) context).finish();
+//                this.startActivity(new Intent(this,GameOverActivity.class));
             }
         }
         canvas.restore();
@@ -446,12 +499,12 @@ public class MazeView extends View {
                     (butterfly.row + 1) * cellSize - margin,
                     butterflyPaint);
 
-        updateEnemyTask = new TimerTask() {
-            @Override
-            public void run() {
-                moveEnemy();
-            }
-        };
+//        updateEnemyTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                moveEnemy();
+//            }
+//        };
     }
 
     private void moveEnemy() {
@@ -595,25 +648,6 @@ public class MazeView extends View {
         }
     }
 
-
-//    private boolean checkCollisionEnemy() {
-//        while (hp > 0) {
-//            if (player == enemy) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-//
-//
-//        public void hpText() {
-//            TextView hpTextView = (TextView) findViewById(R.id.hp);
-//            hpTextView.setText("HP " + hp);
-//            if (checkCollisionEnemy()) {
-//                hp -= 5;
-//                hpTextView.setText("HP " + hp);
-//            }
-//        }
     }
 
 
