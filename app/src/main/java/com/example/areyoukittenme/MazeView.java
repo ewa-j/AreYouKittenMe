@@ -47,7 +47,7 @@ public class MazeView extends View {
     private BitmapShader wallTexture, enemyTexture;
     private Bitmap hedge;
     private Random random;
-    public int maxHp = 50;
+    public static int hp = 50;
     public static boolean enemyCollision = false;
 
     private Timer timer = new Timer();
@@ -101,11 +101,8 @@ public class MazeView extends View {
                 while (System.currentTimeMillis() < futureTime) {
                     synchronized (this) {
                         try {
-                            while(MazeActivity.hp > 0) {
-                                if (checkCollisionEnemy()) {
-                                    MazeActivity.hp -= 5;
-                                }
-
+                            while (hp > 0) {
+                                hpText();
                             }
 //                            wait(futureTime-System.currentTimeMillis());
 
@@ -599,38 +596,60 @@ public class MazeView extends View {
     }
 
 
-    private boolean checkCollisionEnemy() {
-
-//        while (MazeActivity.hp > 0) {
-            if (player == enemy) {
+//    private void checkCollisionEnemy() {
+//
+////        while (MazeActivity.hp > 0) {
+//            if (player == enemy) {
 //                MazeActivity.hp -= 5;
-                Context context = getContext();
-                Intent intent = new Intent(context, MazeActivity.class);
-                context.startActivity(intent);
-                return true;
-            }
-            return false;
+//                Context context = getContext();
+//                Intent intent = new Intent(context, MazeActivity.class);
+//                context.startActivity(intent);
+////                return true;
+//            }
+//            return false;
 
 //        }
 
 
-//         MazeActivity.setHp(MazeActivity.getHp() - 5);
-
-//            String hp = String.valueOf(maxHp - 5);
-//            Context context = getContext();
-//            Intent intent = new Intent(context, MazeActivity.class);
-//            intent.putExtra("hp", hp);
-//            context.startActivity(intent);
-
-//    public boolean checkCollisionEnemy() {
+//                MazeActivity.setHp(MazeActivity.getHp() - 5);
 //
-//        while (MazeActivity.hp > 0) {
+//                String hp = String.valueOf(maxHp - 5);
+//                Context context = getContext();
+//                Intent intent = new Intent(context, MazeActivity.class);
+//                intent.putExtra("hp", hp);
+//                context.startActivity(intent);
+//            }
+
+//    public int checkCollisionEnemy() {
+//
+//        while (hp > 0) {
 //            if (player == enemy) {
-//                enemyCollision = true;
+//                hp -=5;
 //            }
 //        }
-//        return enemyCollision;
+//        return hp;
 //    }
 
+    private boolean checkCollisionEnemy() {
+        while (hp > 0) {
+            if (player == enemy) {
+                return true;
+            }
+        }
+        return false;
     }
-}
+//
+//
+        public void hpText() {
+            TextView hpTextView = (TextView) findViewById(R.id.hp);
+            hpTextView.setText("HP " + hp);
+            if (checkCollisionEnemy()) {
+                hp -= 5;
+                hpTextView.setText("HP " + hp);
+            }
+        }
+
+
+    }
+
+
