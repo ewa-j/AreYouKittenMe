@@ -1,5 +1,6 @@
 package com.example.areyoukittenme;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -35,7 +36,7 @@ public class MazeView extends View {
     private Cell[][] cells;
     private Cell player, exit;
     private static final int COLS = 8, ROWS = 5;
-    private static final float WALL_THICKNESS = 38;
+    private static final float WALL_THICKNESS = 40;
     private float cellSize, hMargin, vMargin;
     private Paint wallPaint, playerPaint, exitPaint, text;
     private BitmapShader wallTexture;
@@ -277,8 +278,6 @@ public class MazeView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        canvas.drawColor(Color.LTGRAY);
-
 
         int width = getWidth();
         int height = getHeight();
@@ -380,6 +379,7 @@ public class MazeView extends View {
         invalidate();
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
@@ -432,7 +432,7 @@ public class MazeView extends View {
         return super.onTouchEvent(event);
     }
 
-    private class Cell{
+    private static class Cell{
         boolean
             topWall = true,
             leftWall = true,
