@@ -14,8 +14,6 @@ public class WinActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_win);
 
-        TextView resultLable = (TextView) FindViewById(R.id.resultLable)
-
         findViewById(R.id.restart).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
