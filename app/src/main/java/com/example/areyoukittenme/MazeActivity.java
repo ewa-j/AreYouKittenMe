@@ -20,38 +20,16 @@ public class MazeActivity extends AppCompatActivity {
     private ColorStateList textColourDefaultCd;
 
     private TextView textViewCountDown;
-    public TextView hpText;
     private CountDownTimer countDownTimer;
     private Long timeLeftInMillis;
 
-    Timer timer, hpTimer;
+    Timer timer;
 
-//    public static int hp = 50;
-//    public int hp = MazeView.hp;
-//    public String health = getDecreasedHp();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze);
-
-//        hpText = findViewById(R.id.hp);
-//        boolean lose = getIntent().getExtras().getBoolean("lose");
-////        Bundle hp = getIntent().getExtras();
-//        String hp = getIntent().getStringExtra("hp");
-//        if(lose) {
-//
-//        } else {
-//            hpText.setText("HP " + hp);
-//        }
-
-//        int healthPoints = deriveHealthPoints();
-//        String message = "HP " + hp;
-
-
-//        TextView hpTextView = (TextView) findViewById(R.id.hp);
-//        hpTextView.setText("HP " + hp);
-
 
         // countdown timer
         timer = new Timer();
@@ -114,89 +92,7 @@ public class MazeActivity extends AppCompatActivity {
         if (countDownTimer != null) {
           countDownTimer.cancel();
         }
-//        if (hpTimer != null) {
-//            hpTimer.cancel();
         }
 
-
-//    public void hpText() {
-//        // hp timer
-//        hpTimer = new Timer();
-//        hpTimer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                Intent intent = new Intent(MazeActivity.this, MazeActivity.class);
-//                startActivity(intent);
-//            }
-//        }, 120000);
-//
-//        TextView hpTextView = (TextView) findViewById(R.id.hp);
-//
-//        timeLeftInMillis = COUNTDOWN_IN_MILLIS;
-//        startHpTimer();
-//    }
-//
-//    private void startHpTimer() {
-//        hpTimer = new hpTimer(timeLeftInMillis, 1000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//                timeLeftInMillis = millisUntilFinished;
-//                updateHpText();
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                timeLeftInMillis = 0L;
-//                updateHpText();
-//            }
-//        }.start();
-//    }
-//
-//    private void updateHpText() {
-//
-//        TextView hpTextView = (TextView) findViewById(R.id.hp);
-//        hpTextView.setText("HP " + hp);
-//
-//
-//        if (hp < 10) {
-//            textViewCountDown.setTextColor(Color.RED);
-//        } else {
-//            textViewCountDown.setTextColor(textColourDefaultCd);
-//        }
-//    }
-
-
-
-
-
-
-
-
-
-
-
-//    public int getHp() {
-//        Intent intent = new Intent(MazeActivity.this, MazeView.class);
-//        startActivity(intent);
-//        return hp;
-//    }
-
-//    public static void setHp(int newHp) {
-////        Intent intent = new Intent(MazeActivity.this, MazeView.class);
-////        startActivity(intent);
-//        hp = newHp;
-//    }
-
-//    public void decreaseHp() {
-//        if (MazeView.enemyCollision) {
-//            setHp(getHp()-5);
-//        }
-//    }
-
-//    public String getDecreasedHp() {
-//        Intent intent = getIntent();
-//        String hp = intent.getStringExtra("hp");
-//        return hp;
-//    }
 
 }
