@@ -488,19 +488,6 @@ public class MazeView extends View {
 
     }
 
-//    class UpdateEnemyTask extends TimerTask {
-//        Cell enemy;
-//
-//        public void run() {
-//            //calculate the new position of enemy
-//            moveEnemy();
-//        }
-//
-//        final int FPS = 40;
-//        TimerTask updateEnemy = new UpdateEnemyTask();
-//        timer.schedule(updateEnemy, 0, 1000/FPS);
-//    }
-
 
     private void movePlayer(Direction direction) {
         switch (direction) {
@@ -587,40 +574,6 @@ public class MazeView extends View {
         }
     }
 
-
-//    private void checkCollisionEnemy() {
-//
-////        while (MazeActivity.hp > 0) {
-//            if (player == enemy) {
-//                MazeActivity.hp -= 5;
-//                Context context = getContext();
-//                Intent intent = new Intent(context, MazeActivity.class);
-//                context.startActivity(intent);
-////                return true;
-//            }
-//            return false;
-
-//        }
-
-
-//                MazeActivity.setHp(MazeActivity.getHp() - 5);
-//
-//                String hp = String.valueOf(maxHp - 5);
-//                Context context = getContext();
-//                Intent intent = new Intent(context, MazeActivity.class);
-//                intent.putExtra("hp", hp);
-//                context.startActivity(intent);
-//            }
-
-//    public int checkCollisionEnemy() {
-//
-//        while (hp > 0) {
-//            if (player == enemy) {
-//                hp -=5;
-//            }
-//        }
-//        return hp;
-//    }
 
     private boolean checkCollisionEnemy() {
         while (hp > 0) {
