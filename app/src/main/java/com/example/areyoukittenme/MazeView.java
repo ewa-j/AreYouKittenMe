@@ -92,28 +92,6 @@ public class MazeView extends View {
 
         random = new Random();
 
-        Runnable collide = new Runnable() {
-            @Override
-            public void run() {
-                long futureTime = System.currentTimeMillis() + 120000;
-
-                while (System.currentTimeMillis() < futureTime) {
-                    synchronized (this) {
-                        try {
-                            while (hp > 0) {
-                                hpText();
-                            }
-//                            wait(futureTime-System.currentTimeMillis());
-
-                        } catch (Exception e) {
-                        }
-                    }
-                }
-            }
-        };
-        Thread collideThread = new Thread(collide);
-        collideThread.start();
-
         Runnable run = new Runnable() {
             @Override
             public void run() {
@@ -123,6 +101,7 @@ public class MazeView extends View {
                     synchronized (this) {
                         try {
                             moveEnemy();
+                            moveButterfly();
                             sleep(300);
                             invalidate();
 //                            checkCollisionEnemy();
@@ -227,7 +206,7 @@ public class MazeView extends View {
         player = cells[0][0];
         exit = cells[COLS - 1][ROWS - 1];
         enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
-//            enemyTwo = cells[(COLS - 1)][0];
+        butterfly = cells[(COLS - 1)][0];
 
         current = cells[0][0];
         current.visited = true;
@@ -435,12 +414,12 @@ public class MazeView extends View {
                 (enemy.row + 1) * cellSize - margin,
                 enemyPaint);
 
-//            canvas.drawRect(
-//                    enemyTwo.col * cellSize + margin,
-//                    enemyTwo.row * cellSize + margin,
-//                    (enemyTwo.col + 1) * cellSize - margin,
-//                    (enemyTwo.row + 1) * cellSize - margin,
-//                    enemyPaint);
+            canvas.drawRect(
+                    butterfly.col * cellSize + margin,
+                    butterfly.row * cellSize + margin,
+                    (butterfly.col + 1) * cellSize - margin,
+                    (butterfly.row + 1) * cellSize - margin,
+                    butterflyPaint);
 
         updateEnemyTask = new TimerTask() {
             @Override
@@ -488,6 +467,33 @@ public class MazeView extends View {
 
     }
 
+    private void moveButterfly() {
+
+        Direction direction;
+        random = new Random();
+        int randomDirection = random.nextInt(Direction.values().length);
+        direction = Direction.values()[randomDirection];
+
+        switch (direction) {
+            case UP:
+                if (!butterfly.topWall)
+                    butterfly = cells[butterfly.col][butterfly.row - 1];
+                break;
+            case DOWN:
+                if (!butterfly.bottomWall)
+                    butterfly = cells[butterfly.col][butterfly.row + 1];
+                break;
+            case LEFT:
+                if (!butterfly.leftWall)
+                    butterfly = cells[butterfly.col - 1][butterfly.row];
+                break;
+            case RIGHT:
+                if (!butterfly.rightWall)
+                    butterfly = cells[butterfly.col + 1][butterfly.row];
+                break;
+        }
+
+    }
 
     private void movePlayer(Direction direction) {
         switch (direction) {
