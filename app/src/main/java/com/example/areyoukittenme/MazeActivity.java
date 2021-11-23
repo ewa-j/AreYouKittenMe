@@ -102,11 +102,11 @@ public class MazeActivity extends AppCompatActivity {
         }
     }
 
-    public int getHp() {
-        Intent intent = new Intent(MazeActivity.this, MazeView.class);
-        startActivity(intent);
-        return hp;
-    }
+//    public int getHp() {
+//        Intent intent = new Intent(MazeActivity.this, MazeView.class);
+//        startActivity(intent);
+//        return hp;
+//    }
 
     public void setHp(int newHp) {
 //        Intent intent = new Intent(MazeActivity.this, MazeView.class);
@@ -119,10 +119,10 @@ public class MazeActivity extends AppCompatActivity {
 //            setHp(getHp()-5);
 //        }
 //    }
-//    public String getDecreasedHp() {
-//        Intent intent = getIntent();
-//        String hp = intent.getStringExtra("hp");
-//        return hp;
-//    }
+    public String getDecreasedHp() {
+        Intent intent = getIntent();
+        String hp = intent.getStringExtra("hp");
+        return hp;
+    }
 
 }
