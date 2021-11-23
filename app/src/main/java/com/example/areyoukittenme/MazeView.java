@@ -389,7 +389,8 @@ public class MazeView extends View {
         canvas.drawColor(Color.LTGRAY);
         canvas.save();
 //        canvas.drawPaint(scorePaint);
-        canvas.drawText(hpText, 100, 100, hpPaint);
+        canvas.drawText(hpText, 20, 100, hpPaint);
+        canvas.drawText(scoreText, 20, 300, scorePaint);
 //        canvas.restore();
 
 //        mStaticLayout.draw(canvas);
@@ -402,17 +403,26 @@ public class MazeView extends View {
             }
 //            mStaticLayout.draw(canvas);
             hpText = "HP " + hp;
-            canvas.drawText(hpText, 100, 100, hpPaint);
+            canvas.drawText(hpText, 20, 100, hpPaint);
             canvas.translate(0, 0);
             enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
 
-            if (hp <= 0) {
+            if (hp == 0) {
                 Intent intent = new Intent(context, GameOverActivity.class);
                 context.startActivity(intent);
 //                ((Activity) context).finish();
 //                this.startActivity(new Intent(this,GameOverActivity.class));
             }
         }
+
+        if(player == butterfly) {
+            score += 5;
+            scoreText = "Score: " + score;
+            canvas.drawText(scoreText, 20, 300, scorePaint);
+            canvas.translate(0, 0);
+            butterfly = cells[(COLS - 1)][0];
+        }
+
         canvas.restore();
 
         int width = getWidth();
