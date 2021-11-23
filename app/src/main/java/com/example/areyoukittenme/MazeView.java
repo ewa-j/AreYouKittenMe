@@ -2,6 +2,7 @@ package com.example.areyoukittenme;
 
 import static java.lang.Thread.sleep;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -16,6 +17,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
@@ -43,12 +47,18 @@ public class MazeView extends View {
     private static final int COLS = 8, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
-    private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint;
+    private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint, scorePaint;
     private BitmapShader wallTexture, enemyTexture;
     private Bitmap hedge;
     private Random random;
     public static int hp = 50;
     public static boolean enemyCollision = false;
+    public boolean lose = false;
+    public boolean win = false;
+    Context context;
+    String hpText = "HP " + hp;
+    TextPaint mTextPaint;
+    StaticLayout mStaticLayout;
 
     private Timer timer = new Timer();
     TimerTask updateEnemyTask;
@@ -58,6 +68,9 @@ public class MazeView extends View {
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        initLabelView();
+
+        this.context = context;
 
         wallPaint = new Paint();
         wallPaint.setColor(Color.BLACK);
@@ -74,6 +87,16 @@ public class MazeView extends View {
 
         butterflyPaint = new Paint();
         butterflyPaint.setColor(Color.YELLOW);
+
+        scorePaint = new Paint();
+        scorePaint.setColor(Color.BLACK);
+        scorePaint.setTextSize(40);
+        scorePaint.setStyle(Paint.Style.FILL);
+
+        TextPaint textPaint = new TextPaint();
+        textPaint.setAntiAlias(true);
+        textPaint.setTextSize(16 * getResources().getDisplayMetrics().density);
+        textPaint.setColor(0xFFFFFFFF);
 
         Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
         wallTexture = new BitmapShader(hedge,
@@ -93,27 +116,27 @@ public class MazeView extends View {
 
         random = new Random();
 
-        Runnable collide = new Runnable() {
-            @Override
-            public void run() {
-                long futureTime = System.currentTimeMillis() + 120000;
-
-                while (System.currentTimeMillis() < futureTime) {
-                    synchronized (this) {
-                        try {
-                            while (hp > 0) {
-                                hpText();
-                            }
-//                            wait(futureTime-System.currentTimeMillis());
-
-                        } catch (Exception e) {
-                        }
-                    }
-                }
-            }
-        };
-        Thread collideThread = new Thread(collide);
-        collideThread.start();
+//        Runnable collide = new Runnable() {
+//            @Override
+//            public void run() {
+//                long futureTime = System.currentTimeMillis() + 120000;
+//
+//                while (System.currentTimeMillis() < futureTime) {
+//                    synchronized (this) {
+//                        try {
+//                            while (hp > 0) {
+//                                hpText();
+//                            }
+////                            wait(futureTime-System.currentTimeMillis());
+//
+//                        } catch (Exception e) {
+//                        }
+//                    }
+//                }
+//            }
+//        };
+//        Thread collideThread = new Thread(collide);
+//        collideThread.start();
 
         Runnable run = new Runnable() {
             @Override
@@ -124,7 +147,7 @@ public class MazeView extends View {
                     synchronized (this) {
                         try {
                             moveEnemy();
-                            sleep(300);
+                            sleep(900);
                             invalidate();
 //                            checkCollisionEnemy();
 
@@ -142,6 +165,56 @@ public class MazeView extends View {
         createMaze();
 //        updateEnemy();
 
+    }
+
+    private void initLabelView() {
+        mTextPaint = new TextPaint();
+        mTextPaint.setAntiAlias(true);
+        mTextPaint.setTextSize(20 * getResources().getDisplayMetrics().density);
+        mTextPaint.setColor(0xFF000000);
+
+        // default to a single line of text
+        int width = (int) mTextPaint.measureText(hpText);
+        mStaticLayout = new StaticLayout(hpText, mTextPaint, (int) width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0, false);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        // Tell the parent layout how big this view would like to be
+        // but still respect any requirements (measure specs) that are passed down.
+
+        // determine the width
+        int width;
+        int widthMode = MeasureSpec.getMode(widthMeasureSpec);
+        int widthRequirement = MeasureSpec.getSize(widthMeasureSpec);
+        if (widthMode == MeasureSpec.EXACTLY) {
+            width = widthRequirement;
+        } else {
+            width = mStaticLayout.getWidth() + getPaddingLeft() + getPaddingRight();
+            if (widthMode == MeasureSpec.AT_MOST) {
+                if (width > widthRequirement) {
+                    width = widthRequirement;
+                    // too long for a single line so relayout as multiline
+                    mStaticLayout = new StaticLayout(hpText, mTextPaint, width, Layout.Alignment.ALIGN_NORMAL, 1.0f, 0, false);
+                }
+            }
+        }
+
+        // determine the height
+        int height;
+        int heightMode = MeasureSpec.getMode(heightMeasureSpec);
+        int heightRequirement = MeasureSpec.getSize(heightMeasureSpec);
+        if (heightMode == MeasureSpec.EXACTLY) {
+            height = heightRequirement;
+        } else {
+            height = mStaticLayout.getHeight() + getPaddingTop() + getPaddingBottom();
+            if (heightMode == MeasureSpec.AT_MOST) {
+                height = Math.min(height, heightRequirement);
+            }
+        }
+
+        // Required call: set width and height
+        setMeasuredDimension(width, height);
     }
 
     private Cell getNeighbour(Cell cell) {
@@ -355,9 +428,37 @@ public class MazeView extends View {
 
     @Override
     protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
 
         canvas.drawColor(Color.LTGRAY);
+        canvas.save();
+//        canvas.drawPaint(scorePaint);
+        canvas.drawText(hpText, 100, 100, scorePaint);
+//        canvas.restore();
 
+//        mStaticLayout.draw(canvas);
+        canvas.translate(0, 0);
+
+        if (player == enemy) {
+            hp -= 5;
+            if(hp < 20) {
+                scorePaint.setColor(Color.RED);
+            }
+//            mStaticLayout.draw(canvas);
+            hpText = "HP " + hp;
+            canvas.drawText(hpText, 100, 100, scorePaint);
+            canvas.translate(0, 0);
+            enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
+
+            if (hp < 0) {
+//                Intent intent = new Intent(context, MazeActivity.class);
+//                lose = true;
+//                intent.putExtra("hp", hp);
+//                context.startActivity(intent);
+//                ((Activity) context).finish();
+            }
+        }
+        canvas.restore();
 
         int width = getWidth();
         int height = getHeight();
@@ -630,24 +731,24 @@ public class MazeView extends View {
 //        return hp;
 //    }
 
-    private boolean checkCollisionEnemy() {
-        while (hp > 0) {
-            if (player == enemy) {
-                return true;
-            }
-        }
-        return false;
-    }
+//    private boolean checkCollisionEnemy() {
+//        while (hp > 0) {
+//            if (player == enemy) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 //
 //
-        public void hpText() {
-            TextView hpTextView = (TextView) findViewById(R.id.hp);
-            hpTextView.setText("HP " + hp);
-            if (checkCollisionEnemy()) {
-                hp -= 5;
-                hpTextView.setText("HP " + hp);
-            }
-        }
+//        public void hpText() {
+//            TextView hpTextView = (TextView) findViewById(R.id.hp);
+//            hpTextView.setText("HP " + hp);
+//            if (checkCollisionEnemy()) {
+//                hp -= 5;
+//                hpTextView.setText("HP " + hp);
+//            }
+//        }
 
 
     }
