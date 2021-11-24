@@ -1,48 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GameOverActivity">
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="819dp"
-        android:layout_height="451dp"
-        android:contentDescription="@string/cats_background"
-        android:scaleType="centerCrop"
-        android:src="@drawable/game_over_cat_2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:background="@drawable/game_over_cat_2"
+    android:orientation="vertical"
+    android:gravity="center">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="444dp"
-        android:layout_height="149dp"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="60dp"
+        android:layout_width="571dp"
+        android:layout_height="73dp"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="60dp"
-        android:text="Game Over!"
+        android:text="@string/game_over"
         android:textColor="#fff"
-        android:textSize="70sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="70sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:id="@+id/totalScoreLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/total_score"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvScore"
+            android:layout_width="292dp"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            android:textColor="@color/white"
+            android:textSize="24sp" />
+    </LinearLayout>
 
     <Button
         android:id="@+id/restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="400dp"
-        android:layout_marginBottom="52dp"
-        android:text="Play Again"
+        android:text="@string/play_again"
+        android:layout_marginStart="-95dp"
         android:textColor="#fff"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:textSize="40sp" />
+</LinearLayout>
