@@ -55,9 +55,6 @@ public class MazeView extends View {
     String hpText = "HP " + hp;
     String scoreText = "Score " + score;
 
-
-    int score;
-    Context context;
     boolean gameState = true;
 
 
@@ -133,7 +130,7 @@ public class MazeView extends View {
         exitPaint = new Paint();
         exitPaint.setColor(Color.CYAN);
 
-        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+        hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
         wallTexture = new BitmapShader(hedge,
                 Shader.TileMode.REPEAT,
                 Shader.TileMode.REPEAT);
@@ -244,12 +241,7 @@ public class MazeView extends View {
         } while (!stack.empty());
     }
 
-
-        } while(!stack.empty());
-    }
-
     @SuppressLint("DrawAllocation")
-
     @Override
     protected void onDraw(Canvas canvas) {
 
@@ -257,7 +249,6 @@ public class MazeView extends View {
 
         canvas.save();
         canvas.drawText(hpText, 20, 100, hpPaint);
-        canvas.drawText(scoreText, 20, 300, scorePaint);
         canvas.translate(0, 0);
 
         if (player == enemy || player == enemyTwo) {
@@ -274,6 +265,7 @@ public class MazeView extends View {
             if (hp <= 0) {
                 Context context = getContext();
                 Intent intent = new Intent(context, GameOverActivity.class);
+                intent.putExtra("score", score);
                 context.startActivity(intent);
             }
         }
@@ -281,10 +273,6 @@ public class MazeView extends View {
         if(player == butterfly) {
             score += 10;
             butterfly = cells[(COLS - 1)][0];
-        }
-            scoreText = "Score: " + score;
-            canvas.drawText(scoreText, 20, 300, scorePaint);
-            canvas.translate(0, 0);
         }
 
         canvas.restore();
@@ -345,20 +333,6 @@ public class MazeView extends View {
         float margin = cellSize / 8;
 
         canvas.drawRect(
-                player.col * cellSize + margin,
-                player.row * cellSize + margin,
-                (player.col + 1) * cellSize - margin,
-                (player.row + 1) * cellSize - margin,
-                playerPaint);
-
-        canvas.drawRect(
-                exit.col * cellSize + margin,
-                exit.row * cellSize + margin,
-                (exit.col + 1) * cellSize - margin,
-                (exit.row + 1) * cellSize - margin,
-                exitPaint);
-
-        canvas.drawRect(
                 enemy.col * cellSize + margin,
                 enemy.row * cellSize + margin,
                 (enemy.col + 1) * cellSize - margin,
@@ -372,12 +346,28 @@ public class MazeView extends View {
                 (enemyTwo.row + 1) * cellSize - margin,
                 enemyPaint);
 
-            canvas.drawRect(
-                    butterfly.col * cellSize + margin,
-                    butterfly.row * cellSize + margin,
-                    (butterfly.col + 1) * cellSize - margin,
-                    (butterfly.row + 1) * cellSize - margin,
-                    butterflyPaint);
+        canvas.drawRect(
+                butterfly.col * cellSize + margin,
+                butterfly.row * cellSize + margin,
+                (butterfly.col + 1) * cellSize - margin,
+                (butterfly.row + 1) * cellSize - margin,
+                butterflyPaint);
+
+        Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat_sprite);
+        canvas.drawBitmap(myBitmap, null, new RectF(
+                        player.col*cellSize+margin,
+                        player.row*cellSize+margin,
+                        (player.col+1)*cellSize-margin,
+                        (player.row+1)*cellSize-margin),
+                null);
+
+        Bitmap exitBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.maze_exit);
+        canvas.drawBitmap(exitBitmap, null, new RectF(
+                        (exit.col+0.1f)*cellSize+margin/2,
+                        (exit.row)*cellSize+margin/2,
+                        (exit.col+0.9f)*cellSize-margin/2,
+                        (exit.row+0.9f)*cellSize-margin/2),
+                exitPaint);
     }
 
     private void moveEnemy() {
@@ -430,7 +420,6 @@ public class MazeView extends View {
 
 
     private void moveButterfly() {
-
         Direction direction;
         random = new Random();
         int randomDirection = random.nextInt(Direction.values().length);
@@ -454,22 +443,6 @@ public class MazeView extends View {
                     butterfly = cells[butterfly.col + 1][butterfly.row];
                 break;
         }
-
-        Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat_sprite);
-        canvas.drawBitmap(myBitmap, null, new RectF(
-            player.col*cellSize+margin,
-            player.row*cellSize+margin,
-            (player.col+1)*cellSize-margin,
-            (player.row+1)*cellSize-margin),
-            null);
-
-        Bitmap exitBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.maze_exit);
-        canvas.drawBitmap(exitBitmap, null, new RectF(
-            (exit.col+0.1f)*cellSize+margin/2,
-            (exit.row)*cellSize+margin/2,
-            (exit.col+0.9f)*cellSize-margin/2,
-            (exit.row+0.9f)*cellSize-margin/2),
-            exitPaint);
     }
 
 
@@ -571,6 +544,6 @@ public class MazeView extends View {
         }
     }
 
-    }
+}
 
 

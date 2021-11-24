@@ -29,8 +29,6 @@ public class MazeActivity extends AppCompatActivity {
 
     public int hp = MazeView.hp;
 //    public String health = getDecreasedHp();
-
-    int hp = 50;
     TextView tvScore;
 
     @Override
@@ -49,9 +47,11 @@ public class MazeActivity extends AppCompatActivity {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
-                Intent intent = new Intent(MazeActivity.this, GameOverActivity.class);
-                intent.putExtra("score", score);
-                startActivity(intent);
+                if (mazeView.gameState) {
+                    Intent intent = new Intent(MazeActivity.this, GameOverActivity.class);
+                    intent.putExtra("score", score);
+                    startActivity(intent);
+                }
             }
         }, COUNTDOWN_IN_MILLIS);
 
