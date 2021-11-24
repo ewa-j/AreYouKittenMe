@@ -71,13 +71,13 @@ public class AquariumActivity extends AppCompatActivity {
                             attached = null;
                             //move to maze instructions if all caught
                             caught++;
-                            if (caught == 10 && end == false) {
+                            if (caught == 10 && !end) {
                                 end = true;
                                 timerHandler.removeCallbacks(timerRunnable);
                                 score += 100;
                                 Intent intent = new Intent(AquariumActivity.this, FirstActivity.class);
-                                startActivity(intent);
                                 intent.putExtra("score", score);
+                                startActivity(intent);
                                 return false;
                             }
 

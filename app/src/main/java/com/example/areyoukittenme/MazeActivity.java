@@ -43,14 +43,18 @@ public class MazeActivity extends AppCompatActivity {
         TextView hpTextView = (TextView) findViewById(R.id.hp);
         hpTextView.setText("HP " + hp);
 
+        MazeView mazeView = findViewById(R.id.mazeView);
+        mazeView.score = score;
+
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 Intent intent = new Intent(MazeActivity.this, GameOverActivity.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
-        }, 120000);
+        }, COUNTDOWN_IN_MILLIS);
 
         textViewCountDown = findViewById(R.id.text_view_countdown);
         textColourDefaultCd = textViewCountDown.getTextColors();
