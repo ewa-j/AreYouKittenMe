@@ -74,6 +74,7 @@ public class AquariumActivity extends AppCompatActivity {
                             if (caught == 10 && end == false) {
                                 end = true;
                                 timerHandler.removeCallbacks(timerRunnable);
+                                score += 100;
                                 Intent intent = new Intent(AquariumActivity.this, FirstActivity.class);
                                 startActivity(intent);
                                 intent.putExtra("score", score);
