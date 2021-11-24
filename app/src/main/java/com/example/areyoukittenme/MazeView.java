@@ -1,7 +1,9 @@
 package com.example.areyoukittenme;
 
-import static java.lang.Thread.sleep;
 
+import static java.lang.Thread.sleep;
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -11,6 +13,7 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
+import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -32,7 +35,6 @@ import java.util.TimerTask;
 
 public class MazeView extends View {
 
-
     private enum Direction {
         UP, DOWN, LEFT, RIGHT
     }
@@ -46,6 +48,7 @@ public class MazeView extends View {
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
+
     public static int hp = 50;
     public int score = 0;
     Context context;
@@ -53,8 +56,17 @@ public class MazeView extends View {
     String scoreText = "Score " + score;
 
 
+    int score;
+    Context context;
+    boolean gameState = true;
+
+
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
+        wallPaint = new Paint();
+        wallPaint.setColor(Color.BLACK);
+        wallPaint.setStrokeWidth(WALL_THICKNESS);
 
         wallPaint = new Paint();
         wallPaint.setColor(Color.BLACK);
@@ -115,6 +127,21 @@ public class MazeView extends View {
 
         createMaze();
 
+        playerPaint = new Paint();
+        playerPaint.setColor(Color.BLUE);
+
+        exitPaint = new Paint();
+        exitPaint.setColor(Color.CYAN);
+
+        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+        wallTexture = new BitmapShader(hedge,
+                Shader.TileMode.REPEAT,
+                Shader.TileMode.REPEAT);
+
+        wallPaint.setShader(wallTexture);
+
+        random = new Random();
+        createMaze();
     }
 
     private Cell getNeighbour(Cell cell) {
@@ -213,116 +240,15 @@ public class MazeView extends View {
             } else {
                 current = stack.pop();
             }
-        } while (!stack.empty());
 
-        // removing walls
-        // first row in landscape
-//        cells[0][0].bottomWall = false;
-//        cells[0][0].rightWall = false;
-//        cells[1][0].leftWall = false;
-//        cells[1][0].rightWall = false;
-//        cells[2][0].bottomWall = false;
-//        cells[2][0].leftWall = false;
-//        cells[3][0].bottomWall = false;
-//        cells[3][0].rightWall = false;
-//        cells[4][0].leftWall = false;
-//        cells[4][0].rightWall = false;
-//        cells[5][0].leftWall = false;
-//        cells[5][0].bottomWall = false;
-//        cells[6][0].rightWall = false;
-//        cells[6][0].bottomWall = false;
-//        cells[7][0].leftWall = false;
-//        cells[7][0].rightWall = false;
-//        cells[8][0].leftWall = false;
-//        cells[8][0].rightWall = false;
-//        cells[9][0].leftWall = false;
-//        cells[9][0].bottomWall = false;
-//        // second row in landscape
-//        cells[0][1].bottomWall = false;
-//        cells[0][1].topWall = false;
-//        cells[1][1].rightWall = false;
-//        cells[2][1].topWall = false;
-//        cells[2][1].leftWall = false;
-//        cells[3][1].topWall = false;
-//        cells[3][1].rightWall = false;
-//        cells[4][1].leftWall = false;
-//        cells[4][1].bottomWall = false;
-//        cells[5][1].rightWall = false;
-//        cells[5][1].topWall = false;
-//        cells[6][1].leftWall = false;
-//        cells[6][1].bottomWall = false;
-//        cells[6][1].topWall = false;
-//        cells[7][1].rightWall = false;
-//        cells[7][1].bottomWall = false;
-//        cells[8][1].bottomWall = false;
-//        cells[8][1].rightWall = false;
-//        cells[9][1].leftWall = false;
-//        cells[9][1].topWall = false;
-//        // 3rd row in landscape
-//        cells[0][2].topWall = false;
-//        cells[0][2].rightWall = false;
-//        cells[1][2].leftWall = false;
-//        cells[1][2].bottomWall = false;
-//        cells[2][2].bottomWall = false;
-//        cells[2][2].rightWall = false;
-//        cells[3][2].leftWall = false;
-//        cells[4][2].rightWall = false;
-//        cells[4][2].topWall = false;
-//        cells[4][2].bottomWall = false;
-//        cells[5][2].leftWall = false;
-//        cells[5][2].bottomWall = false;
-//        cells[6][2].rightWall = false;
-//        cells[6][2].topWall = false;
-//        cells[7][2].leftWall = false;
-//        cells[7][2].topWall = false;
-//        cells[8][2].topWall = false;
-//        cells[8][2].bottomWall = false;
-//        cells[9][2].bottomWall = false;
-//        // 4th row in landscape
-//        cells[0][3].bottomWall = false;
-//        cells[0][3].rightWall = false;
-//        cells[1][3].leftWall = false;
-//        cells[1][3].rightWall = false;
-//        cells[1][3].topWall = false;
-//        cells[2][3].leftWall = false;
-//        cells[2][3].topWall = false;
-//        cells[3][3].rightWall = false;
-//        cells[3][3].bottomWall = false;
-//        cells[4][3].topWall = false;
-//        cells[4][3].leftWall = false;
-//        cells[4][3].bottomWall = false;
-//        cells[5][3].topWall = false;
-//        cells[5][3].rightWall = false;
-//        cells[6][3].leftWall = false;
-//        cells[7][3].bottomWall = false;
-//        cells[7][3].rightWall = false;
-//        cells[8][3].leftWall = false;
-//        cells[8][3].topWall = false;
-//        cells[8][3].rightWall = false;
-//        cells[9][3].leftWall = false;
-//        cells[9][3].topWall = false;
-//        // 5th row in landscape
-//        cells[0][4].topWall = false;
-//        cells[0][4].rightWall = false;
-//        cells[1][4].leftWall = false;
-//        cells[1][4].rightWall = false;
-//        cells[2][4].rightWall = false;
-//        cells[2][4].leftWall = false;
-//        cells[3][4].topWall = false;
-//        cells[3][4].leftWall = false;
-//        cells[4][4].rightWall = false;
-//        cells[4][4].topWall = false;
-//        cells[5][4].leftWall = false;
-//        cells[6][4].rightWall = false;
-//        cells[7][4].leftWall = false;
-//        cells[7][4].rightWall = false;
-//        cells[7][4].topWall = false;
-//        cells[8][4].leftWall = false;
-//        cells[8][4].rightWall = false;
-//        cells[9][4].leftWall = false;
-//        cells[9][4].bottomWall = false;
+        } while (!stack.empty());
     }
 
+
+        } while(!stack.empty());
+    }
+
+    @SuppressLint("DrawAllocation")
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -355,8 +281,7 @@ public class MazeView extends View {
         if(player == butterfly) {
             score += 10;
             butterfly = cells[(COLS - 1)][0];
-//            if(player == butterfly) { butterfly = cells[(COLS - 1)][0]; }
-//            if(player == butterflyTwo) { butterflyTwo = cells[(COLS - 6)][ROWS - 1]; }
+        }
             scoreText = "Score: " + score;
             canvas.drawText(scoreText, 20, 300, scorePaint);
             canvas.translate(0, 0);
@@ -433,7 +358,6 @@ public class MazeView extends View {
                 (exit.row + 1) * cellSize - margin,
                 exitPaint);
 
-//            enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
         canvas.drawRect(
                 enemy.col * cellSize + margin,
                 enemy.row * cellSize + margin,
@@ -454,13 +378,6 @@ public class MazeView extends View {
                     (butterfly.col + 1) * cellSize - margin,
                     (butterfly.row + 1) * cellSize - margin,
                     butterflyPaint);
-
-//        canvas.drawRect(
-//                butterflyTwo.col * cellSize + margin,
-//                butterflyTwo.row * cellSize + margin,
-//                (butterflyTwo.col + 1) * cellSize - margin,
-//                (butterflyTwo.row + 1) * cellSize - margin,
-//                butterflyPaint);
     }
 
     private void moveEnemy() {
@@ -518,9 +435,6 @@ public class MazeView extends View {
         random = new Random();
         int randomDirection = random.nextInt(Direction.values().length);
         direction = Direction.values()[randomDirection];
-//        Direction directionTwo;
-//        int randomDirectionTwo = random.nextInt(Direction.values().length);
-//        directionTwo = Direction.values()[randomDirectionTwo];
 
         switch (direction) {
             case UP:
@@ -541,25 +455,21 @@ public class MazeView extends View {
                 break;
         }
 
+        Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat_sprite);
+        canvas.drawBitmap(myBitmap, null, new RectF(
+            player.col*cellSize+margin,
+            player.row*cellSize+margin,
+            (player.col+1)*cellSize-margin,
+            (player.row+1)*cellSize-margin),
+            null);
 
-//        switch (directionTwo) {
-//            case UP:
-//                if (!butterflyTwo.topWall)
-//                    butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row - 1];
-//                break;
-//            case DOWN:
-//                if (!butterflyTwo.bottomWall)
-//                    butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row + 1];
-//                break;
-//            case LEFT:
-//                if (!butterflyTwo.leftWall)
-//                    butterflyTwo = cells[butterflyTwo.col - 1][butterflyTwo.row];
-//                break;
-//            case RIGHT:
-//                if (!butterflyTwo.rightWall)
-//                    butterflyTwo = cells[butterflyTwo.col + 1][butterflyTwo.row];
-//                break;
-//        }
+        Bitmap exitBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.maze_exit);
+        canvas.drawBitmap(exitBitmap, null, new RectF(
+            (exit.col+0.1f)*cellSize+margin/2,
+            (exit.row)*cellSize+margin/2,
+            (exit.col+0.9f)*cellSize-margin/2,
+            (exit.row+0.9f)*cellSize-margin/2),
+            exitPaint);
     }
 
 
@@ -627,6 +537,19 @@ public class MazeView extends View {
                     }
                 }
             }
+
+            if (player == exit && gameState) {
+
+                score += 100;
+                gameState = false;
+                Context context = getContext();
+                Intent intent = new Intent(context, WinActivity.class);
+                intent.putExtra("score", score);
+                context.startActivity(intent);
+                ((Activity)context).finish();
+                return false;
+            }
+
             return true;
         }
         return super.onTouchEvent(event);

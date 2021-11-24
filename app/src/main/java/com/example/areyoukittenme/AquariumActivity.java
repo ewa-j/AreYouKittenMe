@@ -29,6 +29,7 @@ public class AquariumActivity extends AppCompatActivity {
     ActivityAquariumBinding binding;
     Handler timerHandler = new Handler();
     private boolean end = false;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +67,17 @@ public class AquariumActivity extends AppCompatActivity {
                         //if fish is caught and is moved to the top, remove it
                         if (attached == fish && binding.armContainer.getHeight() + binding.armContainer.getY() < binding.topBackgroundView.getBottom()) {
                             fish.fish.setVisibility(View.GONE);
+                            score += 10;
                             attached = null;
-                            //new game if all caught
+                            //move to maze instructions if all caught
                             caught++;
-                            if (caught == 10 && end == false) {
+                            if (caught == 10 && !end) {
                                 end = true;
                                 timerHandler.removeCallbacks(timerRunnable);
-                                startActivity(new Intent(AquariumActivity.this, FirstActivity.class));
+                                score += 100;
+                                Intent intent = new Intent(AquariumActivity.this, FirstActivity.class);
+                                intent.putExtra("score", score);
+                                startActivity(intent);
                                 return false;
                             }
 
@@ -112,6 +117,11 @@ public class AquariumActivity extends AppCompatActivity {
                     if(attached != null) {
                         attached.newPosition = null;
                     }
+                    if(score > 10) {
+                        score -= 10;
+                    } else {
+                        score = 0;
+                    }
                     attached = null;
                     binding.timeWaitView.setVisibility(View.VISIBLE);
                 }
@@ -143,7 +153,7 @@ public class AquariumActivity extends AppCompatActivity {
     }
 
     private void updateTime(){
-        int totalTime = 20000;//milliseconds
+        int totalTime = 30000;//milliseconds
         long millis = totalTime - (System.currentTimeMillis() - startTime);
         int seconds = (int) (millis / 1000);
         int minutes = seconds / 60;
@@ -152,10 +162,12 @@ public class AquariumActivity extends AppCompatActivity {
         if (millis <= 0 && !end){
             end = true;
             timerHandler.removeCallbacks(timerRunnable);
-            startActivity(new Intent(AquariumActivity.this, GameOverActivity.class));
+            Intent intent = new Intent(AquariumActivity.this, GameOverActivity.class);
+            intent.putExtra("score", score);
+            startActivity(intent);
             return;
         }
-        else if (millis <= 5000) {
+        else if (millis <= 10000) {
             binding.countDownTimer.setTextColor(Color.RED);
         } else {
             binding.countDownTimer.setTextColor(Color.BLACK);

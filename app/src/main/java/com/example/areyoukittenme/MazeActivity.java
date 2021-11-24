@@ -23,35 +23,37 @@ public class MazeActivity extends AppCompatActivity {
 
     private CountDownTimer countDownTimer;
     private Long timeLeftInMillis;
+    private MazeView mazeView;
 
     Timer timer, hpTimer;
 
-//    public static int hp = 50;
     public int hp = MazeView.hp;
 //    public String health = getDecreasedHp();
+
+    int hp = 50;
+    TextView tvScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze);
 
-//        int healthPoints = deriveHealthPoints();
-//        String message = "HP " + hp;
+        int score = getIntent().getExtras().getInt("score");
+        tvScore = findViewById(R.id.tvScore);
+        tvScore.setText("Score: " + score);
+      
+        mazeView = findViewById(R.id.mazeView);
+        mazeView.score = score;
 
-
-//        TextView hpTextView = (TextView) findViewById(R.id.hp);
-//        hpTextView.setText("HP " + hp);
-
-
-        // countdown timer
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 Intent intent = new Intent(MazeActivity.this, GameOverActivity.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
-        }, 120000);
+        }, COUNTDOWN_IN_MILLIS);
 
         textViewCountDown = findViewById(R.id.text_view_countdown);
         textColourDefaultCd = textViewCountDown.getTextColors();
@@ -60,17 +62,11 @@ public class MazeActivity extends AppCompatActivity {
         startCountDown();
     }
 
-//    private int GetHPPercentage(int currentHealth, int maxHealth) {
-//        return currentHealth / maxHealth * 100;
-//
-//        int maxHealth = 50
-//        int currentHealth = 50
-//        health
-//    }
     private void startCountDown() {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                tvScore.setText("Score: " + mazeView.score);
                 timeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
             }
@@ -104,89 +100,12 @@ public class MazeActivity extends AppCompatActivity {
         if (countDownTimer != null) {
           countDownTimer.cancel();
         }
-//        if (hpTimer != null) {
-//            hpTimer.cancel();
-        }
-
-
-//    public void hpText() {
-//        // hp timer
-//        hpTimer = new Timer();
-//        hpTimer.schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                Intent intent = new Intent(MazeActivity.this, MazeActivity.class);
-//                startActivity(intent);
-//            }
-//        }, 120000);
-//
-//        TextView hpTextView = (TextView) findViewById(R.id.hp);
-//
-//        timeLeftInMillis = COUNTDOWN_IN_MILLIS;
-//        startHpTimer();
-//    }
-//
-//    private void startHpTimer() {
-//        hpTimer = new hpTimer(timeLeftInMillis, 1000) {
-//            @Override
-//            public void onTick(long millisUntilFinished) {
-//                timeLeftInMillis = millisUntilFinished;
-//                updateHpText();
-//            }
-//
-//            @Override
-//            public void onFinish() {
-//                timeLeftInMillis = 0L;
-//                updateHpText();
-//            }
-//        }.start();
-//    }
-//
-//    private void updateHpText() {
-//
-//        TextView hpTextView = (TextView) findViewById(R.id.hp);
-//        hpTextView.setText("HP " + hp);
-//
-//
-//        if (hp < 10) {
-//            textViewCountDown.setTextColor(Color.RED);
-//        } else {
-//            textViewCountDown.setTextColor(textColourDefaultCd);
-//        }
-//    }
-
-
-
-
-
-
-
-
-
-
+    }
 
     public int getHp() {
         Intent intent = new Intent(MazeActivity.this, MazeView.class);
         startActivity(intent);
         return hp;
     }
-
-//    public static void setHp(int newHp) {
-////        Intent intent = new Intent(MazeActivity.this, MazeView.class);
-////        startActivity(intent);
-//        hp = newHp;
-//    }
-
-//    public void decreaseHp() {
-//        if (MazeView.enemyCollision) {
-//            setHp(getHp()-5);
-//        }
-//    }
-
-//    public String getDecreasedHp() {
-//        Intent intent = getIntent();
-//        String hp = intent.getStringExtra("hp");
-//        return hp;
-//    }
 
 }
