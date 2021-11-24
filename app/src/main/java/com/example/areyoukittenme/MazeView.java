@@ -43,7 +43,7 @@ public class MazeView extends View {
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
     private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint, scorePaint, hpPaint;
-    private BitmapShader wallTexture, enemyTexture;
+    private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
     public static int hp = 50;
@@ -51,11 +51,6 @@ public class MazeView extends View {
     Context context;
     String hpText = "HP " + hp;
     String scoreText = "Score " + score;
-
-//    private Timer timer = new Timer();
-//    TimerTask updateEnemyTask;
-//    long startTime = 0;
-//    long offsetTime = 1000;
 
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
@@ -341,13 +336,14 @@ public class MazeView extends View {
 
         if (player == enemy || player == enemyTwo) {
             hp -= 5;
+            if (player == enemy) { enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2]; }
+            if (player == enemyTwo) { enemyTwo = cells[COLS - 2][ROWS - 2]; }
             if(hp < 20) {
                 hpPaint.setColor(Color.RED);
             }
             hpText = "HP " + hp;
             canvas.drawText(hpText, 20, 100, hpPaint);
             canvas.translate(0, 0);
-            enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
 
             if (hp == 0) {
                 Intent intent = new Intent(context, GameOverActivity.class);
@@ -357,10 +353,11 @@ public class MazeView extends View {
 
         if(player == butterfly || player == butterflyTwo) {
             score += 5;
+            if(player == butterfly) { butterfly = cells[(COLS - 1)][0]; }
+            if(player == butterflyTwo) { butterflyTwo = cells[(COLS - 6)][ROWS - 1]; }
             scoreText = "Score: " + score;
             canvas.drawText(scoreText, 20, 300, scorePaint);
             canvas.translate(0, 0);
-            butterfly = cells[(COLS - 1)][0];
         }
 
         canvas.restore();
@@ -462,13 +459,6 @@ public class MazeView extends View {
                 (butterflyTwo.col + 1) * cellSize - margin,
                 (butterflyTwo.row + 1) * cellSize - margin,
                 butterflyPaint);
-//
-//        updateEnemyTask = new TimerTask() {
-//            @Override
-//            public void run() {
-//                moveEnemy();
-//            }
-//        };
     }
 
     private void moveEnemy() {
