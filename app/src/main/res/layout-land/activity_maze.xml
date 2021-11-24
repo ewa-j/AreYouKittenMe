@@ -26,8 +26,10 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/hp"
@@ -55,30 +57,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hp" />
 
+
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="hp,text_view_countdown" />
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/kitten"-->
-    <!--        android:layout_width="54dp"-->
-    <!--        android:layout_height="49dp"-->
-    <!--        android:contentDescription="@string/kitten_sprite"-->
-    <!--        android:src="@drawable/cat_sprite"-->
-    <!--        app:layout_constraintBottom_toBottomOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintHorizontal_bias="0.181"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        app:layout_constraintVertical_bias="0.119" />-->
 
-    <!--    <item>-->
-    <!--        <bitmap-->
-    <!--        android:src="@drawable/hedge"-->
-    <!--        tools:ignore="MissingConstraints" />-->
-    <!--    </item>-->
+    <TextView
+        android:id="@+id/tvScore"
+        android:layout_width="86dp"
+        android:layout_height="59dp"
+        android:layout_marginTop="12dp"
+        android:text="Score: 200"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_countdown" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
