@@ -346,11 +346,12 @@ public class MazeView extends View {
             (player.row+1)*cellSize-margin),
             null);
 
-        canvas.drawRect(
-            exit.col*cellSize+margin,
-            exit.row*cellSize+margin,
-            (exit.col+1)*cellSize-margin,
-            (exit.row+1)*cellSize-margin,
+        Bitmap exitBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.maze_exit);
+        canvas.drawBitmap(exitBitmap, null, new RectF(
+            (exit.col+0.1f)*cellSize+margin/2,
+            (exit.row)*cellSize+margin/2,
+            (exit.col+0.9f)*cellSize-margin/2,
+            (exit.row+0.9f)*cellSize-margin/2),
             exitPaint);
     }
 
