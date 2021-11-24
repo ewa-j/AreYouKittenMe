@@ -104,8 +104,8 @@ public class MazeActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
         if (countDownTimer != null) {
           countDownTimer.cancel();
         }

@@ -10,6 +10,7 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.RectF;
 import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
@@ -28,10 +29,6 @@ public class MazeView extends View {
         UP, DOWN, LEFT, RIGHT
     }
 
-    private enum GameState{
-        Win
-    }
-
     private Cell[][] cells;
     private Cell player, exit;
     private static final int COLS = 8, ROWS = 5;
@@ -47,7 +44,7 @@ public class MazeView extends View {
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-
+        this.context = context;
         wallPaint = new Paint();
         wallPaint.setColor(Color.BLACK);
         wallPaint.setStrokeWidth(WALL_THICKNESS);
@@ -66,9 +63,6 @@ public class MazeView extends View {
         wallPaint.setShader(wallTexture);
 
         random = new Random();
-
-        this.context = context;
-
         createMaze();
     }
 
@@ -171,6 +165,7 @@ public class MazeView extends View {
         } while(!stack.empty());
     }
 
+    @SuppressLint("DrawAllocation")
     @Override
     protected void onDraw(Canvas canvas) {
 
@@ -229,12 +224,13 @@ public class MazeView extends View {
 
         float margin = cellSize/8;
 
-        canvas.drawRect(
+        Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat_sprite);
+        canvas.drawBitmap(myBitmap, null, new RectF(
             player.col*cellSize+margin,
             player.row*cellSize+margin,
             (player.col+1)*cellSize-margin,
-            (player.row+1)*cellSize-margin,
-            playerPaint);
+            (player.row+1)*cellSize-margin),
+            null);
 
         canvas.drawRect(
             exit.col*cellSize+margin,

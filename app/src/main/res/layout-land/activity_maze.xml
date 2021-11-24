@@ -68,18 +68,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_countdown" />
 
+
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="hp,text_view_countdown,tvScore" />
-
-
-    <!--    <item>-->
-    <!--        <bitmap-->
-    <!--        android:src="@drawable/hedge"-->
-    <!--        tools:ignore="MissingConstraints" />-->
-    <!--    </item>-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

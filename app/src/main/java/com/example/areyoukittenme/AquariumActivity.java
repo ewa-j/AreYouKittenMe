@@ -153,7 +153,7 @@ public class AquariumActivity extends AppCompatActivity {
     }
 
     private void updateTime(){
-        int totalTime = 20000;//milliseconds
+        int totalTime = 30000;//milliseconds
         long millis = totalTime - (System.currentTimeMillis() - startTime);
         int seconds = (int) (millis / 1000);
         int minutes = seconds / 60;
@@ -173,5 +173,12 @@ public class AquariumActivity extends AppCompatActivity {
             binding.countDownTimer.setTextColor(Color.BLACK);
         }
         binding.countDownTimer.setText(String.format("%d:%02d", minutes, seconds));
+    }
+
+    @Override
+    protected void onPause() {
+        timerHandler.removeCallbacks(timerRunnable);
+        end = true;
+        super.onPause();
     }
 }
