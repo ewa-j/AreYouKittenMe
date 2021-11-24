@@ -14,17 +14,17 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
-        android:background="#03A9F4" />
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="1dp"
+        android:background="@drawable/aquarium_background" />
 
     <ImageView
         android:id="@+id/topBackgroundView"
         android:layout_width="match_parent"
         android:layout_height="138dp"
-        android:background="@color/teal_200" />
+        android:background="@drawable/aquarium_sky" />
 
     <LinearLayout
         android:id="@+id/armContainer"
@@ -40,182 +40,182 @@
             android:id="@+id/armView"
             android:layout_width="83dp"
             android:layout_height="500dp"
-            android:background="@color/light_blue_A200" />
+            android:background="@drawable/catarm" />
 
         <ImageView
             android:id="@+id/handView"
             android:layout_width="match_parent"
             android:layout_height="83dp"
-            android:background="@color/light_blue_900" />
+            android:background="@drawable/catpawopen" />
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/axolotl3"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="571dp"
-        android:layout_marginBottom="98dp"
+        android:layout_marginBottom="108dp"
         android:layout_weight="1"
-        android:background="@android:drawable/ic_menu_view"
+        android:background="@drawable/axolotl"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/axolotl2"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="272dp"
         android:layout_marginBottom="132dp"
         android:layout_weight="1"
-        android:background="@android:drawable/ic_menu_view"
+        android:background="@drawable/axolotl"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/axolotl1"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="89dp"
         android:layout_marginBottom="163dp"
         android:layout_weight="1"
-        android:background="@android:drawable/ic_menu_view"
+        android:background="@drawable/axolotl"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish1"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="31dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="24dp"
         android:layout_marginBottom="111dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/doryfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish2"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="31dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="179dp"
         android:layout_marginBottom="94dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/doryfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish3"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="31dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="63dp"
         android:layout_marginBottom="9dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/doryfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish4"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="31dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="157dp"
         android:layout_marginBottom="39dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/doryfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="48dp"
+        android:layout_height="31dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="370dp"
         android:layout_marginBottom="7dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/doryfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish6"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="43dp"
+        android:layout_height="24dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="266dp"
         android:layout_marginBottom="66dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/clownfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish7"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="43dp"
+        android:layout_height="24dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="386dp"
         android:layout_marginBottom="118dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/clownfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish8"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="43dp"
+        android:layout_height="24dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="650dp"
         android:layout_marginBottom="82dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/clownfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish9"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="43dp"
+        android:layout_height="24dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="504dp"
         android:layout_marginBottom="82dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/clownfish"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/fish10"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="43dp"
+        android:layout_height="24dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="579dp"
         android:layout_marginBottom="20dp"
         android:layout_weight="1"
-        android:background="@android:drawable/star_big_on"
+        android:background="@drawable/clownfish"
         android:visibility="visible"
         tools:visibility="visible" />
 

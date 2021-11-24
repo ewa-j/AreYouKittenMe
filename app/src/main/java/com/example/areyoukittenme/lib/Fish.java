@@ -33,6 +33,11 @@ public class Fish {
             return;
         }
 
+        if(xDiff<0) {
+            fish.setRotationY(180);
+        } else{
+            fish.setRotationY(0);
+        }
         float time = (float) Math.sqrt(xDiff * xDiff + yDiff * yDiff) / speed;
 
         fish.setX((xDiff / time) + fish.getX());

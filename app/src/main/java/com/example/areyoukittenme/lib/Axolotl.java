@@ -27,6 +27,12 @@ public class Axolotl {
         float xDiff = newPosition.x - last.x;
         float yDiff = newPosition.y - last.y;
 
+        if(xDiff<0) {
+            axolotl.setRotationY(0);
+        } else{
+            axolotl.setRotationY(180);
+        }
+
         if (xDiff == 0 && yDiff == 0) {
             newPosition = null;
             return;

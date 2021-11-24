@@ -57,13 +57,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/hp" />
 
-
     <androidx.constraintlayout.widget.Group
         android:id="@+id/group2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:constraint_referenced_ids="hp,text_view_countdown" />
-
 
     <TextView
         android:id="@+id/tvScore"
