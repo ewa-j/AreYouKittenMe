@@ -310,6 +310,7 @@ public class MazeView extends View {
             }
 
             if (player == exit && gameState) {
+
                 score += 100;
                 gameState = false;
                 Context context = getContext();

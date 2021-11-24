@@ -23,6 +23,7 @@ public class MazeActivity extends AppCompatActivity {
 
     private CountDownTimer countDownTimer;
     private Long timeLeftInMillis;
+    private MazeView mazeView;
 
     Timer timer;
 
@@ -36,14 +37,14 @@ public class MazeActivity extends AppCompatActivity {
 
         int score = getIntent().getExtras().getInt("score");
         tvScore = findViewById(R.id.tvScore);
-        tvScore.setText("" + score);
+        tvScore.setText("Score: " + score);
 
 //        int healthPoints = deriveHealthPoints();
 //        String message = "HP " + hp;
         TextView hpTextView = (TextView) findViewById(R.id.hp);
         hpTextView.setText("HP " + hp);
 
-        MazeView mazeView = findViewById(R.id.mazeView);
+        mazeView = findViewById(R.id.mazeView);
         mazeView.score = score;
 
         timer = new Timer();
@@ -74,6 +75,7 @@ public class MazeActivity extends AppCompatActivity {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                tvScore.setText("Score: " + mazeView.score);
                 timeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
             }
