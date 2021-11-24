@@ -27,11 +27,16 @@ public class MazeActivity extends AppCompatActivity {
     Timer timer;
 
     int hp = 50;
+    TextView tvScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze);
+
+        int score = getIntent().getExtras().getInt("score");
+        tvScore = findViewById(R.id.tvScore);
+        tvScore.setText("" + score);
 
 //        int healthPoints = deriveHealthPoints();
 //        String message = "HP " + hp;

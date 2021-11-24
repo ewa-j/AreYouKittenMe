@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
@@ -49,6 +50,9 @@ public class MazeView extends View {
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
+    TextView scoreText = findViewById(R.id.tvScore);
+    score = Integer.parseInt(scoreText.getText().toString());
 
     wallPaint = new Paint();
     wallPaint.setColor(Color.BLACK);

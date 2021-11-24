@@ -115,12 +115,12 @@ public class AquariumActivity extends AppCompatActivity {
                     touchAxolotlTime = System.currentTimeMillis();
                     binding.armContainer.setY(binding.armContainer.getTop());
                     if(attached != null) {
-                        if(score > 10) {
-                            score -= 10;
-                        } else {
-                            score = 0;
-                        }
                         attached.newPosition = null;
+                    }
+                    if(score > 10) {
+                        score -= 10;
+                    } else {
+                        score = 0;
                     }
                     attached = null;
                     binding.timeWaitView.setVisibility(View.VISIBLE);
@@ -153,7 +153,7 @@ public class AquariumActivity extends AppCompatActivity {
     }
 
     private void updateTime(){
-        int totalTime = 30000;//milliseconds
+        int totalTime = 20000;//milliseconds
         long millis = totalTime - (System.currentTimeMillis() - startTime);
         int seconds = (int) (millis / 1000);
         int minutes = seconds / 60;
