@@ -25,7 +25,10 @@ public class MazeActivity extends AppCompatActivity {
     private Long timeLeftInMillis;
     private MazeView mazeView;
 
-    Timer timer;
+    Timer timer, hpTimer;
+
+    public int hp = MazeView.hp;
+//    public String health = getDecreasedHp();
 
     int hp = 50;
     TextView tvScore;
@@ -38,12 +41,7 @@ public class MazeActivity extends AppCompatActivity {
         int score = getIntent().getExtras().getInt("score");
         tvScore = findViewById(R.id.tvScore);
         tvScore.setText("Score: " + score);
-
-//        int healthPoints = deriveHealthPoints();
-//        String message = "HP " + hp;
-        TextView hpTextView = (TextView) findViewById(R.id.hp);
-        hpTextView.setText("HP " + hp);
-
+      
         mazeView = findViewById(R.id.mazeView);
         mazeView.score = score;
 
@@ -64,13 +62,6 @@ public class MazeActivity extends AppCompatActivity {
         startCountDown();
     }
 
-//    private int GetHPPercentage(int currentHealth, int maxHealth) {
-//        return currentHealth / maxHealth * 100;
-//
-//        int maxHealth = 50
-//        int currentHealth = 50
-//        health
-//    }
     private void startCountDown() {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
@@ -110,4 +101,11 @@ public class MazeActivity extends AppCompatActivity {
           countDownTimer.cancel();
         }
     }
+
+    public int getHp() {
+        Intent intent = new Intent(MazeActivity.this, MazeView.class);
+        startActivity(intent);
+        return hp;
+    }
+
 }
