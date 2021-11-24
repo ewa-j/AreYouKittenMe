@@ -48,6 +48,8 @@ public class MazeView extends View {
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
+    int randomX;
+    int randomY;
 
     public static int hp = 50;
     public int score = 0;
@@ -253,8 +255,10 @@ public class MazeView extends View {
 
         if (player == enemy || player == enemyTwo) {
             hp -= 10;
-            if (player == enemy) { enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2]; }
-            if (player == enemyTwo) { enemyTwo = cells[COLS - 2][ROWS - 2]; }
+            randomX = random.nextInt(COLS-1);
+            randomY = random.nextInt(ROWS-1);
+            if (player == enemy) { enemy = cells[randomX][randomY]; }
+            if (player == enemyTwo) { enemyTwo = cells[randomX][randomY]; }
             if(hp < 20) {
                 hpPaint.setColor(Color.RED);
             }
@@ -272,7 +276,9 @@ public class MazeView extends View {
 
         if(player == butterfly) {
             score += 10;
-            butterfly = cells[(COLS - 1)][0];
+            randomX = random.nextInt(COLS-1);
+            randomY = random.nextInt(ROWS-1);
+            butterfly = cells[randomX][randomY];
         }
 
         canvas.restore();

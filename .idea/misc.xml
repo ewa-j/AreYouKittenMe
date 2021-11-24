@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-
         <entry key="../../../../layout/custom_preview.xml" value="0.20677083333333332" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15231481481481482" />
         <entry key="app/src/main/res/layout-land/activity_aquarium.xml" value="0.335" />
@@ -12,7 +11,7 @@
         <entry key="app/src/main/res/layout-land/activity_fullscreen.xml" value="0.1146384479717813" />
         <entry key="app/src/main/res/layout-land/activity_game_over.xml" value="0.15167548500881833" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.1146384479717813" />
-        <entry key="app/src/main/res/layout-land/activity_maze.xml" value="0.25" />
+        <entry key="app/src/main/res/layout-land/activity_maze.xml" value="0.1" />
         <entry key="app/src/main/res/layout-land/activity_win.xml" value="0.13227513227513227" />
         <entry key="app/src/main/res/layout-land/fragment_end.xml" value="0.13227513227513227" />
         <entry key="app/src/main/res/layout-land/fragment_first.xml" value="0.13227513227513227" />
@@ -33,7 +32,6 @@
         <entry key="app/src/main/res/layout/fragment_maze.xml" value="0.1388888888888889" />
         <entry key="app/src/main/res/layout/fragment_maze1.xml" value="0.12638888888888888" />
         <entry key="app/src/main/res/layout/fragment_maze2.xml" value="0.12638888888888888" />
-
       </map>
     </option>
   </component>
