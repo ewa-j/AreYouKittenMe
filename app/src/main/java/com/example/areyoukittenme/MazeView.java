@@ -42,17 +42,20 @@ public class MazeView extends View {
     private static final int COLS = 8, ROWS = 5;
     private static final float WALL_THICKNESS = 38;
     private float cellSize, hMargin, vMargin;
-    private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint;
+    private Paint wallPaint, playerPaint, exitPaint, enemyPaint, butterflyPaint, scorePaint, hpPaint;
     private BitmapShader wallTexture, enemyTexture;
     private Bitmap hedge;
     private Random random;
     public static int hp = 50;
-    public static boolean enemyCollision = false;
+    public int score = 0;
+    Context context;
+    String hpText = "HP " + hp;
+    String scoreText = "Score " + score;
 
-    private Timer timer = new Timer();
-    TimerTask updateEnemyTask;
-    long startTime = 0;
-    long offsetTime = 1000;
+//    private Timer timer = new Timer();
+//    TimerTask updateEnemyTask;
+//    long startTime = 0;
+//    long offsetTime = 1000;
 
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
@@ -73,6 +76,16 @@ public class MazeView extends View {
 
         butterflyPaint = new Paint();
         butterflyPaint.setColor(Color.YELLOW);
+
+        hpPaint = new Paint();
+        hpPaint.setColor(Color.BLACK);
+        hpPaint.setTextSize(70);
+        hpPaint.setStyle(Paint.Style.FILL);
+
+        scorePaint = new Paint();
+        scorePaint.setColor(Color.BLACK);
+        scorePaint.setTextSize(70);
+        scorePaint.setStyle(Paint.Style.FILL);
 
         Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.floweryhedgetwo);
         wallTexture = new BitmapShader(hedge,
@@ -321,6 +334,36 @@ public class MazeView extends View {
 
         canvas.drawColor(Color.LTGRAY);
 
+        canvas.save();
+        canvas.drawText(hpText, 20, 100, hpPaint);
+        canvas.drawText(scoreText, 20, 300, scorePaint);
+        canvas.translate(0, 0);
+
+        if (player == enemy || player == enemyTwo) {
+            hp -= 5;
+            if(hp < 20) {
+                hpPaint.setColor(Color.RED);
+            }
+            hpText = "HP " + hp;
+            canvas.drawText(hpText, 20, 100, hpPaint);
+            canvas.translate(0, 0);
+            enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2];
+
+            if (hp == 0) {
+                Intent intent = new Intent(context, GameOverActivity.class);
+                context.startActivity(intent);
+            }
+        }
+
+        if(player == butterfly || player == butterflyTwo) {
+            score += 5;
+            scoreText = "Score: " + score;
+            canvas.drawText(scoreText, 20, 300, scorePaint);
+            canvas.translate(0, 0);
+            butterfly = cells[(COLS - 1)][0];
+        }
+
+        canvas.restore();
 
         int width = getWidth();
         int height = getHeight();
@@ -419,13 +462,13 @@ public class MazeView extends View {
                 (butterflyTwo.col + 1) * cellSize - margin,
                 (butterflyTwo.row + 1) * cellSize - margin,
                 butterflyPaint);
-
-        updateEnemyTask = new TimerTask() {
-            @Override
-            public void run() {
-                moveEnemy();
-            }
-        };
+//
+//        updateEnemyTask = new TimerTask() {
+//            @Override
+//            public void run() {
+//                moveEnemy();
+//            }
+//        };
     }
 
     private void moveEnemy() {
