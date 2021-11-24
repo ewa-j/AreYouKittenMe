@@ -23,29 +23,39 @@ public class MazeActivity extends AppCompatActivity {
 
     private CountDownTimer countDownTimer;
     private Long timeLeftInMillis;
+    private MazeView mazeView;
 
     Timer timer;
 
     int hp = 50;
+    TextView tvScore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maze);
 
+        int score = getIntent().getExtras().getInt("score");
+        tvScore = findViewById(R.id.tvScore);
+        tvScore.setText("Score: " + score);
+
 //        int healthPoints = deriveHealthPoints();
 //        String message = "HP " + hp;
         TextView hpTextView = (TextView) findViewById(R.id.hp);
         hpTextView.setText("HP " + hp);
+
+        mazeView = findViewById(R.id.mazeView);
+        mazeView.score = score;
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 Intent intent = new Intent(MazeActivity.this, GameOverActivity.class);
+                intent.putExtra("score", score);
                 startActivity(intent);
             }
-        }, 120000);
+        }, COUNTDOWN_IN_MILLIS);
 
         textViewCountDown = findViewById(R.id.text_view_countdown);
         textColourDefaultCd = textViewCountDown.getTextColors();
@@ -65,6 +75,7 @@ public class MazeActivity extends AppCompatActivity {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
+                tvScore.setText("Score: " + mazeView.score);
                 timeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
             }
