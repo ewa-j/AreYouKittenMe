@@ -29,6 +29,7 @@ public class AquariumActivity extends AppCompatActivity {
     ActivityAquariumBinding binding;
     Handler timerHandler = new Handler();
     private boolean end = false;
+    int score = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,13 +67,16 @@ public class AquariumActivity extends AppCompatActivity {
                         //if fish is caught and is moved to the top, remove it
                         if (attached == fish && binding.armContainer.getHeight() + binding.armContainer.getY() < binding.topBackgroundView.getBottom()) {
                             fish.fish.setVisibility(View.GONE);
+                            score += 10;
                             attached = null;
-                            //new game if all caught
+                            //move to maze instructions if all caught
                             caught++;
                             if (caught == 10 && end == false) {
                                 end = true;
                                 timerHandler.removeCallbacks(timerRunnable);
-                                startActivity(new Intent(AquariumActivity.this, FirstActivity.class));
+                                Intent intent = new Intent(AquariumActivity.this, FirstActivity.class);
+                                startActivity(intent);
+                                intent.putExtra("score", score);
                                 return false;
                             }
 
@@ -110,6 +114,11 @@ public class AquariumActivity extends AppCompatActivity {
                     touchAxolotlTime = System.currentTimeMillis();
                     binding.armContainer.setY(binding.armContainer.getTop());
                     if(attached != null) {
+                        if(score > 10) {
+                            score -= 10;
+                        } else {
+                            score = 0;
+                        }
                         attached.newPosition = null;
                     }
                     attached = null;
@@ -152,7 +161,9 @@ public class AquariumActivity extends AppCompatActivity {
         if (millis <= 0 && !end){
             end = true;
             timerHandler.removeCallbacks(timerRunnable);
-            startActivity(new Intent(AquariumActivity.this, GameOverActivity.class));
+            Intent intent = new Intent(AquariumActivity.this, GameOverActivity.class);
+            intent.putExtra("score", score);
+            startActivity(intent);
             return;
         }
         else if (millis <= 10000) {

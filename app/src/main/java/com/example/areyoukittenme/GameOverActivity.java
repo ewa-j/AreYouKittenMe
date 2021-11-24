@@ -16,9 +16,9 @@ public class GameOverActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game_over);
 
-//        int score = getIntent().getExtras().getInt("score");
-//        tvScore = findViewById(R.id.tvScore);
-//        tvScore.setText("" + score);
+        int score = getIntent().getExtras().getInt("score");
+        tvScore = findViewById(R.id.tvScore);
+        tvScore.setText("" + score);
 
         findViewById(R.id.restart).setOnClickListener(new View.OnClickListener() {
             @Override
