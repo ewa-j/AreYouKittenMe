@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout-land/activity_end.xml" value="0.13227513227513227" />
         <entry key="app/src/main/res/layout-land/activity_first.xml" value="0.13227513227513227" />
         <entry key="app/src/main/res/layout-land/activity_fullscreen.xml" value="0.1146384479717813" />
+        <entry key="app/src/main/res/layout-land/activity_game_over.xml" value="0.15167548500881833" />
         <entry key="app/src/main/res/layout-land/activity_main.xml" value="0.1146384479717813" />
         <entry key="app/src/main/res/layout-land/activity_maze.xml" value="0.25" />
         <entry key="app/src/main/res/layout-land/activity_win.xml" value="0.13227513227513227" />
@@ -39,5 +40,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.13796296296296295" />
+      </ProjectState>
+    </option>
   </component>
 </project>
