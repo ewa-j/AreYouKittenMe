@@ -335,7 +335,7 @@ public class MazeView extends View {
         canvas.translate(0, 0);
 
         if (player == enemy || player == enemyTwo) {
-            hp -= 5;
+            hp -= 10;
             if (player == enemy) { enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2]; }
             if (player == enemyTwo) { enemyTwo = cells[COLS - 2][ROWS - 2]; }
             if(hp < 20) {
@@ -345,16 +345,18 @@ public class MazeView extends View {
             canvas.drawText(hpText, 20, 100, hpPaint);
             canvas.translate(0, 0);
 
-            if (hp == 0) {
+            if (hp <= 0) {
+                Context context = getContext();
                 Intent intent = new Intent(context, GameOverActivity.class);
                 context.startActivity(intent);
             }
         }
 
-        if(player == butterfly || player == butterflyTwo) {
-            score += 5;
-            if(player == butterfly) { butterfly = cells[(COLS - 1)][0]; }
-            if(player == butterflyTwo) { butterflyTwo = cells[(COLS - 6)][ROWS - 1]; }
+        if(player == butterfly) {
+            score += 10;
+            butterfly = cells[(COLS - 1)][0];
+//            if(player == butterfly) { butterfly = cells[(COLS - 1)][0]; }
+//            if(player == butterflyTwo) { butterflyTwo = cells[(COLS - 6)][ROWS - 1]; }
             scoreText = "Score: " + score;
             canvas.drawText(scoreText, 20, 300, scorePaint);
             canvas.translate(0, 0);
@@ -453,12 +455,12 @@ public class MazeView extends View {
                     (butterfly.row + 1) * cellSize - margin,
                     butterflyPaint);
 
-        canvas.drawRect(
-                butterflyTwo.col * cellSize + margin,
-                butterflyTwo.row * cellSize + margin,
-                (butterflyTwo.col + 1) * cellSize - margin,
-                (butterflyTwo.row + 1) * cellSize - margin,
-                butterflyPaint);
+//        canvas.drawRect(
+//                butterflyTwo.col * cellSize + margin,
+//                butterflyTwo.row * cellSize + margin,
+//                (butterflyTwo.col + 1) * cellSize - margin,
+//                (butterflyTwo.row + 1) * cellSize - margin,
+//                butterflyPaint);
     }
 
     private void moveEnemy() {
@@ -516,9 +518,9 @@ public class MazeView extends View {
         random = new Random();
         int randomDirection = random.nextInt(Direction.values().length);
         direction = Direction.values()[randomDirection];
-        Direction directionTwo;
-        int randomDirectionTwo = random.nextInt(Direction.values().length);
-        directionTwo = Direction.values()[randomDirectionTwo];
+//        Direction directionTwo;
+//        int randomDirectionTwo = random.nextInt(Direction.values().length);
+//        directionTwo = Direction.values()[randomDirectionTwo];
 
         switch (direction) {
             case UP:
@@ -540,24 +542,24 @@ public class MazeView extends View {
         }
 
 
-        switch (directionTwo) {
-            case UP:
-                if (!butterflyTwo.topWall)
-                    butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row - 1];
-                break;
-            case DOWN:
-                if (!butterflyTwo.bottomWall)
-                    butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row + 1];
-                break;
-            case LEFT:
-                if (!butterflyTwo.leftWall)
-                    butterflyTwo = cells[butterflyTwo.col - 1][butterflyTwo.row];
-                break;
-            case RIGHT:
-                if (!butterflyTwo.rightWall)
-                    butterflyTwo = cells[butterflyTwo.col + 1][butterflyTwo.row];
-                break;
-        }
+//        switch (directionTwo) {
+//            case UP:
+//                if (!butterflyTwo.topWall)
+//                    butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row - 1];
+//                break;
+//            case DOWN:
+//                if (!butterflyTwo.bottomWall)
+//                    butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row + 1];
+//                break;
+//            case LEFT:
+//                if (!butterflyTwo.leftWall)
+//                    butterflyTwo = cells[butterflyTwo.col - 1][butterflyTwo.row];
+//                break;
+//            case RIGHT:
+//                if (!butterflyTwo.rightWall)
+//                    butterflyTwo = cells[butterflyTwo.col + 1][butterflyTwo.row];
+//                break;
+//        }
     }
 
 
