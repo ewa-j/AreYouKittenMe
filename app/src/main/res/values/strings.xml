@@ -13,4 +13,7 @@
     <string name="win">Win</string>
     <string name="aquarium_instructions">Kitten is hungry and went to the aquarium to eat some fish! Help Kitten eat all the fish before it gets caught. Swipe on the hand to pick up fish and drop them at the top. Be careful, don\'t touch the axolotls!</string>
     <string name="_2_00">2:00</string>
+    <string name="maze_background">Maze Background</string>
+    <string name="hp_50">HP 50</string>
+    <string name="kitten_sprite">Kitten Sprite</string>
 </resources>

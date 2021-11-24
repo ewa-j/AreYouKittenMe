@@ -37,15 +37,16 @@
             android:exported="false"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.NoActionBar">
-
         </activity>
         <activity
+            android:noHistory="true"
             android:name=".MazeActivity"
             android:exported="true"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
         <activity
+            android:noHistory="true"
             android:name=".AquariumActivity"
             android:screenOrientation="sensorLandscape"
             android:theme="@style/AppTheme.NoActionBar">
