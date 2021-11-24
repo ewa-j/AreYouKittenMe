@@ -92,14 +92,9 @@ public class MazeView extends View {
                     synchronized (this) {
                         try {
                             moveEnemy();
-                            moveEnemyTwo();
                             moveButterfly();
-                            moveButterflyTwo();
                             sleep(300);
                             invalidate();
-//                            checkCollisionEnemy();
-
-//                            wait(futureTime-System.currentTimeMillis());
 
                         } catch (Exception e) {
                         }
@@ -439,6 +434,9 @@ public class MazeView extends View {
         random = new Random();
         int randomDirection = random.nextInt(Direction.values().length);
         direction = Direction.values()[randomDirection];
+        Direction directionTwo;
+        int randomDirectionTwo = random.nextInt(Direction.values().length);
+        directionTwo = Direction.values()[randomDirectionTwo];
 
         switch (direction) {
             case UP:
@@ -457,16 +455,9 @@ public class MazeView extends View {
                     enemy = cells[enemy.col + 1][enemy.row];
                 break;
         }
-    }
 
-    private void moveEnemyTwo() {
 
-        Direction direction;
-        random = new Random();
-        int randomDirection = random.nextInt(Direction.values().length);
-        direction = Direction.values()[randomDirection];
-
-        switch (direction) {
+        switch (directionTwo) {
             case UP:
                 if (!enemyTwo.topWall)
                     enemyTwo = cells[enemyTwo.col][enemyTwo.row - 1];
@@ -485,12 +476,16 @@ public class MazeView extends View {
         }
     }
 
+
     private void moveButterfly() {
 
         Direction direction;
         random = new Random();
         int randomDirection = random.nextInt(Direction.values().length);
         direction = Direction.values()[randomDirection];
+        Direction directionTwo;
+        int randomDirectionTwo = random.nextInt(Direction.values().length);
+        directionTwo = Direction.values()[randomDirectionTwo];
 
         switch (direction) {
             case UP:
@@ -510,16 +505,9 @@ public class MazeView extends View {
                     butterfly = cells[butterfly.col + 1][butterfly.row];
                 break;
         }
-    }
 
-    private void moveButterflyTwo() {
 
-        Direction direction;
-        random = new Random();
-        int randomDirection = random.nextInt(Direction.values().length);
-        direction = Direction.values()[randomDirection];
-
-        switch (direction) {
+        switch (directionTwo) {
             case UP:
                 if (!butterflyTwo.topWall)
                     butterflyTwo = cells[butterflyTwo.col][butterflyTwo.row - 1];
@@ -538,6 +526,7 @@ public class MazeView extends View {
                 break;
         }
     }
+
 
     private void movePlayer(Direction direction) {
         switch (direction) {
@@ -624,25 +613,6 @@ public class MazeView extends View {
         }
     }
 
-
-    private boolean checkCollisionEnemy() {
-        while (hp > 0) {
-            if (player == enemy) {
-                return true;
-            }
-        }
-        return false;
-    }
-//
-//
-        public void hpText() {
-            TextView hpTextView = (TextView) findViewById(R.id.hp);
-            hpTextView.setText("HP " + hp);
-            if (checkCollisionEnemy()) {
-                hp -= 5;
-                hpTextView.setText("HP " + hp);
-            }
-        }
     }
 
 
