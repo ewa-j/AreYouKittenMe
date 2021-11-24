@@ -24,7 +24,7 @@
         android:id="@+id/topBackgroundView"
         android:layout_width="match_parent"
         android:layout_height="138dp"
-        android:background="@color/teal_200" />
+        android:background="@drawable/aquarium_sky" />
 
     <LinearLayout
         android:id="@+id/armContainer"
@@ -40,7 +40,7 @@
             android:id="@+id/armView"
             android:layout_width="83dp"
             android:layout_height="500dp"
-            android:background="@drawable/cararm" />
+            android:background="@drawable/catarm" />
 
         <ImageView
             android:id="@+id/handView"
