@@ -14,10 +14,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="0dp"
-        android:layout_marginEnd="0dp"
-        android:layout_marginBottom="0dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="-1dp"
+        android:layout_marginEnd="-1dp"
+        android:layout_marginBottom="1dp"
         android:background="@drawable/aquarium_background" />
 
     <ImageView
@@ -52,40 +52,40 @@
 
     <ImageView
         android:id="@+id/axolotl3"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="571dp"
-        android:layout_marginBottom="98dp"
+        android:layout_marginBottom="108dp"
         android:layout_weight="1"
-        android:background="@android:drawable/ic_menu_view"
+        android:background="@drawable/axolotl"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/axolotl2"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="272dp"
         android:layout_marginBottom="132dp"
         android:layout_weight="1"
-        android:background="@android:drawable/ic_menu_view"
+        android:background="@drawable/axolotl"
         android:visibility="visible"
         tools:visibility="visible" />
 
     <ImageView
         android:id="@+id/axolotl1"
-        android:layout_width="40dp"
+        android:layout_width="60dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="89dp"
         android:layout_marginBottom="163dp"
         android:layout_weight="1"
-        android:background="@android:drawable/ic_menu_view"
+        android:background="@drawable/axolotl"
         android:visibility="visible"
         tools:visibility="visible" />
 
