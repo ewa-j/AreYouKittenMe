@@ -18,4 +18,6 @@
     <string name="total_score">Total Score: </string>
     <string name="game_over">Game Over!</string>
     <string name="kitten_sprite">Kitten Sprite</string>
+    <string name="the_aquarium">The Aquarium</string>
+    <string name="the_maze">The Maze</string>
 </resources>
