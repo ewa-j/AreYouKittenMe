@@ -50,14 +50,16 @@
 
     <TextView
         android:id="@+id/tvScore"
-        android:layout_width="86dp"
-        android:layout_height="59dp"
-        android:layout_marginTop="32dp"
-        android:text="Score: 200"
+        android:layout_width="65dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="4dp"
+        android:text="Score 200"
+        android:textAlignment="textEnd"
         android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/text_view_countdown" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

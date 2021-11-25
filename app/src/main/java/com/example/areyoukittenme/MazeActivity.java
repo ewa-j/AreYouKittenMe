@@ -62,7 +62,7 @@ public class MazeActivity extends AppCompatActivity {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                tvScore.setText("Score: " + mazeView.score);
+                tvScore.setText("Score " + mazeView.score);
                 timeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
             }

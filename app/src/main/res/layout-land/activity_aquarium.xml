@@ -217,19 +217,45 @@
         android:layout_weight="1"
         android:background="@drawable/clownfish"
         android:visibility="visible"
-        tools:visibility="visible" />
+        tools:visibility="visible" /><![CDATA[
 
-    <TextView
-        android:id="@+id/countDownTimer"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:textSize="20sp" />
+
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="0dp"
         android:layout_marginEnd="1dp"
         android:text="Time"
+        android:textSize="24sp" />
+
+
+
+
+
+
+
+    ]]>
+
+    <TextView
+        android:id="@+id/countDownTimer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-1dp"
+        android:text="Time"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/scoreView"
+        android:layout_width="67dp"
+        android:layout_height="58dp"
+        android:layout_below="@+id/countDownTimer"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="-2dp"
+        android:layout_marginEnd="2dp"
+        android:text="Score 0"
+        android:textAlignment="textEnd"
         android:textSize="24sp" />
 
     <TextView
@@ -238,8 +264,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="0dp"
-        android:layout_marginTop="1dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="0dp"
         android:text="HP 50"
         android:textSize="24sp" />
 
@@ -250,9 +276,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="-1dp"
-        android:layout_marginTop="49dp"
-        android:layout_marginEnd="1dp"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="54dp"
+        android:layout_marginEnd="-2dp"
         android:fontFamily="sans-serif"
         android:text="3"
         android:textAlignment="center"
