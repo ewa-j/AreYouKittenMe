@@ -8,11 +8,11 @@
 
 Kitten is feeling pawfully sleepy after a day of being adorable. As the clock ticks down & the need for a nap threatens to take over, kitten must defy all odds & get safely home so they can have a well deserved snooze.
 
-Players will solve challenging puzzles that arize on Kitten's way home, eat delicious treats, avoid perilous enemies, and score points to enjoy the glory of seeing your highscore in shining lights!
+Players will solve challenging puzzles that arise on Kitten's way home, eat delicious treats, avoid perilous enemies, and score points to enjoy the glory of seeing your highscore in shining lights!
 
 Are You Kitten Me? is a hiss-terical **adventure role playing game** currently developed for mobile on the android platform.
 
-With a charming nostalgia style game play that is reminicent of classic 8-bit arcade games that defined an entire genre.
+With a charming nostalgia style game play that is reminiscent of classic 8-bit arcade games that defined an entire genre.
 
 Languages: Java, XML
 Platform: Android Studio
@@ -23,7 +23,7 @@ Platform: Android Studio
 
 - Dynamic characters
 - Keep your health point (HP) above 0 to survive
-- Score points as you avoid enermies, catch butterflies, eat fish, complete levels and more
+- Score points as you avoid enemies, catch butterflies, eat fish, complete levels and more
 - Beat the sleepy timer: complete levels before Kitten falls asleep outside!
 - Stunning nostalgic graphics inspired by your favourite retro arcade games
 - 8-bit soundtrack to bop your head along to as you play
@@ -31,7 +31,7 @@ Platform: Android Studio
 ### Why? (motivation)
 As lovers of RPG's, puzzles, all things whimsical and quirky, and - of course - cats, this game felt like a combination of the things we love.
 
-As soon as we decided for the protagonist to be a Kitten, the rest - cucumbers as mortal enemies, chasing buttwrflies, catching fish - just all seemed to naturally fall into place.
+As soon as we decided for the protagonist to be a Kitten, the rest - cucumbers as mortal enemies, chasing butterflies, catching fish - just all seemed to naturally fall into place.
 
 We wanted to create a game that was fun to play, a little different and brings a smile to your face. We were also mindful to keep things simple and realistically able to complete within the two weeks we were given.
 
