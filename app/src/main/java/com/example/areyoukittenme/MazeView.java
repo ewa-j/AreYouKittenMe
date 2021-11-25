@@ -15,6 +15,7 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -25,6 +26,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -88,6 +90,7 @@ public class MazeView extends View {
         hpPaint.setColor(Color.BLACK);
         hpPaint.setTextSize(70);
         hpPaint.setStyle(Paint.Style.FILL);
+
 
         scorePaint = new Paint();
         scorePaint.setColor(Color.BLACK);
