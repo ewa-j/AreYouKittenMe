@@ -97,10 +97,10 @@ public class MazeView extends View {
         scorePaint.setTextSize(70);
         scorePaint.setStyle(Paint.Style.FILL);
 
-        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.floweryhedgetwo);
+        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.pixelhedgetwo);
         wallTexture = new BitmapShader(hedge,
-                Shader.TileMode.REPEAT,
-                Shader.TileMode.REPEAT);
+                Shader.TileMode.CLAMP,
+                Shader.TileMode.CLAMP);
 
         wallPaint.setShader(wallTexture);
 
@@ -136,7 +136,7 @@ public class MazeView extends View {
         exitPaint = new Paint();
         exitPaint.setColor(Color.CYAN);
 
-        hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+        hedge = BitmapFactory.decodeResource(getResources(), R.drawable.pixelhedge);
         wallTexture = new BitmapShader(hedge,
                 Shader.TileMode.REPEAT,
                 Shader.TileMode.REPEAT);
