@@ -250,8 +250,6 @@ public class MazeView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 
-        canvas.drawColor(Color.LTGRAY);
-
         canvas.save();
         canvas.drawText(hpText, 20, 100, hpPaint);
         canvas.translate(0, 0);
