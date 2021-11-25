@@ -46,8 +46,9 @@
         android:fontFamily="@font/pixelfont"
         android:text="@string/play_again"
         android:layout_marginStart="-140dp"
-        android:textColor="#fff"
-        android:textSize="38sp" />
+        android:textSize="38sp"
+        android:textColor="@color/black"
+        android:background="#FFF450"/>
 
 </LinearLayout>
 

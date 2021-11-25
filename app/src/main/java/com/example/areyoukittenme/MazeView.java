@@ -12,7 +12,6 @@ import android.graphics.BitmapShader;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
@@ -23,16 +22,11 @@ import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
-
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
-
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
-import java.util.Timer;
-import java.util.TimerTask;
 
 
 public class MazeView extends View {
@@ -53,7 +47,7 @@ public class MazeView extends View {
     int randomX;
     int randomY;
 
-    public static int hp = 50;
+    public int hp = 0;
     public int score = 0;
     Context context;
     String hpText = "HP " + hp;
@@ -254,6 +248,7 @@ public class MazeView extends View {
     protected void onDraw(Canvas canvas) {
 
         canvas.save();
+        hpText = "HP " + hp;
         canvas.drawText(hpText, 20, 100, hpPaint);
         canvas.translate(0, 0);
 
@@ -341,13 +336,6 @@ public class MazeView extends View {
         }
 
         float margin = cellSize / 8;
-
-//        canvas.drawRect(
-//                butterfly.col * cellSize + margin,
-//                butterfly.row * cellSize + margin,
-//                (butterfly.col + 1) * cellSize - margin,
-//                (butterfly.row + 1) * cellSize - margin,
-//                butterflyPaint);
 
         Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat_sprite);
         canvas.drawBitmap(myBitmap, null, new RectF(
@@ -464,7 +452,6 @@ public class MazeView extends View {
                 break;
         }
     }
-
 
     private void movePlayer(Direction direction) {
         switch (direction) {
