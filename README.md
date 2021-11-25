@@ -21,9 +21,28 @@ Platform: Android Studio
 
 ### Game Play
 
+#### The Aquarium Level
+
 ![The Aquarium](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/gifs/aquarium-playthrough.gif)
 
+- Swipe to control a dynamic Kitten arm
+- Help Kitten catch fish
+- Avoid axolotls
+- Complete the level before the time runs out
+- Preserve your health points
+- How high can you score?
+
+#### The Maze Level
+
 ![The Aquarium](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/gifs/maze-playthrough.gif)
+
+- Swipe to control a dynamic Kitten sprite
+- Help Kitten exit the maze
+- Avoid cucumbers
+- catch butterflies for bunis scores
+- Complete the level before the time runs out
+- Preserve your health points
+- How high can you score?
 
 ### Features
 
