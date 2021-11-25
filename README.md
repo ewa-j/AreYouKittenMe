@@ -34,7 +34,7 @@ Platform: Android Studio
 
 #### The Maze Level
 
-![The Aquarium](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/gifs/maze-playthrough.gif)
+![The Maze](https://github.com/ewa-j/AreYouKittenMe/blob/511e46e8ff890f17dda927d6dba1d1dacec89991/resources/gifs/maze-playthrough.gif)
 
 - Swipe to control a dynamic Kitten sprite
 - Help Kitten exit the maze
