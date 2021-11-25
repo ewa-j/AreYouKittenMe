@@ -1,6 +1,6 @@
 # Are you Kitten Me?
 
-*- A pawsitively a-mewsing feline game*
+_- A pawsitively a-mewsing feline game_
 
 ![Game Main Screen](https://github.com/ewa-j/AreYouKittenMe/blob/f050295e95d5aa74b919a2719c6a2dba54391c12/resources/images/main-background.PNG)
 
@@ -19,16 +19,23 @@ Platform: Android Studio
 
 ## The Game
 
+### Game Play
+
+![The Aquarium](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/gifs/aquarium-playthrough.gif)
+
+![The Aquarium](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/gifs/maze-playthrough.gif)
+
 ### Features
 
 - Dynamic characters
 - Keep your health point (HP) above 0 to survive
-- Score points as you avoid enemies, catch butterflies, eat fish, complete levels and more
+- Score points as you avoid enermies, catch butterflies, eat fish, complete levels and more
 - Beat the sleepy timer: complete levels before Kitten falls asleep outside!
 - Stunning nostalgic graphics inspired by your favourite retro arcade games
 - 8-bit soundtrack to bop your head along to as you play
 
 ### Why? (motivation)
+
 As lovers of RPG's, puzzles, all things whimsical and quirky, and - of course - cats, this game felt like a combination of the things we love.
 
 As soon as we decided for the protagonist to be a Kitten, the rest - cucumbers as mortal enemies, chasing butterflies, catching fish - just all seemed to naturally fall into place.
@@ -61,6 +68,26 @@ We chose 8 bit graphics as the style of the gameplay. This is due to the timeles
 
 Here are some examples of graphic & how they have evolved over time:
 
+#### Kitten Sprite
+
+![Initial Kitten Sprite](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/old_kitten_sprite.PNG)
+
+We changed the Kitten to orange to better standout against our background & colour palette.
+
+![Final Kitten Sprite](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/kitten_sprite.PNG)
+
+#### The Axolotl
+
+![Axolotl](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/axolotl.png)
+
+#### Backgrounds
+
+Aquarium Background
+![Initial Aquarium Background](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/kitten_sprite.PNG)
+
+![Final Aquarium Background](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/aquarium_background222.png)
+
+![Game Over Background](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/kitten_sprite.PNG)
 
 ## Resources
 
