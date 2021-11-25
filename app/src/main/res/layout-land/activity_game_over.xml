@@ -8,14 +8,15 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="644dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="0dp"
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="10dp"
+        android:fontFamily="@font/font"
         android:text="@string/game_over"
         android:textColor="#fff"
-        android:textSize="70sp" />
+        android:textSize="48sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -43,9 +44,11 @@
         android:id="@+id/restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/play_again"
         android:layout_marginStart="-140dp"
+        android:fontFamily="@font/pixelfont"
+        android:text="@string/play_again"
+        android:textSize="38sp" 
         android:textColor="@color/black"
-        android:background="#FFF450"
-        android:textSize="40sp" />
+        android:background="#FFF450" />
+        
 </LinearLayout>

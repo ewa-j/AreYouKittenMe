@@ -14,12 +14,16 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
+import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
 import androidx.annotation.Nullable;
-
+import androidx.core.content.res.ResourcesCompat;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Stack;
@@ -81,15 +85,16 @@ public class MazeView extends View {
         hpPaint.setTextSize(70);
         hpPaint.setStyle(Paint.Style.FILL);
 
+
         scorePaint = new Paint();
         scorePaint.setColor(Color.BLACK);
         scorePaint.setTextSize(70);
         scorePaint.setStyle(Paint.Style.FILL);
 
-        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.floweryhedgetwo);
+        Bitmap hedge = BitmapFactory.decodeResource(getResources(), R.drawable.pixelhedgetwo);
         wallTexture = new BitmapShader(hedge,
-                Shader.TileMode.REPEAT,
-                Shader.TileMode.REPEAT);
+                Shader.TileMode.CLAMP,
+                Shader.TileMode.CLAMP);
 
         wallPaint.setShader(wallTexture);
 
@@ -125,7 +130,7 @@ public class MazeView extends View {
         exitPaint = new Paint();
         exitPaint.setColor(Color.CYAN);
 
-        hedge = BitmapFactory.decodeResource(getResources(), R.drawable.hedge);
+        hedge = BitmapFactory.decodeResource(getResources(), R.drawable.pixelhedge);
         wallTexture = new BitmapShader(hedge,
                 Shader.TileMode.REPEAT,
                 Shader.TileMode.REPEAT);
