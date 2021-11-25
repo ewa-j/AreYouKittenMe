@@ -114,7 +114,7 @@ We wanted to show our Kitten, disappointed in a typical cat pose:
 
 ## Resources
 
-- Project Wireframes: [Project Wireframes](https://balsamiq.cloud/slmgyhn/p7x20kw/r2278)
-- Design Inspiration Board: [Design Inspiration Board](https://miro.com/app/board/o9J_liSzUQ4=/)
-- Score Life & Sound Effects in Android Studio: [Score Life & Sound Effects in Android Studio](https://www.dafont.com/karmatic-arcade.font)
-- Game Title Font: [Game Title Font](https://www.dafont.com/karmatic-arcade.font)
+- [Project Wireframes](https://balsamiq.cloud/slmgyhn/p7x20kw/r2278)
+- [Design Inspiration Board](https://miro.com/app/board/o9J_liSzUQ4=/)
+- [Score Life & Sound Effects in Android Studio](https://www.dafont.com/karmatic-arcade.font)
+- [Game Title Font](https://www.dafont.com/karmatic-arcade.font)
