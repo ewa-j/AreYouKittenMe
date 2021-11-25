@@ -8,9 +8,9 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="644dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="0dp"
+        android:layout_width="700dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="1dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="10dp"
         android:fontFamily="@font/font"
@@ -29,8 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/total_score"
-            android:textSize="24sp"
-            android:fontFamily="@font/pixelfont"/>
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/tvScore"
@@ -38,17 +37,16 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textColor="@color/white"
-            android:textSize="24sp"
-            android:fontFamily="@font/pixelfont"/>
+            android:textSize="24sp" />
     </LinearLayout>
 
     <Button
         android:id="@+id/restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/play_again"
         android:layout_marginStart="-140dp"
+        android:fontFamily="@font/pixelfont"
+        android:text="@string/play_again"
         android:textColor="#fff"
-        android:textSize="38sp"
-        android:fontFamily="@font/pixelfont"/>
+        android:textSize="38sp" />
 </LinearLayout>
