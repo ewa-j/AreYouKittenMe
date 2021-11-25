@@ -2,6 +2,8 @@
 
 *- A pawsitively a-mewsing feline game*
 
+![Game Main Screen](https://github.com/ewa-j/AreYouKittenMe/blob/f050295e95d5aa74b919a2719c6a2dba54391c12/resources/images/main-background.PNG)
+
 ## About
 
 Kitten is feeling pawfully sleepy after a day of being adorable. As the clock ticks down & the need for a nap threatens to take over, kitten must defy all odds & get safely home so they can have a well deserved snooze.
@@ -39,7 +41,8 @@ We decided to create a mobile game in Android Studio as with the increasing popu
 
 ### Mockups
 
-Here is the inital design for Are You Kitten Me:
+Here are the initial designs for Are You Kitten Me:
+![Wireframes] (https://github.com/ewa-j/AreYouKittenMe/blob/f050295e95d5aa74b919a2719c6a2dba54391c12/resources/images/are-you-kitten-me-wireframe.png)
 
 ### Tickets
 
@@ -50,6 +53,7 @@ Here is the inital design for Are You Kitten Me:
 ### Colour Palette
 
 Are You Kitten Me was designed to be quint & whimsical, so we though a pastel colour palette would be perfect.
+![Colour Palette](https://github.com/ewa-j/AreYouKittenMe/blob/f050295e95d5aa74b919a2719c6a2dba54391c12/resources/images/Are%20You%20Kitten%20Me.png)
 
 ### Graphics
 
