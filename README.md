@@ -83,11 +83,15 @@ We changed the Kitten to orange to better standout against our background & colo
 #### Backgrounds
 
 Aquarium Background
-![Initial Aquarium Background](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/kitten_sprite.PNG)
+![Initial Aquarium Background](https://github.com/ewa-j/AreYouKittenMe/blob/a082979628e7d80a4c23ccf6a80e9b7e85f80553/resources/images/aquarium_background.png)
 
 ![Final Aquarium Background](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/aquarium_background222.png)
 
-![Game Over Background](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/kitten_sprite.PNG)
+#### Game Over Background
+
+We wanted to show our Kitten, disappointed in a typical cat pose:
+
+![Game Over Background](https://github.com/ewa-j/AreYouKittenMe/blob/f698589e0bf5af44f175dccb080a62705fcf47ab/resources/images/gameover.png)
 
 ## Resources
 
