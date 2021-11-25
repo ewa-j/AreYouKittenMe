@@ -10,9 +10,10 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/font"
         android:text="@string/you_win"
         android:textColor="#fff"
-        android:textSize="70sp" />
+        android:textSize="55sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -25,13 +26,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/total_score"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:fontFamily="@font/pixelfont"/>
 
         <TextView
             android:id="@+id/tvScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
+            android:fontFamily="@font/pixelfont"
             android:textColor="@color/white"
             android:textSize="24sp" />
 
@@ -43,8 +46,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/play_again"
+        android:fontFamily="@font/pixelfont"
         android:textColor="#fff"
-        android:textSize="40sp" />
+        android:textSize="38sp" />
 
 </LinearLayout>
 

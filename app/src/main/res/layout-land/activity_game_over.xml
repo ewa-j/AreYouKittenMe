@@ -13,9 +13,10 @@
         android:layout_marginStart="0dp"
         android:layout_marginTop="60dp"
         android:layout_marginBottom="10dp"
+        android:fontFamily="@font/font"
         android:text="@string/game_over"
         android:textColor="#fff"
-        android:textSize="70sp" />
+        android:textSize="48sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,7 +29,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/total_score"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:fontFamily="@font/pixelfont"/>
 
         <TextView
             android:id="@+id/tvScore"
@@ -36,7 +38,8 @@
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textColor="@color/white"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:fontFamily="@font/pixelfont"/>
     </LinearLayout>
 
     <Button
@@ -46,5 +49,6 @@
         android:text="@string/play_again"
         android:layout_marginStart="-140dp"
         android:textColor="#fff"
-        android:textSize="40sp" />
+        android:textSize="38sp"
+        android:fontFamily="@font/pixelfont"/>
 </LinearLayout>
