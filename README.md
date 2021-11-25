@@ -42,11 +42,11 @@ We decided to create a mobile game in Android Studio as with the increasing popu
 ### Mockups
 
 Here are the initial designs for Are You Kitten Me:
-![Wireframes] (https://github.com/ewa-j/AreYouKittenMe/blob/f050295e95d5aa74b919a2719c6a2dba54391c12/resources/images/are-you-kitten-me-wireframe.png)
+![Wireframes](https://github.com/ewa-j/AreYouKittenMe/blob/f050295e95d5aa74b919a2719c6a2dba54391c12/resources/images/are-you-kitten-me-wireframe.png)
 
 ### Tickets
 
-[Trello Board] (https://trello.com/b/59lSNDKq/are-you-kitten-me-🐱)
+[Trello Board](https://trello.com/b/59lSNDKq/are-you-kitten-me-🐱)
 
 ## Design
 
