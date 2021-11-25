@@ -69,6 +69,7 @@ public class AquariumActivity extends AppCompatActivity {
                         if (attached == fish && binding.armContainer.getHeight() + binding.armContainer.getY() < binding.topBackgroundView.getBottom()) {
                             fish.fish.setVisibility(View.GONE);
                             score += 10;
+                            binding.scoreView.setText("Score " + score);
                             attached = null;
                             //move to maze instructions if all caught
                             caught++;
@@ -126,6 +127,7 @@ public class AquariumActivity extends AppCompatActivity {
                     } else {
                         score = 0;
                     }
+                    binding.scoreView.setText("Score " + score);
                     attached = null;
                     binding.timeWaitView.setVisibility(View.VISIBLE);
                 }
