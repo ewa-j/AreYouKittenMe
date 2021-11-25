@@ -61,6 +61,7 @@ public class MazeView extends View {
 
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
+
         super(context, attrs);
         this.context = context;
         wallPaint = new Paint();
@@ -211,7 +212,9 @@ public class MazeView extends View {
         // random maze creation
         Stack<Cell> stack = new Stack<>();
         Cell current, next;
-//
+        randomX = random.nextInt(COLS-1);
+        randomY = random.nextInt(ROWS-1);
+
         cells = new Cell[COLS][ROWS];
 
         for (int y = 0; y < ROWS; y++) {
