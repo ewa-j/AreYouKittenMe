@@ -48,6 +48,8 @@ public class MazeView extends View {
     private BitmapShader wallTexture;
     private Bitmap hedge;
     private Random random;
+    int randomX;
+    int randomY;
 
     public static int hp = 50;
     public int score = 0;
@@ -59,6 +61,7 @@ public class MazeView extends View {
 
 
     public MazeView(Context context, @Nullable AttributeSet attrs) {
+
         super(context, attrs);
         this.context = context;
         wallPaint = new Paint();
@@ -209,7 +212,9 @@ public class MazeView extends View {
         // random maze creation
         Stack<Cell> stack = new Stack<>();
         Cell current, next;
-//
+        randomX = random.nextInt(COLS-1);
+        randomY = random.nextInt(ROWS-1);
+
         cells = new Cell[COLS][ROWS];
 
         for (int y = 0; y < ROWS; y++) {
@@ -245,16 +250,16 @@ public class MazeView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 
-        canvas.drawColor(Color.LTGRAY);
-
         canvas.save();
         canvas.drawText(hpText, 20, 100, hpPaint);
         canvas.translate(0, 0);
 
         if (player == enemy || player == enemyTwo) {
             hp -= 10;
-            if (player == enemy) { enemy = cells[(COLS - 1) / 2][(ROWS - 1) / 2]; }
-            if (player == enemyTwo) { enemyTwo = cells[COLS - 2][ROWS - 2]; }
+            randomX = random.nextInt(COLS-1);
+            randomY = random.nextInt(ROWS-1);
+            if (player == enemy) { enemy = cells[randomX][randomY]; }
+            if (player == enemyTwo) { enemyTwo = cells[randomX][randomY]; }
             if(hp < 20) {
                 hpPaint.setColor(Color.RED);
             }
@@ -272,7 +277,9 @@ public class MazeView extends View {
 
         if(player == butterfly) {
             score += 10;
-            butterfly = cells[(COLS - 1)][0];
+            randomX = random.nextInt(COLS-1);
+            randomY = random.nextInt(ROWS-1);
+            butterfly = cells[randomX][randomY];
         }
 
         canvas.restore();
@@ -332,26 +339,12 @@ public class MazeView extends View {
 
         float margin = cellSize / 8;
 
-        canvas.drawRect(
-                enemy.col * cellSize + margin,
-                enemy.row * cellSize + margin,
-                (enemy.col + 1) * cellSize - margin,
-                (enemy.row + 1) * cellSize - margin,
-                enemyPaint);
-
-        canvas.drawRect(
-                enemyTwo.col * cellSize + margin,
-                enemyTwo.row * cellSize + margin,
-                (enemyTwo.col + 1) * cellSize - margin,
-                (enemyTwo.row + 1) * cellSize - margin,
-                enemyPaint);
-
-        canvas.drawRect(
-                butterfly.col * cellSize + margin,
-                butterfly.row * cellSize + margin,
-                (butterfly.col + 1) * cellSize - margin,
-                (butterfly.row + 1) * cellSize - margin,
-                butterflyPaint);
+//        canvas.drawRect(
+//                butterfly.col * cellSize + margin,
+//                butterfly.row * cellSize + margin,
+//                (butterfly.col + 1) * cellSize - margin,
+//                (butterfly.row + 1) * cellSize - margin,
+//                butterflyPaint);
 
         Bitmap myBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cat_sprite);
         canvas.drawBitmap(myBitmap, null, new RectF(
@@ -368,6 +361,30 @@ public class MazeView extends View {
                         (exit.col+0.9f)*cellSize-margin/2,
                         (exit.row+0.9f)*cellSize-margin/2),
                 exitPaint);
+
+        Bitmap enemyBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.cucumber);
+        canvas.drawBitmap(enemyBitmap, null, new RectF(
+                        (enemy.col+0.1f)*cellSize+margin/2,
+                        (enemy.row)*cellSize+margin/2,
+                        (enemy.col+0.9f)*cellSize-margin/2,
+                        (enemy.row+0.9f)*cellSize-margin/2),
+                enemyPaint);
+
+        canvas.drawBitmap(enemyBitmap, null, new RectF(
+                        (enemyTwo.col+0.1f)*cellSize+margin/2,
+                        (enemyTwo.row)*cellSize+margin/2,
+                        (enemyTwo.col+0.9f)*cellSize-margin/2,
+                        (enemyTwo.row+0.9f)*cellSize-margin/2),
+                enemyPaint);
+
+        Bitmap butterflyBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.butterfly);
+        canvas.drawBitmap(butterflyBitmap, null, new RectF(
+                        (butterfly.col+0.1f)*cellSize+margin/2,
+                        (butterfly.row)*cellSize+margin/2,
+                        (butterfly.col+0.9f)*cellSize-margin/2,
+                        (butterfly.row+0.9f)*cellSize-margin/2),
+                butterflyPaint);
+
     }
 
     private void moveEnemy() {
