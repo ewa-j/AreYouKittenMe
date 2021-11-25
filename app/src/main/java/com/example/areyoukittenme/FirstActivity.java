@@ -15,12 +15,14 @@ public class FirstActivity extends AppCompatActivity {
         setContentView(R.layout.activity_first);
 
         int score = getIntent().getExtras().getInt("score");
+        int hp = getIntent().getExtras().getInt("hp");
 
         findViewById(R.id.startLevel).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(FirstActivity.this, MazeActivity.class);
                 intent.putExtra("score", score);
+                intent.putExtra("hp", hp);
                 startActivity(intent);
             }
         });
