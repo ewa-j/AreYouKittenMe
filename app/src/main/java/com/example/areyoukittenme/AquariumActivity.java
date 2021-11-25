@@ -3,6 +3,7 @@ package com.example.areyoukittenme;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.RectF;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -31,6 +32,9 @@ public class AquariumActivity extends AppCompatActivity {
     Handler timerHandler = new Handler();
     private boolean end = false;
     int score = 0;
+    MediaPlayer fish_theme;
+    MediaPlayer axolotl_theme;
+    MediaPlayer main_theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,8 @@ public class AquariumActivity extends AppCompatActivity {
         binding = ActivityAquariumBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         binding.handView.setOnTouchListener(armListener);
+        fish_theme = MediaPlayer.create(this, R.raw.smack);
+        axolotl_theme = MediaPlayer.create(this, R.raw.angry_meow);
 
         fishes = new Fish[]{new Fish(binding.fish1) , new Fish(binding.fish2), new Fish(binding.fish3), new Fish(binding.fish4), new Fish(binding.fish5), new Fish(binding.fish6), new Fish(binding.fish7), new Fish(binding.fish8), new Fish(binding.fish9), new Fish(binding.fish10)};
         axolotls = new Axolotl[]{new Axolotl(binding.axolotl1),new Axolotl(binding.axolotl2),new Axolotl(binding.axolotl3)};
@@ -84,9 +90,13 @@ public class AquariumActivity extends AppCompatActivity {
                             }
 
                         } else if (attached == fish) { //else move current fish
+                            if (fish_theme != null) {
+                                fish_theme.start();
+                            }
                             fish.fish.setX((binding.armContainer.getX() + (binding.armContainer.getWidth() >> 1)) - (fish.fish.getWidth() >> 1));
                             fish.fish.setY(binding.armContainer.getY() + binding.armView.getHeight() + (binding.handView.getHeight() >> 1) - (fish.fish.getHeight() >> 1));
                         } else if (attached == null && CheckCollision(fish.fish, binding.handView) && fish.fish.getVisibility() != View.GONE) { //else attach new fish on collision
+//
                             fish.fish.setX((binding.armContainer.getX() + (binding.armContainer.getWidth() >> 1)) - (fish.fish.getWidth() >> 1));
                             fish.fish.setY(binding.armContainer.getY() + binding.armView.getHeight() + (binding.handView.getHeight() >> 1) - (fish.fish.getHeight() >> 1));
                             attached = fish;
@@ -114,6 +124,9 @@ public class AquariumActivity extends AppCompatActivity {
             for (Axolotl axolotl : axolotls) {
                 axolotl.move(binding.fishContainer);
                 if (detectCollision(axolotl.axolotl) && touchAxolotlTime == null) {
+                    if (axolotl_theme != null) {
+                        axolotl_theme.start();
+                    }
                     hp -= 10;
                     binding.HPText.setText("HP " + hp);
                     touchAxolotlTime = System.currentTimeMillis();
