@@ -29,10 +29,9 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="252dp"
         android:layout_marginBottom="312dp"
-        android:background="@color/white"
-        android:backgroundTint="#FFFFFF"
         android:text="@string/the_aquarium"
         android:textColor="#000000"
+        android:fontFamily="@font/pixelfont"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -61,8 +60,9 @@
         android:layout_marginTop="268dp"
         android:text="@string/im_ready"
         android:textColor="#000000"
+        android:fontFamily="@font/pixelfont"
         android:background="#FFF450"
-        android:textSize="40sp"
+        android:textSize="38sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
