@@ -20,6 +20,7 @@ public class GameOverActivity extends AppCompatActivity {
         setContentView(R.layout.activity_game_over);
         play_theme = MediaPlayer.create(this, R.raw.meow);
         gameover_theme = MediaPlayer.create(this, R.raw.gameover);
+        gameover_theme.setLooping(true);
         if (gameover_theme != null) {
             gameover_theme.start();
         }

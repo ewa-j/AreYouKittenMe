@@ -20,6 +20,7 @@ public class WinActivity extends AppCompatActivity {
         setContentView(R.layout.activity_win);
         play_theme = MediaPlayer.create(this, R.raw.meow);
         win_theme = MediaPlayer.create(this, R.raw.win);
+        win_theme.setLooping(true);
         if (win_theme != null) {
             win_theme.start();
         }

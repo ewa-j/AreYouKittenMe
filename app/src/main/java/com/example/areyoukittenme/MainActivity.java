@@ -23,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         main_theme = MediaPlayer.create(this, R.raw.main_theme);
+        main_theme.setLooping(true);
         if (main_theme != null) {
             main_theme.start();
         }
