@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity
+            android:name=".InstructionActivity"
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -24,39 +26,32 @@
         <activity
             android:name=".FirstActivity"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".GameOverActivity"
             android:exported="false"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".WinActivity"
             android:exported="false"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:noHistory="true"
             android:name=".MazeActivity"
             android:exported="true"
-            android:screenOrientation="sensorLandscape"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-        <activity
             android:noHistory="true"
-            android:name=".AquariumActivity"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".AquariumActivity"
+            android:noHistory="true"
+            android:screenOrientation="sensorLandscape"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".AquariumInstructionsActivity"
             android:screenOrientation="sensorLandscape"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
