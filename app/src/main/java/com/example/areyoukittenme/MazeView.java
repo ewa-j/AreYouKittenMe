@@ -16,6 +16,10 @@ import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
@@ -46,7 +50,7 @@ public class MazeView extends View {
     private Random random;
     int randomX;
     int randomY;
-
+    MediaPlayer cucumber_theme;
     public int hp = 0;
     public int score = 0;
     Context context;
@@ -60,6 +64,8 @@ public class MazeView extends View {
 
         super(context, attrs);
         this.context = context;
+
+
         wallPaint = new Paint();
         wallPaint.setColor(Color.BLACK);
         wallPaint.setStrokeWidth(WALL_THICKNESS);
@@ -247,13 +253,28 @@ public class MazeView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 
+//        SoundPool soundEffect = new SoundPool(10, AudioManager.STREAM_MUSIC, 0);
+//
+//        AudioAttributes audioAttrs = new AudioAttributes.Builder()
+//                .setUsage(AudioAttributes.USAGE_GAME)
+//                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+//                .build();
+//        SoundPool sp = new SoundPool.Builder()
+//                .setMaxStreams(10)
+//                .setAudioAttributes(audioAttrs)
+//                .build();
+//        int soundIds[] = new int[10];
+//        soundIds[0] = sp.load(context, R.raw.cucumber_effect, 1);
+
         canvas.save();
         hpText = "HP " + hp;
         canvas.drawText(hpText, 20, 100, hpPaint);
         canvas.translate(0, 0);
 
         if (player == enemy || player == enemyTwo) {
+//            soundEffect.play(soundIds[0], 1, 1, 1, 0, 1.0F);
             hp -= 10;
+//            soundEffect.release();
             randomX = random.nextInt(COLS-1);
             randomY = random.nextInt(ROWS-1);
             if (player == enemy) { enemy = cells[randomX][randomY]; }
