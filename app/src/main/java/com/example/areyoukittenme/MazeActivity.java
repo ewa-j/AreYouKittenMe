@@ -13,7 +13,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class MazeActivity extends AppCompatActivity {
-    private static final long COUNTDOWN_IN_MILLIS = 120000;
+    private static final long COUNTDOWN_IN_MILLIS = 30000;
     private ColorStateList textColourDefaultCd;
 
     private TextView textViewCountDown;

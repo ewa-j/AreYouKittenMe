@@ -22,27 +22,42 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
 
+    <Button
+        android:id="@+id/startLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="300dp"
+        android:background="#FFF450"
+        android:fontFamily="@font/pixelfont"
+        android:text="@string/im_ready"
+        android:textColor="#000000"
+        android:textSize="38sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/theAquarium"
         android:layout_width="276dp"
         android:layout_height="49dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="252dp"
-        android:layout_marginBottom="312dp"
+        android:layout_marginEnd="224dp"
+        android:layout_marginBottom="296dp"
+        android:fontFamily="@font/pixelfont"
         android:text="@string/the_aquarium"
         android:textColor="#000000"
-        android:fontFamily="@font/pixelfont"
         android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
-  
-      <TextView
+
+    <TextView
         android:id="@+id/scoreTxt"
         android:layout_width="539dp"
         android:layout_height="149dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="96dp"
-        android:layout_marginBottom="152dp"
+        android:layout_marginEnd="92dp"
+        android:layout_marginBottom="124dp"
         android:background="@color/white"
         android:backgroundTint="#FFFFFF"
         android:text="@string/aquarium_instructions"
@@ -51,19 +66,4 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
-    <Button
-        android:id="@+id/startLevel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginStart="280dp"
-        android:layout_marginTop="268dp"
-        android:text="@string/im_ready"
-        android:textColor="#000000"
-        android:fontFamily="@font/pixelfont"
-        android:background="#FFF450"
-        android:textSize="38sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-  
 </androidx.constraintlayout.widget.ConstraintLayout>

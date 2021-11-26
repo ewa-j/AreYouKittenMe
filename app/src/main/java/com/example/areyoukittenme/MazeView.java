@@ -109,7 +109,7 @@ public class MazeView extends View {
         Runnable run = new Runnable() {
             @Override
             public void run() {
-                long futureTime = System.currentTimeMillis() + 120000;
+                long futureTime = System.currentTimeMillis() + 30000;
 
                 while (System.currentTimeMillis() < futureTime) {
                     synchronized (this) {
