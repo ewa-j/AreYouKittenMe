@@ -39,8 +39,8 @@
 
     <TextView
         android:id="@+id/scoreTxt"
-        android:layout_width="572dp"
-        android:layout_height="167dp"
+        android:layout_width="574dp"
+        android:layout_height="149dp"
         android:layout_alignParentEnd="true"
         android:layout_marginTop="16dp"
         android:background="@color/white"
