@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
                 if (play_theme != null) {
                     play_theme.start();
                 }
-                startActivity(new Intent(MainActivity.this, AquariumInstructionsActivity.class));
+                startActivity(new Intent(MainActivity.this, InstructionActivity.class));
             }
         });
 
