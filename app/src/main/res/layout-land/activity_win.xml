@@ -2,17 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/you_win_cat"
+    android:background="@drawable/sleepycat"
     android:orientation="vertical"
     android:gravity="center">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="600dp"
+        android:layout_height="100dp"
+        android:fontFamily="@font/font"
         android:text="@string/you_win"
         android:textColor="#fff"
-        android:textSize="70sp" />
+        android:textSize="55sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -29,7 +30,7 @@
 
         <TextView
             android:id="@+id/tvScore"
-            android:layout_width="wrap_content"
+            android:layout_width="389dp"
             android:layout_height="wrap_content"
             android:text="TextView"
             android:textColor="@color/white"
@@ -42,9 +43,12 @@
         android:id="@+id/restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/pixelfont"
         android:text="@string/play_again"
-        android:textColor="#fff"
-        android:textSize="40sp" />
+        android:layout_marginStart="-140dp"
+        android:textSize="38sp"
+        android:textColor="@color/black"
+        android:background="#FFF450"/>
 
 </LinearLayout>
 

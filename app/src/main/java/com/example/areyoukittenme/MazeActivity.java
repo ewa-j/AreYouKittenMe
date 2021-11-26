@@ -2,14 +2,11 @@ package com.example.areyoukittenme;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.StrictMode;
 import android.os.CountDownTimer;
-import android.view.View;
 import android.widget.TextView;
 import java.util.Locale;
 import java.util.Timer;
@@ -25,10 +22,7 @@ public class MazeActivity extends AppCompatActivity {
     private Long timeLeftInMillis;
     private MazeView mazeView;
 
-    Timer timer, hpTimer;
-
-    public int hp = MazeView.hp;
-//    public String health = getDecreasedHp();
+    Timer timer;
     TextView tvScore;
 
     @Override
@@ -37,11 +31,13 @@ public class MazeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_maze);
 
         int score = getIntent().getExtras().getInt("score");
+        int hp = getIntent().getExtras().getInt("hp");
         tvScore = findViewById(R.id.tvScore);
         tvScore.setText("Score: " + score);
       
         mazeView = findViewById(R.id.mazeView);
         mazeView.score = score;
+        mazeView.hp = hp;
 
         timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -66,7 +62,7 @@ public class MazeActivity extends AppCompatActivity {
         countDownTimer = new CountDownTimer(timeLeftInMillis, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
-                tvScore.setText("Score: " + mazeView.score);
+                tvScore.setText("Score " + mazeView.score);
                 timeLeftInMillis = millisUntilFinished;
                 updateCountDownText();
             }
@@ -101,11 +97,4 @@ public class MazeActivity extends AppCompatActivity {
           countDownTimer.cancel();
         }
     }
-
-    public int getHp() {
-        Intent intent = new Intent(MazeActivity.this, MazeView.class);
-        startActivity(intent);
-        return hp;
-    }
-
 }

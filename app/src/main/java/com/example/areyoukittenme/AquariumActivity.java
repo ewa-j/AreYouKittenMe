@@ -22,6 +22,7 @@ public class AquariumActivity extends AppCompatActivity {
     float dY;
     Fish attached = null;
     int caught = 0;
+    int hp = 50;
     Fish[] fishes;
     Axolotl[] axolotls;
     Long startTime;
@@ -68,6 +69,7 @@ public class AquariumActivity extends AppCompatActivity {
                         if (attached == fish && binding.armContainer.getHeight() + binding.armContainer.getY() < binding.topBackgroundView.getBottom()) {
                             fish.fish.setVisibility(View.GONE);
                             score += 10;
+                            binding.scoreView.setText("Score " + score);
                             attached = null;
                             //move to maze instructions if all caught
                             caught++;
@@ -77,6 +79,7 @@ public class AquariumActivity extends AppCompatActivity {
                                 score += 100;
                                 Intent intent = new Intent(AquariumActivity.this, FirstActivity.class);
                                 intent.putExtra("score", score);
+                                intent.putExtra("hp", hp);
                                 startActivity(intent);
                                 return false;
                             }
@@ -112,6 +115,8 @@ public class AquariumActivity extends AppCompatActivity {
             for (Axolotl axolotl : axolotls) {
                 axolotl.move(binding.fishContainer);
                 if (detectCollision(axolotl.axolotl) && touchAxolotlTime == null) {
+                    hp -= 10;
+                    binding.HPText.setText("HP " + hp);
                     touchAxolotlTime = System.currentTimeMillis();
                     binding.armContainer.setY(binding.armContainer.getTop());
                     if(attached != null) {
@@ -122,6 +127,7 @@ public class AquariumActivity extends AppCompatActivity {
                     } else {
                         score = 0;
                     }
+                    binding.scoreView.setText("Score " + score);
                     attached = null;
                     binding.timeWaitView.setVisibility(View.VISIBLE);
                 }
@@ -159,7 +165,7 @@ public class AquariumActivity extends AppCompatActivity {
         int minutes = seconds / 60;
         seconds = seconds % 60;
 
-        if (millis <= 0 && !end){
+        if ((millis <= 0 || hp <= 0) && !end){
             end = true;
             timerHandler.removeCallbacks(timerRunnable);
             Intent intent = new Intent(AquariumActivity.this, GameOverActivity.class);

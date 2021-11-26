@@ -20,7 +20,8 @@
     <string name="kitten_sprite">Kitten Sprite</string>
     <string name="instruction">Kitten is sleepy. Help Kitten complete all the obstacles before they fall asleep! Get them back home to take a nap.</string>
     <string name="your_mission">Your Mission</string>
-    <string name="your_mission">Your Mission</string>
     <string name="cat_back_background">cat back background</string>
     <string name="let_s_go">Let\'s go!</string>
+    <string name="the_aquarium">The Aquarium</string>
+    <string name="the_maze">The Maze</string>
 </resources>

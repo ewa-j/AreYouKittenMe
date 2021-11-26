@@ -23,12 +23,27 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/scoreTxt"
-        android:layout_width="572dp"
-        android:layout_height="167dp"
+        android:id="@+id/theAquarium"
+        android:layout_width="276dp"
+        android:layout_height="49dp"
         android:layout_alignParentEnd="true"
-        android:layout_marginEnd="100dp"
-        android:layout_marginBottom="144dp"
+        android:layout_marginEnd="252dp"
+        android:layout_marginBottom="312dp"
+        android:background="@color/white"
+        android:backgroundTint="#FFFFFF"
+        android:text="@string/the_aquarium"
+        android:textColor="#000000"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/scoreTxt"
+        android:layout_width="578dp"
+        android:layout_height="124dp"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="104dp"
+        android:layout_marginBottom="160dp"
         android:background="@color/white"
         android:backgroundTint="#FFFFFF"
         android:text="@string/aquarium_instructions"
@@ -46,7 +61,10 @@
         android:layout_marginTop="268dp"
         android:text="@string/im_ready"
         android:textColor="#000000"
-        android:textSize="40sp"
+        android:textSize="38sp"
+        android:fontFamily="@font/pixelfont"
+        android:background="#FFF450"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+  
 </androidx.constraintlayout.widget.ConstraintLayout>
