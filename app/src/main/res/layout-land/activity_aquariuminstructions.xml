@@ -58,7 +58,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="92dp"
         android:layout_marginBottom="124dp"
-        android:background="@color/white"
+        android:background="#7000"
         android:backgroundTint="#FFFFFF"
         android:text="@string/aquarium_instructions"
         android:textColor="#000000"
